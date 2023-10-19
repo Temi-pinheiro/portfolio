@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Hero = () => {
   return (
-    <section className='max-w-7xl mx-auto relative w-full flex flex-col px-6 lg:px-[131px]  md:mt-[98px]'>
+    <section className='max-w-7xl mx-auto relative w-full flex flex-col px-6 lg:px-[131px]  md:mt-[98px] md:mb-[128px]'>
       <h1 className='font-semibold text-7xl max-w-[782px] leading-[87.14px] tracking-tight'>
         Front-end Developer Experienced in building for SaaS Companies.
       </h1>
