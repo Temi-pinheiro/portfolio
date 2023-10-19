@@ -2,15 +2,24 @@ import React from 'react';
 
 export const Hero = () => {
   return (
-    <section className='max-w-7xl mx-auto relative w-full flex flex-col px-6 lg:px-[131px]  md:mt-[98px] md:mb-[128px]'>
+    <section className='max-w-7xl mx-auto relative w-full flex flex-col section-padding md:mt-[98px] md:mb-[128px]'>
       <h1 className='font-semibold text-7xl max-w-[782px] leading-[87.14px] tracking-tight'>
         Front-end Developer Experienced in building for SaaS Companies.
       </h1>
       <div className='flex flex-col md:mt-[116px] max-w-[476px] gap-y-5'>
         <h3 className='font-light text-4xl'>I’m Temitope Pinheiro</h3>
         <p className='text-lg'>
-          Senior Frontend Developer, I builds inclusive products that balances
-          businesses and users needs.{' '}
+          A software developer that builds with the user in heart and business
+          in mind. Currently helping to build and launch financial products and
+          services @{' '}
+          <a
+            className='text-[#2C1DFF] underline underline-offset-4'
+            href='https://www.woodcoreapp.com/'
+            target='_blank'
+          >
+            Woodcore
+          </a>
+          .
         </p>
       </div>
 

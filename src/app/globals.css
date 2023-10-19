@@ -19,3 +19,7 @@ body {
   background: var(--bg);
   scroll-behavior: smooth;
 }
+
+.section-padding {
+  @apply px-6 lg:px-[131px];
+}

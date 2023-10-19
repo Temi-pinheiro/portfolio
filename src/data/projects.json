@@ -1,0 +1,11 @@
+{
+  "projects": [
+    {
+      "title": "Tip calculator app",
+      "details": "A frontend mentor challenge, this small app is perfect for anyone starting to get to grips with JavaScript. The calculator functionality will be a nice test!",
+      "projectLink": "https://temis-splitter.netlify.app/",
+      "stack": ["React", "JS", "Styled-components"],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697678874/portfolio%20screens/Screenshot_2023-10-19_at_02.27.47_ynfxon.png"
+    }
+  ]
+}
