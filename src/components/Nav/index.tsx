@@ -2,7 +2,7 @@ import React from 'react';
 
 export const NavBar = () => {
   return (
-    <nav className='hidden md:flex items-center justify-between max-w-7xl mx-auto w-full'>
+    <nav className='hidden md:flex items-center justify-between max-w-7xl mx-auto w-full text-sm mt-14'>
       <h6>TEMITOPE</h6>
       <ul className='flex items-center gap-x-8 '>
         <li>
