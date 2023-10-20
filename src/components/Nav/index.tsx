@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export const NavBar = () => {
@@ -9,16 +10,16 @@ export const NavBar = () => {
           <a>Home</a>
         </li>
         <li>
-          <a>Works</a>
+          <a href='#works'>Works</a>
         </li>
         <li>
-          <a>Projects</a>
+          <Link href={'projects'}>Projects</Link>
         </li>
         <li>
-          <a>Experience</a>
+          <a href='#experience'>Experience</a>
         </li>
         <li>
-          <a>Contact</a>
+          <a href='#contact'>Contact</a>
         </li>
       </ul>
     </nav>

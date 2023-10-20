@@ -9,7 +9,7 @@ export const Projects = () => {
       <h2 id='projects' className='font-semibold text-[44px]'>
         Projects
       </h2>
-      <p className=' font-extralight  text-sm'>
+      <p className=' font-light text-[#808080] text-sm'>
         Personal projects i tried my hand at, brought to you mostly by{' '}
         <a
           href='https://www.frontendmentor.io/profile/Temi-pinheiro'

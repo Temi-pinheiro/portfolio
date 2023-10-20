@@ -1,0 +1,53 @@
+{
+  "experiences": [
+    {
+      "title": "Woodcore",
+      "details": [
+        "Rebranded landing page, boosted customer acquisition.",
+        "Led migration to Typescript for CBA console.",
+        "Reduced code bloat by 40k lines, improved DRY.",
+        "Created in-house components ",
+        "25% fewer bug reports, 40% fewer code errors post-migration.",
+        "Optimized network calls, accelerated loan setup by 30%.",
+        "Enhanced admin console for user efficiency."
+      ],
+      "position": "Senior Frontend Developer",
+      "website": "https://temis-splitter.netlify.app/",
+      "stack": [
+        "React",
+        "JS",
+        "Typescript",
+        "TailwindCSS",
+        "React Query",
+        "Framer-motion",
+        "AWS Amplify",
+        "Styled-components"
+      ],
+      "period": "SEP 2022 - PRESENT"
+    },
+    {
+      "title": "Lendsqr",
+      "details": [
+        "Collaborated cross-functionally, delivered to 3k+ orgs and 1m+ users.",
+        "Mentored 3 junior developers for seamless onboarding.",
+        "Initiated brown bag sessions for knowledge sharing.",
+        "Conducted code reviews, maintained coding standards."
+      ],
+      "position": "Senior Software Developer",
+      "website": "https://temis-splitter.netlify.app/",
+      "stack": [
+        "React",
+        "Angular",
+        "Node.js",
+        "SQL",
+        "Express",
+        "TailwindCSS",
+        "React Query",
+        "Framer-motion",
+        "AWS Amplify",
+        "Styled-components"
+      ],
+      "period": "AUG 2022 - AUG 2023"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { OuterLink } from '..';
 
 export const ProjectCard = ({
   title,
@@ -14,21 +15,16 @@ export const ProjectCard = ({
   projectLink: string;
 }) => {
   return (
-    <div className='flex items-start gap-x-8'>
+    <div className='flex items-start gap-x-8 h-[257px]'>
       <img
-        className='max-w-[362px] max-h-[257px] w-full h-full object-cover'
+        className='max-w-[362px] max-h-[257px] w-full h-full object-cover object-left-top'
         src={imageUrl}
       />
       <article className='max-w-[624px] flex flex-col'>
-        <a
-          className='text-xl font-medium flex items-center gap-x-3'
-          href={projectLink}
-          target='_blank'
-        >
-          {title}
-          <Arrow />
-        </a>
-        <p className=' mt-4 max-w-[508px] font-light'>{details}</p>
+        <OuterLink title={title} url={projectLink} />
+        <p className=' mt-4 max-w-[508px] text-[#808080]  font-light'>
+          {details}
+        </p>
         <ul className='flex items-center flex-wrap w-full gap-x-[14px] mt-8'>
           {stack.map((st, index) => (
             <li

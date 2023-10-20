@@ -9,8 +9,8 @@ export const Works = () => {
       <h2 id='works' className='font-semibold text-[44px]'>
         Works
       </h2>
-      <p className=' font-extralight  text-sm'>
-        Works i've completed for businesses/brands in the past
+      <p className=' font-light text-[#808080] text-sm'>
+        Work I've completed for businesses and brands in the past
       </p>
       <ul className='mt-20 flex flex-col gap-y-20'>
         {works.map((work, index) => (
