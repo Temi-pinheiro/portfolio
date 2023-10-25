@@ -6,6 +6,13 @@
       "projectLink": "https://temis-splitter.netlify.app/",
       "stack": ["React", "JS", "Styled-components"],
       "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697678874/portfolio%20screens/Screenshot_2023-10-19_at_02.27.47_ynfxon.png"
+    },
+    {
+      "title": "Multistep form",
+      "details": "Had some fun with this one and took advantage of Framer-motions's layout prop o make the nav indicators' animation responsive. ",
+      "projectLink": "https://spontaneous-pithivier-92b328.netlify.app/",
+      "stack": ["React", "TS", "Framer-motion", "TailwindCSS"],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698202015/portfolio%20screens/Screenshot_2023-10-25_at_03.46.41_fj9wnl.png"
     }
   ]
 }
