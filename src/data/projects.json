@@ -12,7 +12,22 @@
       "details": "Had some fun with this one and took advantage of Framer-motions's layout prop o make the nav indicators' animation responsive. ",
       "projectLink": "https://spontaneous-pithivier-92b328.netlify.app/",
       "stack": ["React", "TS", "Framer-motion", "TailwindCSS"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698202015/portfolio%20screens/Screenshot_2023-10-25_at_03.46.41_fj9wnl.png"
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899395/portfolio%20screens/spontaneous-pithivier-92b328.netlify.app__ro2iqx.png"
+    },
+    {
+      "title": "Rest Countries Browser",
+      "details": "Bit of a doozy implementing this. I tried to step as far out of my comfort zone as possible and shipped a bare bones (by my standards) responsive frontend app ",
+      "projectLink": "https://symphonious-dango-34d5ec.netlify.app/",
+      "stack": [
+        "React",
+        "TS",
+        "Framer-motion",
+        "TailwindCSS",
+        "Tanstack Query",
+        "Tanstack Router",
+        "React-Helmet"
+      ],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899198/portfolio%20screens/symphonious-dango-34d5ec.netlify.app__zub4ta.png"
     }
   ]
 }

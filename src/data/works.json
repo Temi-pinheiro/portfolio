@@ -5,14 +5,14 @@
       "details": "Landing page for woodcore's CBA",
       "projectLink": "https://www.woodcoreapp.com/",
       "stack": ["React", "Javascript", "TailwindCSS", "Framer Motion"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697690791/portfolio%20screens/Screenshot_2023-10-19_at_05.46.20_jdyihh.png"
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899316/portfolio%20screens/www.woodcoreapp.com__pprcw0.pngg"
     },
     {
       "title": "Pooler Website",
       "details": "Landing page for woodcore's payment product 'Pooler'",
       "projectLink": "https://www.poolerapp.com/",
       "stack": ["React", "Typescript", "TailwindCSS", "Framer Motion"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697690884/portfolio%20screens/Screenshot_2023-10-19_at_05.47.58_xjd0pf.png"
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899358/portfolio%20screens/www.poolerapp.com__y9gt7o.png"
     }
   ]
 }
