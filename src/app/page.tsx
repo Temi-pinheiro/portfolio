@@ -5,9 +5,9 @@ export default function Home() {
     <main className='w-full h-full'>
       <Hero />
 
-      <hr className='bg-[#808080]  opacity-25'></hr>
+      <hr className='bg-[#808080] mt-8 md:mt-0 dark:opacity-25'></hr>
       <Works />
-      <hr className='bg-[#808080]  opacity-25'></hr>
+      <hr className='bg-[#808080] mt-8 md:mt-0 dark:opacity-25'></hr>
       <Experiences />
     </main>
   );

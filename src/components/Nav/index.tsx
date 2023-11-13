@@ -7,19 +7,19 @@ export const NavBar = () => {
       <h6>TEMITOPE</h6>
       <ul className='flex items-center gap-x-8 '>
         <li>
-          <a>Home</a>
+          <Link href='/'>Home</Link>
         </li>
         <li>
-          <a href='#works'>Works</a>
+          <Link href='/#works'>Works</Link>
         </li>
         <li>
-          <Link href={'projects'}>Projects</Link>
+          <Link href={'/projects'}>Projects</Link>
         </li>
         <li>
-          <a href='#experience'>Experience</a>
+          <Link href='/#works'>Experience</Link>
         </li>
         <li>
-          <a href='#contact'>Contact</a>
+          <Link href='/#contact'>Contact</Link>
         </li>
       </ul>
     </nav>

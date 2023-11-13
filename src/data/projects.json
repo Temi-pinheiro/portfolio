@@ -4,13 +4,16 @@
       "title": "Tip calculator app",
       "details": "A frontend mentor challenge, this small app is perfect for anyone starting to get to grips with JavaScript. The calculator functionality will be a nice test!",
       "projectLink": "https://temis-splitter.netlify.app/",
+      "githubUrl": "https://github.com/Temi-pinheiro/react-tip-calculator",
       "stack": ["React", "JS", "Styled-components"],
       "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697678874/portfolio%20screens/Screenshot_2023-10-19_at_02.27.47_ynfxon.png"
     },
     {
       "title": "Multistep form",
-      "details": "Had some fun with this one and took advantage of Framer-motions's layout prop o make the nav indicators' animation responsive. ",
+      "details": "Had some fun with this one and took advantage of Framer-motions's layout prop to make the step indicators' animation responsive. ",
       "projectLink": "https://spontaneous-pithivier-92b328.netlify.app/",
+      "githubUrl": "https://github.com/Temi-pinheiro/fem-multistep-form",
+
       "stack": ["React", "TS", "Framer-motion", "TailwindCSS"],
       "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899395/portfolio%20screens/spontaneous-pithivier-92b328.netlify.app__ro2iqx.png"
     },
@@ -18,6 +21,8 @@
       "title": "Rest Countries Browser",
       "details": "Bit of a doozy implementing this. I tried to step as far out of my comfort zone as possible and shipped a bare bones (by my standards) responsive frontend app ",
       "projectLink": "https://symphonious-dango-34d5ec.netlify.app/",
+      "githubUrl": "https://github.com/Temi-pinheiro/rest-countries-fem",
+
       "stack": [
         "React",
         "TS",
@@ -28,6 +33,23 @@
         "React-Helmet"
       ],
       "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899198/portfolio%20screens/symphonious-dango-34d5ec.netlify.app__zub4ta.png"
+    },
+    {
+      "title": "Fullstack Invoice App",
+      "details": "Bit of a doozy implementing this. I tried to step as far out of my comfort zone as possible and shipped a bare bones (by my standards) responsive frontend app ",
+      "projectLink": "https://jovial-begonia-643d66.netlify.app/",
+      "githubUrl": "https://github.com/Temi-pinheiro/fem-invoice-app",
+
+      "stack": [
+        "NextJs",
+        "TS",
+        "Framer-motion",
+        "TailwindCSS",
+        "Prisma",
+        "Postgres",
+        "Auth JS"
+      ],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1699824069/portfolio%20screens/localhost_3001_invoices_osbopa.png"
     }
   ]
 }

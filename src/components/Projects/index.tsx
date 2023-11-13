@@ -19,7 +19,7 @@ export const Projects = () => {
           Frontendmentor.io
         </a>
       </p>
-      <ul className='mt-20 flex flex-col gap-y-20'>
+      <ul className='mt-8 md:mt-20 flex flex-col gap-y-20'>
         {proj.map((project, index) => (
           <li key={index}>
             <ProjectCard
@@ -28,6 +28,7 @@ export const Projects = () => {
               projectLink={project.projectLink}
               stack={project.stack}
               imageUrl={project.imageUrl}
+              githubUrl={project.githubUrl}
             />
           </li>
         ))}
