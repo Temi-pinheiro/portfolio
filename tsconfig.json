@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/netlify/functions/submitForm.js"
+    "netlify/functions/submitForm.js"
   ],
   "exclude": ["node_modules"]
 }

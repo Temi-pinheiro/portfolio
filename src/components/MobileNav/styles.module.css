@@ -1,0 +1,15 @@
+.nav {
+  @apply flex md:hidden bg-white dark:bg-black fixed inset-0 z-50 w-full h-[75px] items-end pb-6 px-6 justify-between;
+}
+
+.btns_container {
+  @apply flex flex-col gap-y-6 w-full justify-self-stretch mt-auto;
+}
+
+.btns_container a {
+  @apply h-10 w-[144] flex items-center justify-center;
+}
+
+.request {
+  @apply bg-inherit border-2 rounded-lg;
+}

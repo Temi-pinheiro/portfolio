@@ -1,11 +1,12 @@
 import React from 'react';
 import { ProjectCard } from '~~/components';
 import data from '~~/data/projects.json';
+import { Footer } from '../Footer';
 
 export const Projects = () => {
   const { projects: proj } = data;
   return (
-    <div className='md:pt-[100px] max-w-7xl mx-auto w-full section-padding md:mb-[182px]'>
+    <div className='md:pt-[100px] mt-[120px] max-w-7xl mx-auto w-full section-padding md:mb-[182px] '>
       <h2 id='projects' className='font-semibold text-[44px]'>
         Projects
       </h2>
@@ -33,6 +34,7 @@ export const Projects = () => {
           </li>
         ))}
       </ul>
+      <Footer />
     </div>
   );
 };
