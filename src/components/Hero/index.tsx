@@ -12,10 +12,10 @@ export const Hero = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{
-            opacity: { duration: 1.9 },
+            opacity: { duration: 1.35 },
             x: { duration: 0.3 },
-            delay: 3.0,
-            easings: ['ease-in'],
+            delay: 0.8,
+            ease: [0.65, 0, 0.35, 1],
           }}
           className='font-semibold text-[30px] md:text-7xl max-w-[782px] md:leading-[87.14px] tracking-tight'
         >
@@ -28,8 +28,8 @@ export const Hero = () => {
             transition={{
               opacity: { duration: 1 },
               x: { duration: 0.6 },
-              delay: 1.3,
-              easings: ['ease-in'],
+              delay: 0.6,
+              ease: [0.65, 0, 0.35, 1],
             }}
             className='font-light mt-8 md:mt-0 text-2xl md:text-4xl'
           >
@@ -41,8 +41,8 @@ export const Hero = () => {
             transition={{
               opacity: { duration: 1 },
               x: { duration: 0.3 },
-              delay: 2.3,
-              easings: ['ease-in'],
+              delay: 0.7,
+              ease: [0.65, 0, 0.35, 1],
             }}
             className='text-sm font-light dark:font-normal md:text-lg'
           >
@@ -66,8 +66,8 @@ export const Hero = () => {
           transition={{
             opacity: { duration: 1.2 },
             y: { duration: 0.3 },
-            delay: 2.8,
-            easings: ['ease-in'],
+            delay: 0.8,
+            ease: [0.65, 0, 0.35, 1],
           }}
           className='md:absolute left-0 -bottom-7 mt-28 md:mt-0 flex md:flex-col gap-x-3 gap-y-3'
         >

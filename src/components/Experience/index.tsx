@@ -18,7 +18,7 @@ export const Experience = ({
 }) => {
   return (
     <div className='flex flex-col-reverse md:flex-row items-start gap-x-8 '>
-      <article className='max-w-[624px] flex flex-col shrink-0 px-3 md:px-0'>
+      <article className='max-w-[624px] flex flex-col  px-3 md:px-0'>
         <OuterLink title={title} url={website} />
         <h4 className='text-black dark:text-[#DDDDDD] font-light mt-2 text-sm'>
           {position}
@@ -44,7 +44,7 @@ export const Experience = ({
       <div className='flex items-center gap-x-4 md:gap-x-6 -ml-[84px] md:-ml-0'>
         <span className='w-20 h-[2px] md:hidden inline-flex   bg-black dark:bg-[#9E9E9E]'></span>
         <svg
-          className=' hidden md:w-full  md:block'
+          className=' hidden w-10 md:block'
           height='1'
           viewBox='0 0 624 1'
           fill='none'

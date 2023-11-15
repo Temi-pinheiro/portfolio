@@ -4,9 +4,10 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { NavBar } from '~~/components';
 import { MobileNav } from '~~/components/MobileNav';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useLayoutEffect, useState } from 'react';
 import { Preloader } from '~~/components/Preloader';
 import { AnimatePresence } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,14 +16,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const pathname = usePathname();
+  const [loading, setLoading] = useState(pathname !== '/projects');
+  useLayoutEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import('locomotive-scroll')).default;
 
       const locomotiveScroll = new LocomotiveScroll();
     })();
-    setTimeout(() => setLoading(false), 5000);
+    setTimeout(() => setLoading(false), 3000);
   }, []);
 
   return (

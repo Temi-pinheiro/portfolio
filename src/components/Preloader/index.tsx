@@ -17,7 +17,7 @@ export const Preloader = ({ loading }: { loading: boolean }) => {
         {
           rotateY: '360',
           duration: 1,
-          repeat: 2,
+          repeat: 1,
           ease: 'power2.inOut',
         },
         0
@@ -27,7 +27,7 @@ export const Preloader = ({ loading }: { loading: boolean }) => {
         {
           rotateY: '360',
           duration: 1,
-          repeat: 2,
+          repeat: 1,
           ease: 'power3.inOut',
         },
         0
@@ -36,37 +36,37 @@ export const Preloader = ({ loading }: { loading: boolean }) => {
         top.current,
         {
           width: '100%',
-          duration: 1,
+          duration: 0.5,
           ease: 'power3.inOut',
         },
-        3
+        2
       )
       .to(
         bottom.current,
         {
           width: '100%',
-          duration: 1,
+          duration: 0.5,
           ease: 'power3.inOut',
         },
-        3
+        2
       )
       .to(
         top.current,
         {
           y: '-100%',
-          duration: 1,
+          duration: 0.5,
           ease: 'power3.inOut',
         },
-        4
+        2.5
       )
       .to(
         bottom.current,
         {
           y: '100%',
-          duration: 1,
+          duration: 0.5,
           ease: 'power3.inOut',
         },
-        4
+        2.5
       );
   });
   return (

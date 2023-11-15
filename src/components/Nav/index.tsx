@@ -11,12 +11,14 @@ export const NavBar = () => {
     { path: '/#experience', label: 'Experience' },
     { path: '/#contact', label: 'Contact' },
   ];
-  console.log(links);
   return (
     <nav className='hidden md:flex items-center justify-between max-w-7xl overflow-y-clip  mx-auto w-full text-sm mt-14 px-6'>
       <motion.h6
         initial={{ y: 'var(--y-from, 0)' }}
-        animate={{ y: 'var(--y-to, 0)', transition: { easings: ['ease-in'] } }}
+        animate={{
+          y: 'var(--y-to, 0)',
+          transition: { ease: [0.16, 1, 0.3, 1] },
+        }}
         className='[--y-from:30px] [--y-to:0px] [--opacity-from:0] [--opacity-to:1]'
       >
         TEMITOPE
@@ -28,9 +30,9 @@ export const NavBar = () => {
             animate={{ y: 'var(--y-to, 0)' }}
             className='[--y-from:30px] [--y-to:0px] [--opacity-from:0] [--opacity-to:1] uppercase'
             transition={{
-              delay: 0.6 + index * 0.08,
+              delay: 0.3 + index * 0.08,
               duration: 0.3,
-              easings: ['ease-in'],
+              ease: [0.16, 1, 0.3, 1],
             }}
             key={l.path}
           >
