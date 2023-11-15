@@ -19,8 +19,8 @@ export async function POST(req: NextRequest) {
 
   // Email content
   const mailOptions = {
-    from: email,
-
+    replyTo: email,
+    from: 'temitopepinheiro@gmail.com',
     to: 'temitopepinheiro@gmail.com',
     subject: `New message from your portfolio from ${name}`,
     text: `Hi Temitope, ${message.toString()}`,
