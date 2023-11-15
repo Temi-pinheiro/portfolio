@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         statusCode: 500,
-        body: { message: 'Failed to send message' },
+        body: { message: 'Failed to send message', error },
       },
       { status: 500 }
     );
