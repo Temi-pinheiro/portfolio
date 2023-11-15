@@ -11,7 +11,7 @@ export const OuterLink = ({
 }) => {
   return (
     <a
-      className='text-xl font-semibold flex items-center gap-x-3 uppercase tracking-wide'
+      className='text-xl font-semibold flex items-center gap-x-3 uppercase tracking-wide hover:text-[#FA6525] duration-200'
       href={url}
       target='_blank'
     >

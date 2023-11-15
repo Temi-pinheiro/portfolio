@@ -21,10 +21,24 @@ export const MobileNav = () => {
   return (
     <div className='md:hidden'>
       <div className={styles.nav}>
-        <Link href='/' className='flex items-center space-x-3 '>
-          <h6>TEMITOPE</h6>
+        <Link href='/' className='overflow-y-clip'>
+          <motion.h6
+            initial={{ y: 'var(--y-from, 0)' }}
+            animate={{ y: 'var(--y-to, 0)', transition: { duration: 0.3 } }}
+            className='max-sm:[--y-from:30px] max-sm:[--y-to:0px]  '
+          >
+            TEMITOPE
+          </motion.h6>
         </Link>
-        <button onClick={() => setSidebarOpen(true)} className='mb-2'>
+        <motion.button
+          initial={{ x: 'var(--x-from, 0)' }}
+          animate={{
+            x: 'var(--x-to, 0)',
+            transition: { duration: 0.3, delay: 0.3 },
+          }}
+          className='max-sm:[--x-from:100px] max-sm:[--x-to:0px]  mb-2'
+          onClick={() => setSidebarOpen(true)}
+        >
           <svg
             width='47'
             height='8'
@@ -47,7 +61,7 @@ export const MobileNav = () => {
               className='stroke-black dark:stroke-[#B8B8B8]'
             />
           </svg>
-        </button>
+        </motion.button>
       </div>
       <AnimatePresence>
         {sidebarOpen && (

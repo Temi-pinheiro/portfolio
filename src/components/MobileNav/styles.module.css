@@ -1,5 +1,5 @@
 .nav {
-  @apply flex md:hidden bg-white dark:bg-black fixed inset-0 z-50 w-full h-[75px] items-end pb-6 px-6 justify-between;
+  @apply flex md:hidden bg-white dark:bg-black fixed inset-0 z-50 w-full h-[75px] items-end pb-6 px-6 justify-between overflow-y-clip;
 }
 
 .btns_container {

@@ -41,7 +41,10 @@ export default function ContactForm() {
     }
   };
   return (
-    <div className=' pt-20 md:pt-[100px] max-w-[1200px] mx-auto w-full section-padding md:mb-[182px] flex flex-col gap-y-8 md:gap-y-0 md:flex-row md:justify-between max-sm:pb-9'>
+    <div
+      className=' pt-20 md:pt-[100px] max-w-[1200px] mx-auto w-full section-padding md:mb-[182px] flex flex-col gap-y-8 md:gap-y-0 md:flex-row md:justify-between max-sm:pb-9'
+      id='contact'
+    >
       <h2 id='works' className='font-semibold text-[20px] md:text-[44px]'>
         Say Hello
       </h2>

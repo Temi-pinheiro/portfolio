@@ -1,48 +1,97 @@
+'use client';
 import React from 'react';
-
+import { motion } from 'framer-motion';
 export const Hero = () => {
   return (
-    <section
-      className='max-w-7xl md:mx-auto relative w-full flex flex-col section-padding mt-[120px] md:mt-[98px] md:mb-[128px]'
-      id='home'
-    >
-      <h1 className='font-semibold text-[30px] md:text-7xl max-w-[782px] md:leading-[87.14px] tracking-tight'>
-        Front-end Developer Experienced in building for SaaS Companies.
-      </h1>
-      <div className='flex flex-col mt-8 md:mt-[116px] max-w-[476px] gap-y-5'>
-        <h3 className='font-light text-2xl md:text-4xl'>
-          Hi, I’m Temitope Pinheiro
-        </h3>
-        <p className='text-sm font-light dark:font-normal md:text-lg'>
-          A software developer that builds with the user in heart and business
-          in mind. Currently helping to build and launch financial products and
-          services @{' '}
+    <>
+      <section
+        className='max-w-7xl md:mx-auto relative w-full flex flex-col section-padding mt-[120px] py-[100px] md:mt-[98px] mb-[160px] md:mb-[138px]'
+        id='home'
+      >
+        <motion.h1
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            opacity: { duration: 1.9 },
+            x: { duration: 0.3 },
+            delay: 3.0,
+            easings: ['ease-in'],
+          }}
+          className='font-semibold text-[30px] md:text-7xl max-w-[782px] md:leading-[87.14px] tracking-tight'
+        >
+          Front-end Developer Experienced in building for SaaS Companies.
+        </motion.h1>
+        <div className='flex flex-col mt-8 md:mt-[116px] max-w-[476px] gap-y-5'>
+          <motion.h3
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              opacity: { duration: 1 },
+              x: { duration: 0.6 },
+              delay: 1.3,
+              easings: ['ease-in'],
+            }}
+            className='font-light mt-8 md:mt-0 text-2xl md:text-4xl'
+          >
+            Hi, I’m Temitope Pinheiro
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              opacity: { duration: 1 },
+              x: { duration: 0.3 },
+              delay: 2.3,
+              easings: ['ease-in'],
+            }}
+            className='text-sm font-light dark:font-normal md:text-lg'
+          >
+            A software developer that builds with the user in heart and business
+            in mind. Currently helping to build and launch financial products
+            and services @{' '}
+            <a
+              className='text-[#2C1DFF] underline underline-offset-4'
+              href='https://www.woodcoreapp.com/'
+              target='_blank'
+            >
+              Woodcore
+            </a>
+            .
+          </motion.p>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            opacity: { duration: 1.2 },
+            y: { duration: 0.3 },
+            delay: 2.8,
+            easings: ['ease-in'],
+          }}
+          className='md:absolute left-0 -bottom-7 mt-28 md:mt-0 flex md:flex-col gap-x-3 gap-y-3'
+        >
+          <a href='https://github.com/Temi-pinheiro' target='_blank'>
+            <GitHub />
+          </a>
           <a
-            className='text-[#2C1DFF] underline underline-offset-4'
-            href='https://www.woodcoreapp.com/'
+            href='https://www.linkedin.com/in/temitope-pinheiro/'
             target='_blank'
           >
-            Woodcore
+            <Linkedin />
           </a>
-          .
-        </p>
-      </div>
-
-      <div className='md:absolute left-0 -bottom-7 mt-12 md:mt-0 flex md:flex-col gap-x-3 gap-y-3'>
-        <a href='https://github.com/Temi-pinheiro' target='_blank'>
-          <GitHub />
-        </a>
-        <a
-          href='https://www.linkedin.com/in/temitope-pinheiro/'
-          target='_blank'
-        >
-          <Linkedin />
-        </a>
-        <a href='https://twitter.com/Dev1nh1o' target='_blank'>
-          <Twitter />
-        </a>
-      </div>
-    </section>
+          <a href='https://twitter.com/Dev1nh1o' target='_blank'>
+            <Twitter />
+          </a>
+        </motion.div>
+      </section>
+      <motion.hr
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3.0 }}
+        className='bg-[#808080] mt-8 md:mt-0 dark:opacity-25'
+      ></motion.hr>
+    </>
   );
 };
 
