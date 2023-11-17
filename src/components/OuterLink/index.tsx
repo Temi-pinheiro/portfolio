@@ -10,13 +10,15 @@ export const OuterLink = ({
   githubUrl?: string;
 }) => {
   return (
-    <a
-      className='text-xl font-semibold flex items-center gap-x-3 uppercase tracking-wide hover:text-[#FA6525] duration-200'
-      href={url}
-      target='_blank'
-    >
-      {title}
-      <Arrow />
+    <div className='flex items-center gap-x-4'>
+      <a
+        className='text-xl font-semibold flex items-center gap-x-3 uppercase tracking-wide group hover:text-[#FA6525] duration-200'
+        href={url}
+        target='_blank'
+      >
+        {title}
+        <Arrow />
+      </a>
       {githubUrl ? (
         <a href={githubUrl}>
           <svg
@@ -31,7 +33,7 @@ export const OuterLink = ({
           </svg>
         </a>
       ) : null}
-    </a>
+    </div>
   );
 };
 
@@ -42,7 +44,7 @@ const Arrow = () => (
     viewBox='0 0 13 13'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
-    className='dark:fill-white fill-black'
+    className='dark:fill-white fill-black group-hover:animate-bounce transition-all duration-200'
   >
     <path d='M1.4 13L0 11.6L9.6 2H1V0H13V12H11V3.4L1.4 13Z' />
   </svg>

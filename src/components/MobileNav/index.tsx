@@ -4,6 +4,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import styles from './styles.module.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
 const modalBodyVariants = {
   initial: { x: 400 },
@@ -13,7 +16,23 @@ const modalBodyVariants = {
 
 export const MobileNav = () => {
   const location = usePathname();
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  gsap.registerPlugin(ScrollToPlugin);
+  const scrollTo = (e: any, target: string) => {
+    e.preventDefault();
+    let scrollTarget = document.querySelector(target)!;
+    if (!scrollTarget) {
+      router.push(`/${target}`);
+    } else {
+      gsap.to(window, {
+        duration: 1.5,
+        scrollTo: scrollTarget,
+        ease: 'power2.inOut',
+      });
+      setSidebarOpen(false);
+    }
+  };
   useEffect(() => {
     sidebarOpen && setSidebarOpen(false);
   }, [location]);
@@ -86,19 +105,30 @@ export const MobileNav = () => {
             </button>
             <ul className='flex flex-col items-center gap-y-8 mt-10 uppercase text-2xl font-semibold'>
               <li>
-                <Link href='/'>Home</Link>
+                <Link onClick={(e) => scrollTo(e, '#home')} href='/'>
+                  Home
+                </Link>
               </li>
               <li>
-                <Link href='/#works'>Works</Link>
+                <Link onClick={(e) => scrollTo(e, '#works')} href='/#works'>
+                  Works
+                </Link>
               </li>
               <li>
                 <Link href={'/projects'}>Projects</Link>
               </li>
               <li>
-                <Link href='/#works'>Experience</Link>
+                <Link
+                  onClick={(e) => scrollTo(e, '#experience')}
+                  href='/#experience'
+                >
+                  Experience
+                </Link>
               </li>
               <li>
-                <Link href='/#contact'>Contact</Link>
+                <Link onClick={(e) => scrollTo(e, '#contact')} href='/#contact'>
+                  Contact
+                </Link>
               </li>
             </ul>{' '}
           </motion.div>

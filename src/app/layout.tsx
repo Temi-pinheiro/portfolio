@@ -1,6 +1,6 @@
 'use client';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Inconsolata } from 'next/font/google';
 import './globals.css';
 import { NavBar } from '~~/components';
 import { MobileNav } from '~~/components/MobileNav';
@@ -10,6 +10,7 @@ import { AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
+const inconsolate = Inconsolata({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -29,7 +30,7 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={inconsolate.className}>
         <AnimatePresence mode='wait'>
           {loading ? (
             <Preloader loading={loading} />

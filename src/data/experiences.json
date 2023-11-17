@@ -6,16 +6,19 @@
         "Rebranded landing page, boosted customer acquisition.",
         "Led migration to Typescript for CBA console.",
         "Reduced code bloat by 40k lines, improved DRY.",
-        "Created in-house components ",
+        "Reduced dependency on external frontend libraries",
         "25% fewer bug reports, 40% fewer code errors post-migration.",
         "Optimized network calls, accelerated loan setup by 30%.",
         "Enhanced admin console for user efficiency."
       ],
       "position": "Senior Frontend Developer",
-      "website": "https://temis-splitter.netlify.app/",
+      "website": "https://www.woodcoreapp.com/",
       "stack": [
         "React",
-        "JS",
+        "Axios",
+        "Antd",
+        "React Table",
+        "Javascript",
         "Typescript",
         "TailwindCSS",
         "React Query",
@@ -34,11 +37,13 @@
         "Conducted code reviews, maintained coding standards."
       ],
       "position": "Senior Software Developer",
-      "website": "https://temis-splitter.netlify.app/",
+      "website": "https://lendsqr.com/",
       "stack": [
         "React",
         "Angular",
+        "Axios",
         "Node.js",
+        "Storybook JS",
         "SQL",
         "Express",
         "TailwindCSS",
@@ -48,6 +53,31 @@
         "Styled-components"
       ],
       "period": "AUG 2022 - AUG 2023"
+    },
+
+    {
+      "title": "P2Vest & Digithome",
+      "details": [
+        "Pioneered lending service platform build, easing loans for civil servants.",
+        "Collaborated with design/product teams for optimal user experience.",
+        "Contributed end-to-end in creating the E-Real Estate Management platform.",
+        "Enhanced search feature with filters for users in all 36 Nigerian states."
+      ],
+      "position": "Frontend Developer",
+      "website": "https://temis-splitter.netlify.app/",
+      "stack": [
+        "React",
+        "Axios",
+        "Antd",
+        "React Table",
+        "Javascript",
+        "TailwindCSS",
+        "Redux",
+        "Framer-motion",
+        "Sass",
+        "NextJs"
+      ],
+      "period": "DEC 2021 - AUG 2022"
     }
   ]
 }

@@ -19,7 +19,7 @@
     },
     {
       "title": "Rest Countries Browser",
-      "details": "Bit of a doozy implementing this. I tried to step as far out of my comfort zone as possible and shipped a bare bones (by my standards) responsive frontend app ",
+      "details": "Bit of a doozy implementing this. I tried to step as far out of my comfort zone as possible and shipped a bare bones (by my standards) responsive frontend app. ",
       "projectLink": "https://symphonious-dango-34d5ec.netlify.app/",
       "githubUrl": "https://github.com/Temi-pinheiro/rest-countries-fem",
 
@@ -36,13 +36,14 @@
     },
     {
       "title": "Fullstack Invoice App",
-      "details": "Bit of a doozy implementing this. I tried to step as far out of my comfort zone as possible and shipped a bare bones (by my standards) responsive frontend app ",
+      "details": "Fun project that i decided to use to familiarize myself with Next JS 13 and all it's cool features.",
       "projectLink": "https://jovial-begonia-643d66.netlify.app/",
       "githubUrl": "https://github.com/Temi-pinheiro/fem-invoice-app",
 
       "stack": [
         "NextJs",
-        "TS",
+        "Typescript",
+        "Sorybook JS",
         "Framer-motion",
         "TailwindCSS",
         "Prisma",
@@ -50,6 +51,48 @@
         "Auth JS"
       ],
       "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1699824069/portfolio%20screens/localhost_3001_invoices_osbopa.png"
+    },
+    {
+      "title": "Dictionary App",
+      "details": "Honestly this one was pretty straight-forward. Setting up the theme provider taught me a lot, and its one of the better designed responsive apps as well. Kudos the FM Team.",
+      "projectLink": "https://unique-creponne-69a7d1.netlify.app/",
+      "githubUrl": "https://github.com/Temi-pinheiro/fem-dictionary-app",
+
+      "stack": [
+        "React",
+        "Typescript",
+        "Framer-motion",
+        "TailwindCSS",
+        "Tanstack Query",
+        "React Router",
+        "React-Helmet"
+      ],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1700154012/portfolio%20screens/localhost_5173__keyword_beyonce_buskle.png"
+    },
+    {
+      "title": "News Homepage",
+      "details": "Had a lot of fun with the page loader, tried it first on my portfolio site amd it honestly works so well it makes me giddy.",
+      "projectLink": "https://merry-malabi-381786.netlify.app/",
+      "githubUrl": "https://github.com/Temi-pinheiro/fem-news-homepage",
+
+      "stack": ["React", "Typescript", "Framer-motion", "TailwindCSS", "GSAP"],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1700175604/portfolio%20screens/localhost_5173__2_nw8hzg.png"
+    },
+    {
+      "title": "My Portfolio V3",
+      "details": "My personal portfolio page. My current personal magnum opus. I've come a long way from my V1 and V2 versions and along with my designer Ahmed Bash i brought this lovely website to life.",
+      "projectLink": "https://temipinherio.com/",
+      "githubUrl": "https://github.com/Temi-pinheiro/portfolio",
+
+      "stack": [
+        "React",
+        "NextJs",
+        "Typescript",
+        "Framer-motion",
+        "TailwindCSS",
+        "GSAP"
+      ],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1700261554/portfolio%20screens/localhost_3002__ea6pg5.png"
     }
   ]
 }

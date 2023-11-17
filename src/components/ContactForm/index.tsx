@@ -45,9 +45,25 @@ export default function ContactForm() {
       className=' pt-20 md:pt-[100px] max-w-[1200px] mx-auto w-full section-padding md:mb-[182px] flex flex-col gap-y-8 md:gap-y-0 md:flex-row md:justify-between max-sm:pb-9'
       id='contact'
     >
-      <h2 id='works' className='font-semibold text-[20px] md:text-[44px]'>
-        Say Hello
-      </h2>
+      {/* <div
+       className=' pt-20 md:pt-[100px] max-w-[1200px] mx-auto w-full section-padding md:mb-[182px] flex flex-col gap-y-8 max-sm:pb-9'
+      id='contact'
+     > */}
+      <div>
+        <h2 id='works' className='font-semibold text-[20px] md:text-[44px]'>
+          Say Hello
+        </h2>
+        <p className=' font-light text-[#808080] text-sm md:max-w-[300px]'>
+          Currently open to short term and long term opportunities. Always open
+          to conversations about tech as well
+        </p>
+      </div>
+      {/* <a
+        href='mailto:temitopepinheiro@gmail.com'
+        className='border-b py-2 px-3 w-[130px] disabled:cursor-not-allowed flex hover:text-[#FA6525] transition duration-700  border-transparent items-center ml-auto text-sm font-light'
+      >
+        Send me an email
+      </a> */}
       <form
         onSubmit={sendMail}
         className='flex flex-col gap-y-12 max-w-[484px] w-full'

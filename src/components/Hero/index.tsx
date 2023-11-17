@@ -17,11 +17,11 @@ export const Hero = () => {
             delay: 0.8,
             ease: [0.65, 0, 0.35, 1],
           }}
-          className='font-semibold text-[30px] md:text-7xl max-w-[782px] md:leading-[87.14px] tracking-tight'
+          className='font-semibold text-[30px] md:text-7xl max-w-[792px] md:leading-[87.14px] tracking-tight'
         >
           Front-end Developer Experienced in building for SaaS Companies.
         </motion.h1>
-        <div className='flex flex-col mt-8 md:mt-[116px] max-w-[476px] gap-y-5'>
+        <div className='flex flex-col mt-8 md:mt-[116px] max-w-[486px] gap-y-5'>
           <motion.h3
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -69,7 +69,7 @@ export const Hero = () => {
             delay: 0.8,
             ease: [0.65, 0, 0.35, 1],
           }}
-          className='md:absolute left-0 -bottom-7 mt-28 md:mt-0 flex md:flex-col gap-x-3 gap-y-3'
+          className='md:absolute left-0 -bottom-1 mt-28 md:mt-0 flex md:flex-col gap-x-3 gap-y-3'
         >
           <a href='https://github.com/Temi-pinheiro' target='_blank'>
             <GitHub />
