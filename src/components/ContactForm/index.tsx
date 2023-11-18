@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { FormHTMLAttributes, useState, useTransition } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export default function ContactForm() {
@@ -13,7 +13,7 @@ export default function ContactForm() {
     setIsFetching(true);
     setMessage('Sending');
     const formData = new FormData(e.currentTarget);
-
+    const resetBtn: any = document.getElementById('resetBtn')!;
     const body = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -31,6 +31,7 @@ export default function ContactForm() {
       const mail = await res.json();
       if (mail.statusCode == 200) {
         setMessage('Sent');
+        resetBtn.click();
         setTimeout(() => setMessage('Send Message'), 800);
       } else {
         throw new Error();
@@ -45,10 +46,6 @@ export default function ContactForm() {
       className=' pt-20 md:pt-[100px] max-w-[1200px] mx-auto w-full section-padding md:mb-[182px] flex flex-col gap-y-8 md:gap-y-0 md:flex-row md:justify-between max-sm:pb-9'
       id='contact'
     >
-      {/* <div
-       className=' pt-20 md:pt-[100px] max-w-[1200px] mx-auto w-full section-padding md:mb-[182px] flex flex-col gap-y-8 max-sm:pb-9'
-      id='contact'
-     > */}
       <div>
         <h2 id='works' className='font-semibold text-[20px] md:text-[44px]'>
           Say Hello
@@ -58,12 +55,7 @@ export default function ContactForm() {
           to conversations about tech as well
         </p>
       </div>
-      {/* <a
-        href='mailto:temitopepinheiro@gmail.com'
-        className='border-b py-2 px-3 w-[130px] disabled:cursor-not-allowed flex hover:text-[#FA6525] transition duration-700  border-transparent items-center ml-auto text-sm font-light'
-      >
-        Send me an email
-      </a> */}
+
       <form
         onSubmit={sendMail}
         className='flex flex-col gap-y-12 max-w-[484px] w-full'
@@ -88,6 +80,9 @@ export default function ContactForm() {
           placeholder='Hi Temitope,'
           className='outline-none border-b border-black py-4 transition duration-200 px-2 dark:border-white caret-[#FA6525] bg-transparent focus:border-[#FA6525]'
         />
+        <button type='reset' id='resetBtn' className='hidden'>
+          reset
+        </button>
         <motion.button
           animate={{
             borderColor:
