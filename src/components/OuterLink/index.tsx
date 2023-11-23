@@ -20,7 +20,7 @@ export const OuterLink = ({
         <Arrow />
       </a>
       {githubUrl ? (
-        <a href={githubUrl}>
+        <a href={githubUrl} target='_blank'>
           <svg
             width='20'
             height='20'
