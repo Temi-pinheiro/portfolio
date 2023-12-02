@@ -96,6 +96,20 @@
       "githubUrl": "https://github.com/Temi-pinheiro/react-tip-calculator",
       "stack": ["React", "JS", "Styled-components"],
       "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697678874/portfolio%20screens/Screenshot_2023-10-19_at_02.27.47_ynfxon.png"
-    }
+    },
+    // {
+    //   "title": "Netsuite Financial Connectivity Application",
+    //   "details": "In my time as a technical consultant i built a connectivity app that was to allow banks across Nigeria synchronize their bank statements with Netsuite's accounting interface by leveraging Okra, and SFTP",
+    //   "projectLink": "/#",
+    //   "stack": [
+    //     "Javascript",
+    //     "SuiteScript",
+    //     "Okra",
+    //     "Digital Ocean",
+    //     "SSH",
+    //     "SFTP"
+    //   ],
+    //   "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697678874/portfolio%20screens/Screenshot_2023-10-19_at_02.27.47_ynfxon.png"
+    // }
   ]
 }
