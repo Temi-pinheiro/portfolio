@@ -10,16 +10,15 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className='w-full h-full flex items-center justify-center'>
-      {/* <Hero />
+    <main className='w-full h-full'>
+      <Hero />
 
       <Works />
       <hr className='bg-[#808080] mt-8 md:mt-0 dark:opacity-25'></hr>
       <Experiences />
       <hr className='bg-[#808080] mt-8 md:mt-0 dark:opacity-25'></hr>
       <ContactForm />
-      <Footer /> */}
-      Tolu is the goat
+      <Footer />
     </main>
   );
 }
