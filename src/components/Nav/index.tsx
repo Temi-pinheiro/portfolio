@@ -3,7 +3,6 @@ import Link from 'next/link';
 import React, { useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import { useRouter } from 'next/navigation';
 
