@@ -83,6 +83,26 @@
         "NextJs"
       ],
       "period": "DEC 2021 - AUG 2022"
+    },
+    {
+      "title": "SQD & Sons",
+      "details": ["Fagbo", "Dagbpru", "Shina"],
+      "position": "Frontend Developer",
+      "website": "https://vibes.comp/",
+      "stack": [
+        "Every every",
+        "React",
+        "Axios",
+        "Antd",
+        "React Table",
+        "Javascript",
+        "TailwindCSS",
+        "Redux",
+        "Framer-motion",
+        "Sass",
+        "NextJs"
+      ],
+      "period": "DEC 2021 - AUG 2022"
     }
   ]
 }

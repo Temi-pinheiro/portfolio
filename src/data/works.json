@@ -1,18 +1,34 @@
 {
   "works": [
     {
-      "title": "Woodcore Website",
+      "title": "Woodcore",
       "details": "Landing page for Woodcore's CBA",
       "projectLink": "https://www.woodcoreapp.com/",
       "stack": ["React", "Javascript", "TailwindCSS", "Framer Motion"],
       "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899316/portfolio%20screens/www.woodcoreapp.com__pprcw0.png"
     },
+
     {
-      "title": "Pooler Website",
-      "details": "Landing page for Woodcore's payment product 'Pooler'",
-      "projectLink": "https://www.poolerapp.com/",
-      "stack": ["React", "Typescript", "TailwindCSS", "Framer Motion"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899358/portfolio%20screens/www.poolerapp.com__y9gt7o.png"
+      "title": "P2Vest",
+      "details": "Website for P2Vest showcasing all their products and offerings",
+      "projectLink": "https://www.p2vest.com/",
+      "stack": [
+        "NextJs",
+        "Typescript",
+        "TailwindCSS",
+        "Framer Motion",
+        "GSAP",
+        "Sanity Studio",
+        "Vercel"
+      ],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1707181618/portfolio%20screens/www.p2vest.com__n5dtvl.png"
+    },
+    {
+      "title": "Emusoft",
+      "details": "Marketing site for EmuSoft to help generate leads",
+      "projectLink": "https://www.emusoft.co/",
+      "stack": ["React", "Typescript", "TailwindCSS", "Framer Motion", "GSAP"],
+      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1707181617/portfolio%20screens/www.emusoft.co__o4iydj.png"
     }
   ]
 }

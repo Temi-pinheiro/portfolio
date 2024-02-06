@@ -27,7 +27,7 @@ export const ProjectCard = ({
         <p className=' mt-4 text-sm md:text-base max-w-[508px] text-[#808080]  font-light'>
           {details}
         </p>
-        <ul className='flex items-center flex-wrap w-full gap-x-[14px] gap-y-5 mt-6 md:mt-8'>
+        <ul className='flex items-center flex-wrap w-full gap-x-[14px] gap-y-5 mt-6 md:mt-8 max-w-[600px]'>
           {stack.map((st, index) => (
             <li
               className='shrink-0 px-4  py-2 rounded-[34px] text-xs border border-[#AFAFAF]'
