@@ -1,6 +1,37 @@
 {
   "experiences": [
     {
+      "title": "Wholistic",
+      "details": [
+        "Built project dashboard with tools for management and efficiency.",
+        "Developed AI assistant for recommendations and user productivity.",
+        "Implemented commenting system for communication and documentation.",
+        "Integrated with Google Workspace and Slack for automation.",
+        "Created WYSIWYG template builder for uniform project reports.",
+        "Enabled user and role creation for team management."
+      ],
+      "position": "Lead Frontend Developer",
+      "website": "https://www.wholistic.work/",
+      "stack": [
+        "React",
+        "Axios",
+        "React Table",
+        "Javascript",
+        "Typescript",
+        "TailwindCSS",
+        "React Query",
+        "Framer-motion",
+
+        "TipTap",
+        "Google Workspace",
+        "Slack",
+        "OAuth2.0",
+        "Handlebars",
+        "Hooks"
+      ],
+      "period": "SEP 2022 - PRESENT"
+    },
+    {
       "title": "Woodcore",
       "details": [
         "Rebranded landing page, boosted customer acquisition.",
