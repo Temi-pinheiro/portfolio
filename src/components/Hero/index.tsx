@@ -46,15 +46,15 @@ export const Hero = () => {
             }}
             className='text-sm font-light dark:font-normal md:text-lg'
           >
-            A software developer that builds with the user in heart and business
-            in mind. Currently helping to build and launch financial products
-            and services @{' '}
+            A multidiscplinary software developer that builds with the user in
+            heart and business in mind. Currently building the Web3 space for
+            creators to earn @{' '}
             <a
               className='text-[#2C1DFF] underline underline-offset-4'
-              href='https://www.woodcoreapp.com/'
+              href='https://www.sorbit.xyz/'
               target='_blank'
             >
-              Woodcore
+              Sorbit
             </a>
             .
           </motion.p>

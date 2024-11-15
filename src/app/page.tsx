@@ -5,7 +5,7 @@ import { Footer } from '~~/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Temitope Pinheiro Portfolio',
-  description: 'My portfolio page for 2023',
+  description: 'My portfolio page for 2024',
 };
 
 export default function Home() {
