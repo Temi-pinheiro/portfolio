@@ -52,17 +52,26 @@ export default function ContactForm() {
         </h2>
         <p className=' font-light text-[#808080] text-sm md:max-w-[300px]'>
           Currently open to short term and long term opportunities. Always open
-          to conversations about tech as well
+          to conversations about tech as well. You can get in touch with me on{' '}
+          <a href='https://x.com/ndmhjt' target='_blank'>
+            @ndmhjt
+          </a>
+          or shoot me an email at{' '}
+          <a href='mailto:temitopepinheiro@gmail.com' target='_blank'>
+            temitopepinheiro@gmail.com
+          </a>
+          .
         </p>
       </div>
 
-      <form
+      {/* <form
         onSubmit={sendMail}
         className='flex flex-col gap-y-12 max-w-[484px] w-full'
       >
         <input
           name='name'
           required
+          disabled
           placeholder='Your name'
           className='outline-none border-b border-black py-4 transition duration-200 px-2 dark:border-white caret-[#FA6525] bg-transparent focus:border-[#FA6525]'
         />
@@ -70,6 +79,7 @@ export default function ContactForm() {
           name='email'
           type='email'
           required
+          disabled
           placeholder='Your email'
           className='outline-none border-b border-black py-4 transition duration-200 px-2 dark:border-white caret-[#FA6525] bg-transparent focus:border-[#FA6525]'
         />
@@ -77,6 +87,7 @@ export default function ContactForm() {
           name='message'
           rows={4}
           required
+          disabled
           placeholder='Hi Temitope,'
           className='outline-none border-b border-black py-4 transition duration-200 px-2 dark:border-white caret-[#FA6525] bg-transparent focus:border-[#FA6525]'
         />
@@ -107,7 +118,7 @@ export default function ContactForm() {
             {message}
           </motion.span>
         </motion.button>
-      </form>
+      </form> */}
     </div>
   );
 }

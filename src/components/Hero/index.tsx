@@ -19,7 +19,7 @@ export const Hero = () => {
           }}
           className='font-semibold text-[30px] md:text-7xl max-w-[792px] md:leading-[87.14px] tracking-tight'
         >
-          Front-end Developer Experienced in building for SaaS Companies.
+          Fullstack Developer Experienced in building for SaaS Companies.
         </motion.h1>
         <div className='flex flex-col mt-8 md:mt-[116px] max-w-[486px] gap-y-5'>
           <motion.h3
