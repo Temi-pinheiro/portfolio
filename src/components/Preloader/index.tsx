@@ -70,7 +70,11 @@ export const Preloader = ({ loading }: { loading: boolean }) => {
       );
   });
   return (
-    <motion.div className=' h-screen w-screen block'>
+    <motion.div
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      className='fixed inset-0 z-[100] block bg-[var(--bg)]'
+    >
       <div
         ref={top}
         className='h-1/2 border-black dark:border-white border-b top-0 w-[10%] mx-auto'

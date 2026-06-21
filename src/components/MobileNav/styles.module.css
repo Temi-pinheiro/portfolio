@@ -1,3 +1,5 @@
+@reference '../../app/globals.css';
+
 .nav {
   @apply flex md:hidden bg-white dark:bg-black fixed inset-0 z-50 w-full h-[75px] items-end pb-6 px-6 justify-between overflow-y-clip;
 }
@@ -7,7 +9,7 @@
 }
 
 .btns_container a {
-  @apply h-10 w-[144] flex items-center justify-center;
+  @apply h-10 w-[144px] flex items-center justify-center;
 }
 
 .request {

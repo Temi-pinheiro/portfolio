@@ -2,7 +2,6 @@ import React from 'react';
 import { ProjectCard } from '~~/components';
 import data from '~~/data/projects.json';
 import { Footer } from '../Footer';
-import { Metadata } from 'next';
 
 export default function Projects() {
   const { projects: proj } = data;

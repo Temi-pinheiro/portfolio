@@ -1,14 +1,6 @@
 {
   "works": [
     {
-      "title": "Woodcore",
-      "details": "Landing page for Woodcore's CBA",
-      "projectLink": "https://www.woodcoreapp.com/",
-      "stack": ["React", "Javascript", "TailwindCSS", "Framer Motion"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899316/portfolio%20screens/www.woodcoreapp.com__pprcw0.png"
-    },
-
-    {
       "title": "P2Vest",
       "details": "Website for P2Vest showcasing all their products and offerings",
       "projectLink": "https://www.p2vest.com/",

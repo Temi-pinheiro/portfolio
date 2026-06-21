@@ -1,12 +1,10 @@
-import { Metadata } from 'next';
 import { Hero, Works, Experiences } from '~~/components';
 import ContactForm from '~~/components/ContactForm';
 import { Footer } from '~~/components/Footer';
 
-export const metadata: Metadata = {
-  title: 'Temitope Pinheiro Portfolio',
-  description: 'My portfolio page for 2024',
-};
+// The home page intentionally inherits the rich SEO metadata defined in
+// `layout.tsx` (title, description, Open Graph, Twitter, canonical) so the
+// tags stay consistent across the document head.
 
 export default function Home() {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { OuterLink } from '..';
 
 export const ProjectCard = ({
@@ -18,9 +19,14 @@ export const ProjectCard = ({
 }) => {
   return (
     <div className='flex flex-col-reverse gap-y-8 md:gap-y-0 md:flex-row items-start gap-x-8 md:h-[257px]'>
-      <img
+      <Image
         className='max-w-[362px] max-h-[257px] w-full h-full object-cover object-left-top'
         src={imageUrl}
+        alt={`Screenshot of the ${title} project`}
+        width={362}
+        height={257}
+        sizes='(max-width: 768px) 100vw, 362px'
+        loading='lazy'
       />
       <article className='max-w-[624px] flex flex-col'>
         <OuterLink title={title} url={projectLink} githubUrl={githubUrl} />
