@@ -9,7 +9,7 @@ export const Footer = () => {
       <a href='https://www.linkedin.com/in/temitope-pinheiro/' target='_blank'>
         <Linkedin />
       </a>
-      <a href='https://twitter.com/Dev1nh1o' target='_blank'>
+      <a href='https://twitter.com/ndmhjt' target='_blank'>
         <Twitter />
       </a>
     </div>

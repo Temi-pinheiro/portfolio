@@ -7,7 +7,7 @@ const inconsolata = Inconsolata({ subsets: ['latin'] });
 
 const siteUrl = 'https://temipinheiro.com';
 const description =
-  'Temitope Pinheiro is a fullstack software developer experienced in building for SaaS companies — shipping products with the user at heart and the business in mind, currently building in the Web3 space.';
+  'Temitope Pinheiro — fullstack developer and co-founder. Building Kommunne, and shipping founder MVPs in four weeks at Klaw.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     'React',
     'Next.js',
     'TypeScript',
-    'Web3',
     'SaaS',
   ],
   alternates: {
@@ -75,11 +74,15 @@ const personJsonLd = {
   name: 'Temitope Pinheiro',
   url: siteUrl,
   jobTitle: 'Fullstack Developer',
+  worksFor: [
+    { '@type': 'Organization', name: 'Kommunne', url: 'https://kommunne.com' },
+    { '@type': 'Organization', name: 'Klaw', url: 'https://klaw.build' },
+  ],
   email: 'mailto:temitopepinheiro@gmail.com',
   sameAs: [
     'https://github.com/Temi-pinheiro',
     'https://www.linkedin.com/in/temitope-pinheiro/',
-    'https://twitter.com/Dev1nh1o',
+    'https://twitter.com/ndmhjt',
   ],
 };
 
@@ -89,11 +92,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={inconsolata.className}>
         <AppShell>{children}</AppShell>
         <script
-          type='application/ld+json'
+          type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </body>

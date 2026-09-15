@@ -56,13 +56,14 @@ export const Hero = () => {
             >
               Kommunne
             </a>
-            . Also redifining what design is @
+            . Also helping clients design, build and ship their MVP in four
+            weeks* @
             <a
-              className="text-[#ff641f] underline underline-offset-4"
-              href="https://deesgn.plus/"
+              className="text-[#FFFCF0] underline underline-offset-4"
+              href="https://klaw.build/"
               target="_blank"
             >
-              Deesgn Plus
+              Klaw
             </a>
           </motion.p>
         </div>

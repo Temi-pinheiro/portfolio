@@ -1,6 +1,85 @@
 {
   "experiences": [
     {
+      "title": "Klaw",
+      "details": [
+        "Co-founded a creative studio shipping founder MVPs in four weeks.",
+        "Build lead on every engagement, from spec through to deployed product.",
+        "Productized delivery into a 5-day Scope Sprint: PRD, technical plan, fixed quote.",
+        "Paired AI generation with human judgement to close the last 10%.",
+        "Designed and built the studio site on TanStack Start."
+      ],
+      "position": "Co-Founder",
+      "website": "https://klaw.build",
+      "stack": [
+        "React",
+        "Typescript",
+        "TanStack Start",
+        "TanStack Router",
+        "TailwindCSS",
+        "Lenis",
+        "Vite",
+        "Netlify"
+      ],
+      "period": "AUG 2026 - PRESENT"
+    },
+    {
+      "title": "Kommunne",
+      "details": [
+        "Built the product end to end: mobile app and marketing site.",
+        "Shipped the social core — feed, posts, shouts, communities, events and messaging.",
+        "Delivered the mobile app in Expo with push, haptics and offline-aware queries.",
+        "Stood up a Storybook design system with a11y and Playwright coverage."
+      ],
+      "position": "Co-Founder & CTO",
+      "website": "https://kommunne.com",
+      "stack": [
+        "React",
+        "React Native",
+        "Expo",
+        "Typescript",
+        "NestJS",
+        "TypeORM",
+        "PostgreSQL",
+        "TanStack Query",
+        "TanStack Router",
+        "NextJs",
+        "Prisma",
+        "Supabase",
+        "TailwindCSS",
+        "Bull",
+        "Firebase",
+        "OpenAI",
+        "Storybook",
+        "Motion"
+      ],
+      "period": "JAN 2026 - PRESENT"
+    },
+    {
+      "title": "Deesgn+",
+      "details": [
+        "Co-founded the studio and defined its company structure and operating SOPs.",
+        "Built the delivery playbook for how projects are scoped, run and handed off.",
+        "Owned the web practice end to end across every project the studio took on.",
+        "Shipped CMS-driven client marketing sites on TanStack Start.",
+        "Ran client contracting and delivery schedules from agreement to handoff."
+      ],
+      "position": "Co-Founder & General Admin",
+      "website": "https://deesgn.plus",
+      "stack": [
+        "React",
+        "Typescript",
+        "TanStack Start",
+        "TanStack Router",
+        "TailwindCSS",
+        "Contentful",
+        "Motion",
+        "Lenis",
+        "Vercel"
+      ],
+      "period": "AUG 2024 - SEP 2026"
+    },
+    {
       "title": "Wholistic",
       "details": [
         "Built project dashboard with tools for management and efficiency.",
@@ -21,7 +100,6 @@
         "TailwindCSS",
         "React Query",
         "Framer-motion",
-
         "TipTap",
         "Google Workspace",
         "Slack",
@@ -29,7 +107,7 @@
         "Handlebars",
         "Hooks"
       ],
-      "period": "SEP 2022 - PRESENT"
+      "period": "SEP 2022 - AUG 2023"
     },
     {
       "title": "Woodcore",
@@ -57,7 +135,7 @@
         "AWS Amplify",
         "Styled-components"
       ],
-      "period": "SEP 2022 - PRESENT"
+      "period": "SEP 2022 - APR 2023"
     },
     {
       "title": "Lendsqr",
@@ -90,7 +168,6 @@
       ],
       "period": "AUG 2022 - AUG 2023"
     },
-
     {
       "title": "P2Vest & Digithome",
       "details": [
