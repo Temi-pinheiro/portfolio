@@ -1,6 +1,40 @@
 {
   "projects": [
     {
+      "title": "Bord",
+      "details": "One home for everything you save. Share a post or web page from any app on your iPhone and it lands in one library, ready to file into Bords and find again. Saves land on the phone first and sync after, so sharing never waits on a connection. Designed by Adeoti, built by me. In private beta.",
+      "projectLink": "https://mybord.vercel.app/",
+
+      "stack": [
+        "React Native",
+        "Expo",
+        "Typescript",
+        "Supabase",
+        "PowerSync",
+        "SQLite",
+        "NextJs",
+        "TailwindCSS"
+      ],
+      "imageUrl": "/projects/bord.jpg"
+    },
+    {
+      "title": "The Third Student",
+      "details": "A spoken language class on your iPhone. The teacher hands you the language in small pieces and you build real sentences out loud, while speech recognition listens and the pause never times out. Spanish, French and Indonesian are in beta. Voices by ElevenLabs.",
+      "projectLink": "https://third-student.vercel.app/",
+
+      "stack": [
+        "React Native",
+        "Expo",
+        "ElevenLabs",
+        "Speech Recognition",
+        "NextJs",
+        "Prisma",
+        "Postgres",
+        "TailwindCSS"
+      ],
+      "imageUrl": "/projects/third-student.jpg"
+    },
+    {
       "title": "My Portfolio V3",
       "details": "My personal portfolio page. My current personal magnum opus. I've come a long way from my V1 and V2 versions and along with my designer Ahmed Bash i brought this lovely website to life.",
       "projectLink": "https://temipinheiro.com/",
