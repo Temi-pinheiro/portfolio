@@ -86,6 +86,12 @@ const personJsonLd = {
   ],
 };
 
+// Whop Pixel for the Holo'd business (biz_71ryNxzPwKZ7zI). Whop asks for this
+// snippet verbatim in the <head> of every page; the root layout covers them all.
+// The loader it pulls in (t.whop.tw/s.js) hooks pushState/popstate itself, so
+// client-side navigations between / and /projects send their own page events.
+const whopPixel = `!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_71ryNxzPwKZ7zI");whop.track("page");`;
+
 export default function RootLayout({
   children,
 }: {
@@ -93,6 +99,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: whopPixel }} />
+      </head>
       <body className={inconsolata.className}>
         <AppShell>{children}</AppShell>
         <script
