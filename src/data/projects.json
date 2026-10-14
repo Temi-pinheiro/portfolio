@@ -1,6 +1,23 @@
 {
   "projects": [
     {
+      "title": "Holo'd",
+      "details": "A pack a day, one card inside, and the packs you skip wait for you. 85 cards from my 2020 poster series in four rarities, with foil that moves when you tilt, a wrapper you tear yourself and a binder for everything you've pulled. Every legendary and mythic also comes as an animated card.",
+      "projectLink": "https://holod-drab.vercel.app/",
+
+      "stack": [
+        "NextJs",
+        "Typescript",
+        "React Three Fiber",
+        "Motion",
+        "Supabase",
+        "Whop",
+        "Resend",
+        "TailwindCSS"
+      ],
+      "imageUrl": "/projects/holod.jpg"
+    },
+    {
       "title": "Bord",
       "details": "One home for everything you save. Share a post or web page from any app on your iPhone and it lands in one library, ready to file into Bords and find again. Saves land on the phone first and sync after, so sharing never waits on a connection. Designed by Adeoti, built by me. In private beta.",
       "projectLink": "https://mybord.vercel.app/",
