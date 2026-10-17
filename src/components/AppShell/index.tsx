@@ -6,9 +6,16 @@ import { Preloader } from '~~/components/Preloader';
 import { NavBar } from '~~/components';
 import { MobileNav } from '~~/components/MobileNav';
 
-export const AppShell = ({ children }: { children: React.ReactNode }) => {
+export const AppShell = ({
+  children,
+  showArticles = false,
+}: {
+  children: React.ReactNode;
+  showArticles?: boolean;
+}) => {
   const pathname = usePathname();
-  const [loading, setLoading] = useState(pathname !== '/projects');
+  // The preloader is the home page's intro. Every other route renders at once.
+  const [loading, setLoading] = useState(pathname === '/');
 
   useEffect(() => {
     let scroll: { destroy?: () => void } | undefined;
@@ -30,8 +37,8 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
   // fixed overlay and fades out to reveal the finished page.
   return (
     <>
-      <NavBar />
-      <MobileNav />
+      <NavBar showArticles={showArticles} />
+      <MobileNav showArticles={showArticles} />
       {children}
       <AnimatePresence>
         {loading && <Preloader loading={loading} />}

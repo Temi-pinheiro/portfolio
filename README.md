@@ -34,3 +34,30 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Writing an article
+
+Write in `src/content/drafts/<slug>.md`. That folder is gitignored (this repo
+is public), and drafts render only in `npm run dev`. To publish, move the file
+to `src/content/articles/` and push. The file name is the URL
+(`/articles/<slug>`), so keep it to lowercase letters, digits and hyphens. Each
+file starts with YAML front matter:
+
+```yaml
+---
+title: "How I built Bord"
+description: "One or two sentences. Used for the index, meta description and link previews."
+date: 2026-10-20          # publish date, yyyy-mm-dd
+updated: 2026-11-02       # optional, when the piece changes materially
+format: interview         # or essay; interview styles every ## heading as a question
+tags: [bord, ios]
+links:                    # optional, shown as "Mentioned" at the end
+  - label: Bord
+    url: https://mybord.vercel.app/
+draft: true               # optional: keep a committed piece out of production
+---
+```
+
+The body is Markdown (GitHub flavoured). Drafts are left out of production
+builds, the sitemap and the nav, so the Articles link appears once the first
+piece is published.

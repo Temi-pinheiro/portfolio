@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inconsolata } from 'next/font/google';
 import './globals.css';
 import { AppShell } from '~~/components/AppShell';
+import { getArticles } from '~~/lib/articles';
 
 const inconsolata = Inconsolata({ subsets: ['latin'] });
 
@@ -97,13 +98,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // The Articles link appears once the first article is published. Drafts
+  // count in `next dev`, not in production, so /articles exists but stays
+  // unlinked until then.
+  const showArticles = getArticles().length > 0;
+
   return (
     <html lang="en">
       <head>
         <script dangerouslySetInnerHTML={{ __html: whopPixel }} />
       </head>
       <body className={inconsolata.className}>
-        <AppShell>{children}</AppShell>
+        <AppShell showArticles={showArticles}>{children}</AppShell>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

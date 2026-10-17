@@ -21,3 +21,83 @@ body {
 .section-padding {
   @apply px-6 lg:px-[131px];
 }
+
+/* Long-form article body (src/app/articles/[slug]). Markdown from
+   react-markdown, styled here rather than with a typography plugin so it keeps
+   the site's monospace voice. */
+.article-body {
+  @apply text-base md:text-lg font-light dark:font-normal leading-relaxed;
+}
+.article-body > * + * {
+  margin-top: 1.25em;
+}
+.article-body h2 {
+  @apply font-semibold text-xl md:text-2xl tracking-tight;
+  margin-top: 2.5em;
+}
+.article-body h3 {
+  @apply font-semibold text-lg md:text-xl;
+  margin-top: 2em;
+}
+.article-body a {
+  @apply underline underline-offset-4 transition duration-200 hover:text-[#FA6525];
+}
+.article-body ul {
+  list-style: disc;
+  padding-left: 1.5em;
+}
+.article-body ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+}
+.article-body li + li {
+  margin-top: 0.5em;
+}
+.article-body blockquote {
+  border-left: 2px solid #808080;
+  padding-left: 1em;
+  color: #808080;
+}
+.article-body pre {
+  @apply text-sm rounded-md overflow-x-auto;
+  padding: 1em;
+  background: rgba(128, 128, 128, 0.12);
+}
+.article-body :not(pre) > code {
+  background: rgba(128, 128, 128, 0.18);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.article-body img {
+  max-width: 100%;
+  height: auto;
+}
+.article-body hr {
+  border-top: 1px solid currentColor;
+  opacity: 0.25;
+  margin-top: 2.5em;
+}
+.article-body strong {
+  font-weight: 600;
+}
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+.article-body th,
+.article-body td {
+  text-align: left;
+  padding: 0.5em 0.75em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+}
+
+/* Interview pieces: every `##` heading is a question, answered by what follows. */
+.article-interview h2 {
+  @apply font-normal text-base md:text-lg tracking-normal;
+  color: #808080;
+  margin-top: 2.5em;
+}
+.article-interview h2 + * {
+  margin-top: 0.75em;
+}

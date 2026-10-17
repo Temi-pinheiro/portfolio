@@ -14,7 +14,11 @@ const modalBodyVariants = {
   animate: { x: 0 },
 };
 
-export const MobileNav = () => {
+export const MobileNav = ({
+  showArticles = false,
+}: {
+  showArticles?: boolean;
+}) => {
   const location = usePathname();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -117,6 +121,11 @@ export const MobileNav = () => {
               <li>
                 <Link href={'/projects'}>Projects</Link>
               </li>
+              {showArticles && (
+                <li>
+                  <Link href={'/articles'}>Articles</Link>
+                </li>
+              )}
               <li>
                 <Link
                   onClick={(e) => scrollTo(e, '#experience')}
