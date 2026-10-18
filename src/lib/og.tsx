@@ -1,5 +1,7 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { ImageResponse } from 'next/og';
-import { RAMP, stillFrame } from './butterfly';
+import { stillFrame } from './butterfly';
 
 // One frame for every Open Graph image: paper ground, a mono label, the title
 // in Playfair Display and the URL in the accent, with the mariposa on the
@@ -10,26 +12,13 @@ import { RAMP, stillFrame } from './butterfly';
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = 'image/png';
 
-// Satori needs TTF/OTF bytes, not woff2. Asking the Google Fonts CSS API
-// without a browser user agent returns TrueType, subset to `text`. If the
-// fetch fails (no network at build time), the image falls back to the
-// default font rather than failing the build.
-async function loadGoogleFont(
-  family: string,
-  weight: number,
-  text: string
-): Promise<ArrayBuffer | null> {
-  try {
-    const url = `https://fonts.googleapis.com/css2?family=${family}:wght@${weight}&text=${encodeURIComponent(text)}`;
-    const css = await (await fetch(url)).text();
-    const src = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/);
-    if (!src) return null;
-    const font = await fetch(src[1]);
-    return font.ok ? await font.arrayBuffer() : null;
-  } catch {
-    return null;
-  }
-}
+// Satori needs TTF/OTF bytes, not woff2, so the three weights ship in the
+// repo (src/assets/fonts, OFL). They used to come from Google Fonts at build
+// time, but that fetch failed on Netlify's build machines, and Satori fails
+// the build when it has no font at all. next.config.js traces the folder into
+// the server function for the article images rendered on request.
+const FONT_DIR = path.join(process.cwd(), 'src', 'assets', 'fonts');
+const loadFont = (file: string) => readFile(path.join(FONT_DIR, file));
 
 // The butterfly as rows of text, each row split into runs of one tone: the
 // canvas's per-character alpha, in three steps of the accent.
@@ -64,20 +53,14 @@ export async function ogImage({
 }) {
   const url = `temipinheiro.com${path}`;
   const [display, mono, glyphs] = await Promise.all([
-    loadGoogleFont('Playfair+Display', 400, title),
-    loadGoogleFont('Inconsolata', 500, `${label}${url}`),
-    loadGoogleFont('Inconsolata', 600, `${RAMP} `),
+    loadFont('PlayfairDisplay-Regular.ttf'),
+    loadFont('Inconsolata-Medium.ttf'),
+    loadFont('Inconsolata-SemiBold.ttf'),
   ]);
   const fonts = [
-    ...(display
-      ? [{ name: 'Playfair Display', data: display, weight: 400 as const, style: 'normal' as const }]
-      : []),
-    ...(mono
-      ? [{ name: 'Inconsolata', data: mono, weight: 500 as const, style: 'normal' as const }]
-      : []),
-    ...(glyphs
-      ? [{ name: 'Inconsolata', data: glyphs, weight: 600 as const, style: 'normal' as const }]
-      : []),
+    { name: 'Playfair Display', data: display, weight: 400 as const, style: 'normal' as const },
+    { name: 'Inconsolata', data: mono, weight: 500 as const, style: 'normal' as const },
+    { name: 'Inconsolata', data: glyphs, weight: 600 as const, style: 'normal' as const },
   ];
   const fontSize = title.length > 70 ? 48 : title.length > 40 ? 56 : 68;
 
