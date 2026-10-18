@@ -1,80 +1,358 @@
 @import 'tailwindcss';
 
+/* Tokens from the redesign canvas (Type, color and motion board). The site
+   follows the system theme; dark values swap in under the media query, so
+   components use the semantic names and never a `dark:` variant. */
 :root {
-  --bg: #010101;
-  --text: #ffffff;
+  --paper: #fafaf7;
+  --ink: #171717;
+  --muted: #5e5e5a;
+  --line: #e3e2dc;
+  --underline: #b9b8b1;
+  --tile: #f0efea;
+  --tile-2: #e9e8e2;
+  --accent: #2a52c9;
+  --on-accent: #ffffff;
+  /* The accent as text. Blue on dark paper drops under 3:1, so dark mode
+     uses a lighter mix of it. */
+  --accent-text: #2a52c9;
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --bg: #ffffff;
-    --text: #000000;
+    --paper: #0f0f0e;
+    --ink: #edece8;
+    --muted: #a3a29c;
+    --line: #2c2c29;
+    --underline: #5a5954;
+    --tile: #1a1a18;
+    --tile-2: #232321;
+    --accent-text: #8aa0e1;
   }
 }
 
-body {
-  color: var(--text);
-  background: var(--bg);
-  scroll-behavior: smooth;
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-underline: var(--underline);
+  --color-tile: var(--tile);
+  --color-tile-2: var(--tile-2);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-text: var(--accent-text);
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-newsreader), Georgia, serif;
+  --font-mono: var(--font-inconsolata), ui-monospace, monospace;
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.section-padding {
-  @apply px-6 lg:px-[131px];
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  /* Playfair and Newsreader default to old-style figures; prices, years and
+     "V3" read better lining. */
+  font-variant-numeric: lining-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Motion. Everything here switches off under prefers-reduced-motion. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes rise-x {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rise-y {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+/* Ten part names, 40px apart, each held for 8% of the loop. */
+@keyframes roll {
+  0%, 8% { transform: translateY(0); }
+  10%, 18% { transform: translateY(-40px); }
+  20%, 28% { transform: translateY(-80px); }
+  30%, 38% { transform: translateY(-120px); }
+  40%, 48% { transform: translateY(-160px); }
+  50%, 58% { transform: translateY(-200px); }
+  60%, 68% { transform: translateY(-240px); }
+  70%, 78% { transform: translateY(-280px); }
+  80%, 88% { transform: translateY(-320px); }
+  90%, 98% { transform: translateY(-360px); }
+  100% { transform: translateY(-400px); }
+}
+/* Four covers on a 16s loop, each visible for a quarter of it. */
+@keyframes cover-cycle {
+  0% { opacity: 0; }
+  4%, 25% { opacity: 1; }
+  29%, 100% { opacity: 0; }
+}
+
+.anim-drift {
+  animation: drift 9s ease-in-out infinite;
+}
+.anim-rise-x {
+  animation: rise-x 0.9s var(--ease-soft) both;
+}
+.anim-rise-y {
+  animation: rise-y 1s var(--ease-soft) both;
+}
+.anim-fill {
+  animation: fill 7s linear both;
+  transform-origin: left center;
+}
+.anim-roll {
+  animation: roll 30s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+.anim-cycle {
+  animation: cover-cycle 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-drift,
+  .anim-rise-x,
+  .anim-rise-y,
+  .anim-roll {
+    animation: none !important;
+  }
+  /* No timer bar means no auto-advance: chapters change only on a click. */
+  .anim-fill {
+    animation: none !important;
+    transform: none;
+  }
+  .anim-cycle {
+    animation: none !important;
+    opacity: 0;
+  }
+  .anim-cycle:first-child {
+    opacity: 1;
+  }
+}
+
+/* Page transitions (React <ViewTransition>, see components/PageTransition).
+   The old page lifts away fast and the new one settles in after it. The
+   landing's tiles and the header's pills are the same links, so they morph:
+   the box glides between the two shapes, clipped and rounded, while its
+   contents crossfade at their own size instead of stretching. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+}
+::view-transition-old(.page-out) {
+  animation: page-out 180ms ease-in both;
+}
+::view-transition-new(.page-in) {
+  animation: page-in 460ms var(--ease-soft) 120ms both;
+}
+::view-transition-group(.nav-morph) {
+  animation-duration: 560ms;
+  animation-timing-function: var(--ease-soft);
+  overflow: clip;
+  border-radius: 16px;
+}
+::view-transition-old(.nav-morph),
+::view-transition-new(.nav-morph) {
+  height: 100%;
+  object-fit: none;
+  object-position: left center;
+}
+::view-transition-old(.nav-morph) {
+  animation: fade-out 280ms ease-in both;
+}
+::view-transition-new(.nav-morph) {
+  animation: fade-in 280ms ease-out 140ms both;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+/* Arriving at the landing by a navigation, the tiles morph out of the pills,
+   so their own entrance would fight it. A first visit still plays it. */
+@supports (view-transition-name: none) {
+  [data-navigated] .anim-rise-x {
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* The landing's tiles change height with the viewport and as they grow on
+   hover, so their text fits each tile's own height and a line is never cut in
+   half. Desktop only; on a phone the tiles have fixed heights. Heights are
+   content boxes (the tile less its padding).
+   - Articles (44px padding): fewer title lines as it shrinks, then the label
+     goes, then the title. Label 20, gaps 12, a title line 27.5, bottom row 26.
+   - Work with me (48px padding): the rolling part names go first. Label 19.5,
+     roll 40 + 16, title 33; it may use 8px of the bottom padding. */
+@media (width >= 48rem) {
+  .articles-tile,
+  .work-tile {
+    container-type: size;
+  }
+  @container (height < 100px) {
+    .work-tile-roll {
+      display: none;
+    }
+  }
+  @container (height < 153px) {
+    .articles-tile-title {
+      -webkit-line-clamp: 2;
+    }
+  }
+  @container (height < 125px) {
+    .articles-tile-label {
+      display: none;
+    }
+  }
+  @container (height < 93px) {
+    .articles-tile-title {
+      -webkit-line-clamp: 1;
+    }
+  }
+  @container (height < 66px) {
+    .articles-tile-title {
+      opacity: 0;
+    }
+  }
 }
 
 /* Long-form article body (src/app/articles/[slug]). Markdown from
-   react-markdown, styled here rather than with a typography plugin so it keeps
-   the site's monospace voice. */
+   react-markdown, styled here rather than with a typography plugin. */
 .article-body {
-  @apply text-base md:text-lg font-light dark:font-normal leading-relaxed;
+  font-size: 1.1875rem;
+  line-height: 1.7;
 }
 .article-body > * + * {
   margin-top: 1.25em;
 }
 .article-body h2 {
-  @apply font-semibold text-xl md:text-2xl tracking-tight;
-  margin-top: 2.5em;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-top: 2.2em;
 }
 .article-body h3 {
-  @apply font-semibold text-lg md:text-xl;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.375rem;
   margin-top: 2em;
 }
 .article-body a {
-  @apply underline underline-offset-4 transition duration-200 hover:text-[#FA6525];
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--accent);
+  transition: color 0.2s ease;
+}
+.article-body a:hover {
+  color: var(--accent-text);
 }
 .article-body ul {
   list-style: disc;
-  padding-left: 1.5em;
+  padding-left: 1.4em;
 }
 .article-body ol {
   list-style: decimal;
-  padding-left: 1.5em;
+  padding-left: 1.4em;
 }
 .article-body li + li {
   margin-top: 0.5em;
 }
 .article-body blockquote {
-  border-left: 2px solid #808080;
+  border-left: 1px solid var(--accent);
   padding-left: 1em;
-  color: #808080;
+  color: var(--muted);
+  font-style: italic;
 }
 .article-body pre {
-  @apply text-sm rounded-md overflow-x-auto;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  border-radius: 12px;
+  overflow-x: auto;
   padding: 1em;
-  background: rgba(128, 128, 128, 0.12);
+  background: var(--tile);
 }
 .article-body :not(pre) > code {
-  background: rgba(128, 128, 128, 0.18);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--tile);
   padding: 0.1em 0.35em;
   border-radius: 4px;
 }
 .article-body img {
   max-width: 100%;
   height: auto;
+  border-radius: 14px;
 }
 .article-body hr {
-  border-top: 1px solid currentColor;
-  opacity: 0.25;
+  border: 0;
+  border-top: 1px solid var(--line);
   margin-top: 2.5em;
 }
 .article-body strong {
@@ -89,14 +367,15 @@ body {
 .article-body td {
   text-align: left;
   padding: 0.5em 0.75em;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+  border-bottom: 1px solid var(--line);
 }
 
 /* Interview pieces: every `##` heading is a question, answered by what follows. */
 .article-interview h2 {
-  @apply font-normal text-base md:text-lg tracking-normal;
-  color: #808080;
-  margin-top: 2.5em;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--muted);
+  margin-top: 2.4em;
 }
 .article-interview h2 + * {
   margin-top: 0.75em;

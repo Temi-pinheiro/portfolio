@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Footer } from '~~/components/Footer';
+import { ArticleList } from '~~/components/ArticleList';
+import { PageTransition } from '~~/components/PageTransition';
+import { SiteHeader } from '~~/components/SiteHeader';
 import { FORMAT_LABEL, formatDate, getArticles } from '~~/lib/articles';
 
 const description =
@@ -18,48 +19,41 @@ export const metadata: Metadata = {
 };
 
 export default function ArticlesPage() {
-  const articles = getArticles();
+  const articles = getArticles().map((article) => ({
+    slug: article.slug,
+    title: article.title,
+    description: article.description,
+    image: article.image,
+    meta: [
+      FORMAT_LABEL[article.format],
+      article.draft ? 'Draft' : formatDate(article.date),
+      `${article.readingMinutes} min`,
+    ].join(' · '),
+  }));
+
   return (
-    <div className='md:pt-[20px] mt-[120px] max-w-7xl mx-auto w-full px-6 md:mb-[182px]'>
-      <h1 id='articles' className='font-semibold text-[44px]'>
-        Articles
-      </h1>
-      <p className='font-light text-[#808080] text-sm max-w-[624px]'>
-        Mostly interviews, where I answer questions about the things I have
-        built and how I work. Now and then an essay.
-      </p>
-      {articles.length === 0 ? (
-        <p className='mt-8 md:mt-20 font-light text-[#808080] text-sm'>
-          Nothing here yet. The first few pieces are being written.
-        </p>
-      ) : (
-        <ul className='mt-8 md:mt-20 flex flex-col'>
-          {articles.map((article) => (
-            <li
-              key={article.slug}
-              className='border-t border-black dark:border-white/25 last:border-b'
-            >
-              <Link
-                href={`/articles/${article.slug}`}
-                className='group block py-8 md:py-10'
-              >
-                <p className='text-xs uppercase tracking-[0.15em] text-[#808080]'>
-                  {FORMAT_LABEL[article.format]} · {formatDate(article.date)} ·{' '}
-                  {article.readingMinutes} min read
-                  {article.draft && ' · Draft'}
-                </p>
-                <h2 className='mt-3 font-semibold text-xl md:text-[28px] leading-snug tracking-tight group-hover:text-[#FA6525] transition duration-200'>
-                  {article.title}
-                </h2>
-                <p className='mt-3 text-sm md:text-base max-w-[624px] text-[#808080] font-light'>
-                  {article.description}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-      <Footer />
-    </div>
+    <>
+      <SiteHeader current='articles' />
+      <PageTransition>
+        <main className='mx-auto max-w-[1440px] px-5 pb-28 md:px-10'>
+          <section className='flex flex-wrap items-end justify-between gap-8 pt-16 md:pt-[clamp(64px,8vw,128px)]'>
+            <div>
+              <p className='font-mono text-[13px] tracking-[0.1em] text-muted uppercase'>
+                Articles
+              </p>
+              <h1 className='mt-5 max-w-[960px] font-display text-[clamp(40px,5vw,78px)] leading-[1.06] tracking-[-0.022em]'>
+                Mostly interviews, where I answer questions about what I’ve
+                built.
+              </h1>
+            </div>
+            <p className='max-w-[380px] text-[18px] leading-[1.6] text-muted'>
+              Now and then an essay.
+              {articles.length === 0 && ' The first pieces are being written.'}
+            </p>
+          </section>
+          {articles.length > 0 && <ArticleList articles={articles} />}
+        </main>
+      </PageTransition>
+    </>
   );
 }

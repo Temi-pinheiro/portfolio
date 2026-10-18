@@ -1,22 +1,18 @@
-import { Hero, Works, Experiences } from '~~/components';
-import ContactForm from '~~/components/ContactForm';
-import { Footer } from '~~/components/Footer';
+import { Landing } from '~~/components/Landing';
+import { FORMAT_LABEL, getArticles } from '~~/lib/articles';
 
-// The home page intentionally inherits the rich SEO metadata defined in
-// `layout.tsx` (title, description, Open Graph, Twitter, canonical) so the
-// tags stay consistent across the document head.
+// The home page inherits the SEO metadata defined in `layout.tsx` (title,
+// description, Open Graph, Twitter, canonical).
 
 export default function Home() {
+  const latest = getArticles()[0];
   return (
-    <main className='w-full h-full'>
-      <Hero />
-
-      <Works />
-      <hr className='bg-[#808080] mt-8 md:mt-0 dark:opacity-25'></hr>
-      <Experiences />
-      <hr className='bg-[#808080] mt-8 md:mt-0 dark:opacity-25'></hr>
-      <ContactForm />
-      <Footer />
-    </main>
+    <Landing
+      latest={
+        latest
+          ? { title: latest.title, format: FORMAT_LABEL[latest.format] }
+          : undefined
+      }
+    />
   );
 }

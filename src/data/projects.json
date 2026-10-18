@@ -1,152 +1,36 @@
 {
   "projects": [
     {
-      "title": "Holo'd",
-      "details": "A pack a day, one card inside, and the packs you skip wait for you. 85 cards from my 2020 poster series in four rarities, with foil that moves when you tilt, a wrapper you tear yourself and a binder for everything you've pulled. Every legendary and mythic also comes as an animated card.",
+      "title": "Holo’d",
+      "meta": "Web · live",
+      "details": "A card-collecting game in the browser. A pack a day, foil that moves when you tilt, and a binder for everything you pull. The cards are my 2020 posters.",
+      "stack": ["Next.js", "React Three Fiber", "Motion", "Supabase", "Whop"],
       "projectLink": "https://holod-drab.vercel.app/",
-
-      "stack": [
-        "NextJs",
-        "Typescript",
-        "React Three Fiber",
-        "Motion",
-        "Supabase",
-        "Whop",
-        "Resend",
-        "TailwindCSS"
-      ],
       "imageUrl": "/projects/holod.jpg"
     },
     {
       "title": "Bord",
-      "details": "One home for everything you save. Share a post or web page from any app on your iPhone and it lands in one library, ready to file into Bords and find again. Saves land on the phone first and sync after, so sharing never waits on a connection. Designed by Adeoti, built by me. In private beta.",
+      "meta": "iPhone · private beta",
+      "details": "One library for everything you save. Share a post or a page from any app and it lands in one place, ready to file and find again. Designed by Adeoti, built by me.",
+      "stack": ["React Native", "Expo", "Supabase", "PowerSync"],
       "projectLink": "https://mybord.vercel.app/",
-
-      "stack": [
-        "React Native",
-        "Expo",
-        "Typescript",
-        "Supabase",
-        "PowerSync",
-        "SQLite",
-        "NextJs",
-        "TailwindCSS"
-      ],
       "imageUrl": "/projects/bord.jpg"
     },
     {
       "title": "The Third Student",
-      "details": "A spoken language class on your iPhone. The teacher hands you the language in small pieces and you build real sentences out loud, while speech recognition listens and the pause never times out. Spanish, French and Indonesian are in beta. Voices by ElevenLabs.",
+      "meta": "iPhone · beta",
+      "details": "A spoken language class. The teacher hands you the language in small pieces and you build real sentences out loud. Spanish, French and Indonesian so far.",
+      "stack": ["React Native", "Expo", "ElevenLabs", "speech recognition"],
       "projectLink": "https://third-student.vercel.app/",
-
-      "stack": [
-        "React Native",
-        "Expo",
-        "ElevenLabs",
-        "Speech Recognition",
-        "NextJs",
-        "Prisma",
-        "Postgres",
-        "TailwindCSS"
-      ],
       "imageUrl": "/projects/third-student.jpg"
     },
     {
       "title": "My Portfolio V3",
-      "details": "My personal portfolio page. My current personal magnum opus. I've come a long way from my V1 and V2 versions and along with my designer Ahmed Bash i brought this lovely website to life.",
-      "projectLink": "https://temipinheiro.com/",
-      "githubUrl": "https://github.com/Temi-pinheiro/portfolio",
-
-      "stack": [
-        "React",
-        "AWS",
-        "Netlify",
-        "NextJs",
-        "Typescript",
-        "Framer-motion",
-        "TailwindCSS",
-        "GSAP"
-      ],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1700261554/portfolio%20screens/localhost_3002__ea6pg5.png"
-    },
-
-    {
-      "title": "Multistep form",
-      "details": "Had some fun with this one and took advantage of Framer-motions's layout prop to make the step indicators' animation responsive. ",
-      "projectLink": "https://spontaneous-pithivier-92b328.netlify.app/",
-      "githubUrl": "https://github.com/Temi-pinheiro/fem-multistep-form",
-
-      "stack": ["React", "TS", "Framer-motion", "TailwindCSS"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899395/portfolio%20screens/spontaneous-pithivier-92b328.netlify.app__ro2iqx.png"
-    },
-    {
-      "title": "Rest Countries Browser",
-      "details": "Bit of a doozy implementing this. I tried to step as far out of my comfort zone as possible and shipped a bare bones (by my standards) responsive frontend app. ",
-      "projectLink": "https://symphonious-dango-34d5ec.netlify.app/",
-      "githubUrl": "https://github.com/Temi-pinheiro/rest-countries-fem",
-
-      "stack": [
-        "React",
-        "TS",
-        "Framer-motion",
-        "TailwindCSS",
-        "Tanstack Query",
-        "Tanstack Router",
-        "React-Helmet"
-      ],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1698899198/portfolio%20screens/symphonious-dango-34d5ec.netlify.app__zub4ta.png"
-    },
-    {
-      "title": "Fullstack Invoice App",
-      "details": "Fun project that i decided to use to familiarize myself with Next JS 13 and all it's cool features.",
-      "projectLink": "https://jovial-begonia-643d66.netlify.app/",
-      "githubUrl": "https://github.com/Temi-pinheiro/fem-invoice-app",
-
-      "stack": [
-        "NextJs",
-        "Typescript",
-        "Sorybook JS",
-        "Framer-motion",
-        "TailwindCSS",
-        "Prisma",
-        "Postgres",
-        "Auth JS"
-      ],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1699824069/portfolio%20screens/localhost_3001_invoices_osbopa.png"
-    },
-    {
-      "title": "Dictionary App",
-      "details": "Honestly this one was pretty straight-forward. Setting up the theme provider taught me a lot, and its one of the better designed responsive apps as well. Kudos the FM Team.",
-      "projectLink": "https://unique-creponne-69a7d1.netlify.app/",
-      "githubUrl": "https://github.com/Temi-pinheiro/fem-dictionary-app",
-
-      "stack": [
-        "React",
-        "Typescript",
-        "Framer-motion",
-        "TailwindCSS",
-        "Tanstack Query",
-        "React Router",
-        "React-Helmet"
-      ],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1700154012/portfolio%20screens/localhost_5173__keyword_beyonce_buskle.png"
-    },
-    {
-      "title": "News Homepage",
-      "details": "Had a lot of fun with the page loader, tried it first on my portfolio site amd it honestly works so well it makes me giddy.",
-      "projectLink": "https://merry-malabi-381786.netlify.app/",
-      "githubUrl": "https://github.com/Temi-pinheiro/fem-news-homepage",
-
-      "stack": ["React", "Typescript", "Framer-motion", "TailwindCSS", "GSAP"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1700175604/portfolio%20screens/localhost_5173__2_nw8hzg.png"
-    },
-    {
-      "title": "Tip calculator app",
-      "details": "A frontend mentor challenge, this small app is perfect for anyone starting to get to grips with JavaScript. The calculator functionality will be a nice test!",
-      "projectLink": "https://temis-splitter.netlify.app/",
-      "githubUrl": "https://github.com/Temi-pinheiro/react-tip-calculator",
-      "stack": ["React", "JS", "Styled-components"],
-      "imageUrl": "https://res.cloudinary.com/dwvxxjgfm/image/upload/v1697678874/portfolio%20screens/Screenshot_2023-10-19_at_02.27.47_ynfxon.png"
+      "meta": "Web · archived",
+      "details": "The site before this one, designed with Ahmed Bash. It lives on at archive.temipinheiro.com.",
+      "stack": ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
+      "projectLink": "https://archive.temipinheiro.com",
+      "imageUrl": "/projects/portfolio-v3.jpg"
     }
   ]
 }

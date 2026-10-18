@@ -1,19 +1,38 @@
 import type { Metadata, Viewport } from 'next';
-import { Inconsolata } from 'next/font/google';
+import { Inconsolata, Newsreader, Playfair_Display } from 'next/font/google';
+import { Navigated } from '~~/components/Navigated';
 import './globals.css';
-import { AppShell } from '~~/components/AppShell';
-import { getArticles } from '~~/lib/articles';
 
-const inconsolata = Inconsolata({ subsets: ['latin'] });
+// Display and story type, body copy, and small labels (the old site's font,
+// kept for the small things). Exposed as CSS variables for globals.css.
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  axes: ['opsz'],
+  variable: '--font-newsreader',
+  display: 'swap',
+});
+const inconsolata = Inconsolata({
+  subsets: ['latin'],
+  variable: '--font-inconsolata',
+  display: 'swap',
+});
 
 const siteUrl = 'https://temipinheiro.com';
+const title = 'Temitope Pinheiro';
 const description =
-  'Temitope Pinheiro — fullstack developer and co-founder. Building Kommunne, and shipping founder MVPs in four weeks at Klaw.';
+  'Temitope Pinheiro builds products: co-founder and CTO at Kommunne, co-founder at Klaw, and the Mariposa Program for founders who built their app fast and want it to feel finished.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Temitope Pinheiro — Fullstack Developer',
+    default: title,
     template: '%s | Temitope Pinheiro',
   },
   description,
@@ -24,12 +43,13 @@ export const metadata: Metadata = {
   keywords: [
     'Temitope Pinheiro',
     'Fullstack Developer',
-    'Software Engineer',
-    'Frontend Developer',
-    'React',
+    'Product Designer',
+    'UI/UX Audit',
+    'Mariposa Program',
+    'Kommunne',
+    'Klaw',
     'Next.js',
-    'TypeScript',
-    'SaaS',
+    'React',
   ],
   alternates: {
     canonical: '/',
@@ -38,13 +58,13 @@ export const metadata: Metadata = {
     type: 'website',
     url: siteUrl,
     siteName: 'Temitope Pinheiro',
-    title: 'Temitope Pinheiro — Fullstack Developer',
+    title,
     description,
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Temitope Pinheiro — Fullstack Developer',
+    title,
     description,
     creator: '@ndmhjt',
   },
@@ -62,10 +82,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: 'dark light',
+  colorScheme: 'light dark',
   themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#010101' },
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f0f0e' },
+    { media: '(prefers-color-scheme: light)', color: '#fafaf7' },
   ],
 };
 
@@ -90,7 +110,7 @@ const personJsonLd = {
 // Whop Pixel for the Holo'd business (biz_71ryNxzPwKZ7zI). Whop asks for this
 // snippet verbatim in the <head> of every page; the root layout covers them all.
 // The loader it pulls in (t.whop.tw/s.js) hooks pushState/popstate itself, so
-// client-side navigations between / and /projects send their own page events.
+// client-side navigations between pages send their own page events.
 const whopPixel = `!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_71ryNxzPwKZ7zI");whop.track("page");`;
 
 export default function RootLayout({
@@ -98,20 +118,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // The Articles link appears once the first article is published. Drafts
-  // count in `next dev`, not in production, so /articles exists but stays
-  // unlinked until then.
-  const showArticles = getArticles().length > 0;
-
   return (
-    <html lang="en">
+    <html
+      lang='en'
+      className={`${playfair.variable} ${newsreader.variable} ${inconsolata.variable}`}
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: whopPixel }} />
       </head>
-      <body className={inconsolata.className}>
-        <AppShell showArticles={showArticles}>{children}</AppShell>
+      <body>
+        <Navigated />
+        {children}
         <script
-          type="application/ld+json"
+          type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </body>
