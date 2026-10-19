@@ -234,5 +234,62 @@
       "href": "https://whop.com/temipinheiro/free-teardown/",
       "primary": false
     }
+  ],
+  "cases": [
+    {
+      "name": "WellNest",
+      "url": "https://wellnest.services",
+      "summary": "A health tracker for people living with chronic illness, built in Base44. Its founder asked for feedback on Reddit, so I sent a free teardown.",
+      "facts": [
+        {
+          "label": "Found",
+          "value": "Five fixes"
+        },
+        {
+          "label": "Shipped",
+          "value": "All five"
+        },
+        {
+          "label": "Live",
+          "value": "Within 24 hours"
+        },
+        {
+          "label": "Cost",
+          "value": "Free teardown"
+        }
+      ],
+      "before": {
+        "src": "/cases/wellnest-before.jpg",
+        "alt": "WellNest’s homepage before: floating cards cover the paragraph, a waitlist sits under the main button, and two “FREE” pills sit beside the price. Each is marked with a red number.",
+        "caption": "Before · the teardown, numbered to match the fixes below"
+      },
+      "after": {
+        "src": "/cases/wellnest-after.jpg",
+        "alt": "WellNest’s homepage after: the floating cards sit clear of the text, one line explains the price, and the trial is the only sign-up.",
+        "caption": "After · the same screen, once the fixes were live"
+      },
+      "fixes": [
+        {
+          "found": "On a laptop, the floating preview cards landed on the headline and the paragraph.",
+          "shipped": "The cards moved to the sides, clear of the text."
+        },
+        {
+          "found": "A waitlist for a feature that wasn’t out yet sat right under the main button.",
+          "shipped": "The free trial is the only sign-up on the first screen."
+        },
+        {
+          "found": "Two “FREE” pills beside “From AU$4.99/month” left people guessing what was free.",
+          "shipped": "One plain line: free for 7 days, then AU$4.99 a month."
+        },
+        {
+          "found": "The link for people managing more than one condition was dark green on near-black, at 1.9:1 contrast.",
+          "shipped": "Light text at 14:1. Readable text needs 4.5:1."
+        },
+        {
+          "found": "In the free preview, the pain slider started at 5 but said “Not selected”, so tapping 5 did nothing.",
+          "shipped": "The first tap counts, 5 included."
+        }
+      ]
+    }
   ]
 }

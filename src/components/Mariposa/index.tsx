@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import data from '~~/data/mariposa.json';
-import { Plus } from '../icons';
+import { ArrowUpRight, Plus } from '../icons';
 
 type Part = {
   number: string;
@@ -24,6 +25,21 @@ type Offer = {
   cta: string;
   href: string;
   primary: boolean;
+};
+
+type Shot = { src: string; alt: string; caption: string };
+
+// Only founders who said yes get a case here, named. A quote goes in once
+// they've sent one in their own words.
+type Case = {
+  name: string;
+  url: string;
+  summary: string;
+  facts: { label: string; value: string }[];
+  before: Shot;
+  after: Shot;
+  fixes: { found: string; shipped: string }[];
+  quote?: { text: string; by: string };
 };
 
 const AUDIT_URL = 'https://whop.com/temipinheiro/app-audit-pass/';
@@ -49,10 +65,107 @@ const facts = [
 // Rows animate open through grid-template-rows 0fr → 1fr.
 const PART_COLUMNS =
   'grid-cols-[40px_minmax(0,1fr)_24px] md:grid-cols-[64px_minmax(0,1.1fr)_minmax(0,1fr)_190px_28px]';
+// Fixes read across on desktop (number, found, shipped) and stack on a phone.
+const FIX_COLUMNS =
+  'grid-cols-[40px_minmax(0,1fr)] md:grid-cols-[64px_minmax(0,1fr)_minmax(0,1fr)]';
+
+const CaseStudy = ({ study }: { study: Case }) => (
+  <article className='mt-12 border-t border-line pt-10'>
+    <div className='flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3'>
+      <h3 className='font-display text-[clamp(32px,3vw,46px)] leading-[1.1] tracking-[-0.015em]'>
+        {study.name}
+      </h3>
+      <a
+        href={study.url}
+        {...external(study.url)}
+        className='inline-flex items-center gap-2 font-mono text-[13px] tracking-[0.04em] text-muted underline decoration-transparent underline-offset-4 transition-[text-decoration-color] duration-300 hover:decoration-current'
+      >
+        {study.url.replace('https://', '')}
+        <ArrowUpRight size={15} />
+      </a>
+    </div>
+    <p className='mt-4 max-w-[640px] text-[18px] leading-[1.6] text-muted'>
+      {study.summary}
+    </p>
+    <dl className='mt-10 grid grid-cols-2 gap-8 md:grid-cols-4'>
+      {study.facts.map((fact) => (
+        <div key={fact.label}>
+          <dt className='font-mono text-[12px] tracking-[0.1em] text-muted uppercase'>
+            {fact.label}
+          </dt>
+          <dd className='mt-2.5 font-display text-[20px] md:text-[24px]'>
+            {fact.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+    <div className='mt-12 grid gap-x-4 gap-y-8 md:grid-cols-2'>
+      {[study.before, study.after].map((shot) => (
+        <figure key={shot.src}>
+          <div className='relative aspect-[16/10] overflow-hidden rounded-[22px] border border-line bg-tile'>
+            <Image
+              src={shot.src}
+              alt={shot.alt}
+              fill
+              sizes='(min-width: 768px) 50vw, 100vw'
+              className='object-cover object-top'
+            />
+          </div>
+          <figcaption className='mt-3 font-mono text-[13px] tracking-[0.03em] text-muted'>
+            {shot.caption}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <div className='mt-12'>
+      <div
+        aria-hidden
+        className={`hidden gap-x-6 pb-4 font-mono text-[12px] tracking-[0.1em] text-muted uppercase md:grid ${FIX_COLUMNS}`}
+      >
+        <span />
+        <span>What I found</span>
+        <span>What shipped</span>
+      </div>
+      <ol className='border-t border-line'>
+        {study.fixes.map((fix, i) => (
+          <li
+            key={fix.found}
+            className={`grid gap-x-4 gap-y-3 border-b border-line py-6 md:gap-x-6 ${FIX_COLUMNS}`}
+          >
+            <span className='font-mono text-[15px] font-semibold text-accent-text'>
+              {i + 1}
+            </span>
+            <p className='text-[17px] leading-[1.55] text-muted'>
+              <span className='sr-only'>Found: </span>
+              {fix.found}
+            </p>
+            <p className='col-start-2 text-[17px] leading-[1.55] md:col-start-auto'>
+              <span className='mr-2 font-mono text-[12px] tracking-[0.1em] text-accent-text uppercase md:sr-only'>
+                Shipped
+              </span>
+              {fix.shipped}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+    {study.quote && (
+      <blockquote className='mt-14 max-w-[900px]'>
+        <p className='font-display text-[clamp(24px,2.4vw,34px)] leading-[1.3] italic'>
+          “{study.quote.text}”
+        </p>
+        <footer className='mt-4 font-mono text-[13px] tracking-[0.03em] text-muted'>
+          {study.quote.by}
+        </footer>
+      </blockquote>
+    )}
+  </article>
+);
 
 export const Mariposa = () => {
   const parts: Part[] = data.parts;
   const offers: Offer[] = data.offers;
+  const cases: Case[] = data.cases;
   const [open, setOpen] = useState(1);
 
   return (
@@ -191,6 +304,22 @@ export const Mariposa = () => {
           })}
         </ol>
       </section>
+
+      {cases.length > 0 && (
+        <section className='pt-24 md:pt-[clamp(96px,10vw,160px)]' id='cases'>
+          <div className='flex flex-wrap items-end justify-between gap-6'>
+            <h2 className='font-display text-[clamp(34px,3.6vw,56px)] tracking-[-0.02em]'>
+              Case studies
+            </h2>
+            <p className='max-w-[520px] text-[18px] leading-[1.6] text-muted'>
+              Real teardowns, shared with the founders’ permission.
+            </p>
+          </div>
+          {cases.map((study) => (
+            <CaseStudy key={study.name} study={study} />
+          ))}
+        </section>
+      )}
 
       <section className='pt-24 md:pt-[clamp(96px,10vw,160px)]' id='buy'>
         <div className='flex flex-wrap items-end justify-between gap-6'>
