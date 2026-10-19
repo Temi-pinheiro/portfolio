@@ -54,10 +54,12 @@ tags: [bord, ios]
 links:                    # optional, shown as "Mentioned" at the end
   - label: Bord
     url: https://mybord.vercel.app/
+image: /projects/bord.jpg # optional: a path under public/, shown on hover in the index
 draft: true               # optional: keep a committed piece out of production
 ---
 ```
 
 The body is Markdown (GitHub flavoured). Drafts are left out of production
-builds, the sitemap and the nav, so the Articles link appears once the first
-piece is published.
+builds and the sitemap. The Articles page is always linked; until the first
+piece is published it says the first pieces are being written, and the
+landing's Articles tile shows the newest piece once there is one.

@@ -1,9 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The article Open Graph image route reads src/content at request time for
-  // slugs that were not prerendered, so the folder must ship with its function.
+  // Page transitions: React's <ViewTransition> animates navigations
+  // (components/PageTransition, styles in globals.css).
+  experimental: {
+    viewTransition: true,
+  },
+  // The article Open Graph image route reads src/content and the fonts in
+  // src/assets at request time for slugs that were not prerendered, so both
+  // folders must ship with its function.
   outputFileTracingIncludes: {
-    '/articles/**': ['./src/content/articles/**/*'],
+    '/articles/**': ['./src/content/articles/**/*', './src/assets/fonts/*.ttf'],
   },
   images: {
     remotePatterns: [

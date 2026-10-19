@@ -1,0 +1,238 @@
+{
+  "parts": [
+    {
+      "number": "00",
+      "name": "The Teardown",
+      "when": "Before you buy",
+      "price": "Free",
+      "in": [],
+      "pain": "You don’t know yet if an audit is worth $500.",
+      "promise": "Three fixes, free, on one screenshot.",
+      "steps": [
+        "The three things I’d fix first, marked on a screenshot of your site or app",
+        "For each one: what’s wrong, why it costs you, and the fix",
+        "No call and no pitch. If it’s useful, you’ll know what the audit is like"
+      ]
+    },
+    {
+      "number": "01",
+      "name": "The Audit",
+      "when": "Day 1",
+      "price": "$500",
+      "in": [],
+      "pain": "You can tell something’s off. You can’t tell what.",
+      "promise": "Everything that’s costing you users, ranked.",
+      "steps": [
+        "I walk your key flows as a first-time visitor: first visit, sign-up, the core action, upgrade and checkout",
+        "Desktop and mobile",
+        "Every issue ranked by how much it affects whether people trust you, start and pay",
+        "Quick wins you can ship the same day",
+        "A part map: which of parts 02 to 07 you need",
+        "Visitor tracking set up with you on day 1, in an account you own, so a baseline builds before anything changes",
+        "Delivered within 24 hours of getting your app details. At least 10 fixes worth making, or your money back"
+      ]
+    },
+    {
+      "number": "02",
+      "name": "The First Screen",
+      "when": "Build week",
+      "price": "$900 alone",
+      "in": [
+        "Website Augment"
+      ],
+      "pain": "Visitors leave before they know what you do.",
+      "promise": "They get it at first glance.",
+      "steps": [
+        "A headline that says what you sell, with everything under it in order of importance",
+        "One primary button, where people look for it",
+        "A navbar laid out the way visitors expect: logo left, links center, account actions right",
+        "A demo that shows one thing in full, so people want to try their own"
+      ]
+    },
+    {
+      "number": "03",
+      "name": "The Way In",
+      "when": "Build week",
+      "price": "$900 alone",
+      "in": [
+        "App Augment"
+      ],
+      "pain": "People sign up, then stall.",
+      "promise": "No one feels lost.",
+      "steps": [
+        "A short welcome flow, so people know what’s coming",
+        "A first-login walkthrough that says what each part of the app is for",
+        "Step counts and transitions in every multi-step flow",
+        "Loading and empty states, so no screen is ever blank"
+      ]
+    },
+    {
+      "number": "04",
+      "name": "The Core Action",
+      "when": "Build week",
+      "price": "$900 alone",
+      "in": [
+        "App Augment"
+      ],
+      "pain": "The main thing works, but it doesn’t feel trustworthy.",
+      "promise": "The thing they came for feels good to use.",
+      "steps": [
+        "Features that don’t work yet, hidden until they do",
+        "Buttons that look like buttons and links that look like links. Nothing looks clickable unless it is",
+        "Screens grouped around the job people came to do, not around features",
+        "Each person sees only the screens their role needs"
+      ]
+    },
+    {
+      "number": "05",
+      "name": "The Money Page",
+      "when": "Build week",
+      "price": "$900 alone",
+      "in": [
+        "Website Augment",
+        "App Augment"
+      ],
+      "pain": "People reach pricing and leave.",
+      "promise": "Paying is the easy part.",
+      "steps": [
+        "The plan you want people to buy, shown first",
+        "Every discount shown against the price it comes off",
+        "Fine print and cancel buttons moved off the sales page",
+        "One clear line on what happens to their data",
+        "An upgrade button in the app that’s always in reach"
+      ]
+    },
+    {
+      "number": "06",
+      "name": "The System",
+      "when": "Build week",
+      "price": "$900 alone",
+      "in": [
+        "Website Augment",
+        "App Augment"
+      ],
+      "pain": "Every screen looks like it came from a different app, because each prompt made it from scratch.",
+      "promise": "It looks like one product.",
+      "steps": [
+        "One type scale, one spacing scale, and colors with a job: brand color on the main action, neutral on the rest",
+        "Consistent components: buttons, inputs, cards, and tags as pills",
+        "Contrast checked on every surface",
+        "A design-rules file for Lovable, Cursor or Claude, so the next screens they make match"
+      ]
+    },
+    {
+      "number": "07",
+      "name": "The Edges",
+      "when": "Build week",
+      "price": "$900 alone",
+      "in": [
+        "Website Augment",
+        "App Augment"
+      ],
+      "pain": "It works, but it feels unfinished.",
+      "promise": "It feels premium.",
+      "steps": [
+        "Mobile layouts that fit the screen, with no sideways scrolling",
+        "Motion between steps and screens",
+        "Designed error, loading and empty states instead of the defaults",
+        "The small things fixed: footers that stop short, borders that flash, missing focus states"
+      ]
+    },
+    {
+      "number": "08",
+      "name": "The Re-Audit",
+      "when": "After the build",
+      "price": "Included",
+      "in": [
+        "Website Augment",
+        "App Augment"
+      ],
+      "pain": "You paid for fixes. How do you know they all shipped?",
+      "promise": "Proof it’s fixed.",
+      "steps": [
+        "I run the day-1 audit again on what shipped",
+        "Every finding marked fixed, with a before and after",
+        "A first scorecard from your visitor data: how many people make it through each key flow, before and after",
+        "Anything still open, I fix for free",
+        "A handover: what changed, and how to keep it that way"
+      ]
+    },
+    {
+      "number": "09",
+      "name": "The Keep",
+      "when": "Every month",
+      "price": "$600/mo",
+      "in": [],
+      "pain": "You ship a new feature and it breaks the look.",
+      "promise": "It stays good as you ship.",
+      "steps": [
+        "New screens reviewed before they go live",
+        "UI fixes shipped as they come up",
+        "A short audit and a visitor scorecard every month",
+        "Your design-rules file kept up to date"
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "name": "The Audit",
+      "tag": "Start here",
+      "price": "$500",
+      "parts": "Part 01",
+      "detail": "Delivered within 24 hours, with visitor tracking set up on day 1. At least 10 fixes worth making, or your money back.",
+      "cta": "Get the audit",
+      "href": "https://whop.com/temipinheiro/app-audit-pass/",
+      "primary": true
+    },
+    {
+      "name": "Website Augment",
+      "tag": "The whole program, for your site",
+      "price": "$2,500",
+      "parts": "Parts 02 · 05 · 06 · 07 · 08",
+      "detail": "Your marketing site or landing page, rebuilt in one week, then re-audited with a before/after scorecard.",
+      "cta": "Book the website build",
+      "href": "https://whop.com/temipinheiro/website-augment/",
+      "primary": false
+    },
+    {
+      "name": "App Augment",
+      "tag": "The whole program, for your app",
+      "price": "$3,000",
+      "parts": "Parts 03 · 04 · 05 · 06 · 07 · 08",
+      "detail": "Your web app’s front end, rebuilt in one week, then re-audited with a before/after scorecard. Two payments of $1,500.",
+      "cta": "Book the app build",
+      "href": "https://whop.com/temipinheiro/app-augment/",
+      "primary": false
+    },
+    {
+      "name": "One part",
+      "tag": "When the audit points at one thing",
+      "price": "$900",
+      "parts": "Any one of parts 02 to 07",
+      "detail": "A single surface, fixed in two to three days. The audit credit doesn’t apply.",
+      "cta": "Ask for a part",
+      "href": "https://whop.com/temipinheiro/one-part/",
+      "primary": false
+    },
+    {
+      "name": "The Keep",
+      "tag": "After any build",
+      "price": "$600/mo",
+      "parts": "Part 09",
+      "detail": "New screens reviewed before they ship, fixes as they come up, and a monthly audit with a visitor scorecard.",
+      "cta": "Ask about The Keep",
+      "href": "https://whop.com/temipinheiro/mariposa-keep/",
+      "primary": false
+    },
+    {
+      "name": "The Teardown",
+      "tag": "Not ready yet?",
+      "price": "Free",
+      "parts": "Part 00",
+      "detail": "Send me your link and I’ll send back the three things I’d fix first.",
+      "cta": "Request a teardown",
+      "href": "https://whop.com/temipinheiro/free-teardown/",
+      "primary": false
+    }
+  ]
+}

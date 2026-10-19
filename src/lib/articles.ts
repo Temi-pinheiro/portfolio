@@ -26,6 +26,8 @@ export type Article = {
   format: ArticleFormat;
   tags: string[];
   links: ArticleLink[];
+  /** Optional preview image (a path under public/), shown on hover in the index. */
+  image?: string;
   draft: boolean;
   /** Markdown body with the front matter removed. */
   content: string;
@@ -93,6 +95,10 @@ function parseArticle(dir: string, file: string, isDraft: boolean): Article {
     format: data.format === 'essay' ? 'essay' : 'interview',
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     links,
+    image:
+      typeof data.image === 'string' && data.image.startsWith('/')
+        ? data.image
+        : undefined,
     draft: isDraft || data.draft === true,
     content,
     readingMinutes: estimateReadingMinutes(content),

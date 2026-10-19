@@ -36,3 +36,6 @@ next-env.d.ts
 
 # local-only article drafts (the repo is public)
 /src/content/drafts/
+
+# netlify cli (linking and local builds write here)
+.netlify
