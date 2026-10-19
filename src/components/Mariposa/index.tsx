@@ -4,26 +4,25 @@ import Image from 'next/image';
 import { useState } from 'react';
 import data from '~~/data/mariposa.json';
 import { ArrowUpRight, Plus } from '../icons';
+import { TeardownForm } from './TeardownForm';
 
 type Part = {
   number: string;
   name: string;
   when: string;
-  price: string;
   in: string[];
   pain: string;
   promise: string;
   steps: string[];
 };
 
+// No prices on the page: the teardown shows what the work is like first, and
+// the price comes with my reply. The Whop listings stay live for that reply.
 type Offer = {
   name: string;
   tag: string;
-  price: string;
   parts: string;
   detail: string;
-  cta: string;
-  href: string;
   primary: boolean;
 };
 
@@ -41,10 +40,6 @@ type Case = {
   fixes: { found: string; shipped: string }[];
   quote?: { text: string; by: string };
 };
-
-const AUDIT_URL = 'https://whop.com/temipinheiro/app-audit-pass/';
-// Free on Whop rather than by email, so every request is an order on record.
-const TEARDOWN_URL = 'https://whop.com/temipinheiro/free-teardown/';
 
 const primaryButton =
   'inline-flex min-h-[52px] items-center rounded-full bg-accent px-7 font-mono text-[15px] font-semibold tracking-[0.02em] text-on-accent transition-transform duration-300 ease-soft hover:-translate-y-0.5';
@@ -184,11 +179,11 @@ export const Mariposa = () => {
           you need. Buy those, or all of them.
         </p>
         <div className='mt-10 flex flex-wrap gap-3'>
-          <a href={AUDIT_URL} className={primaryButton} {...external(AUDIT_URL)}>
-            Get the audit · $500
-          </a>
-          <a href={TEARDOWN_URL} className={secondaryButton} {...external(TEARDOWN_URL)}>
+          <a href='#teardown' className={primaryButton}>
             Request a free teardown
+          </a>
+          <a href='#parts' className={secondaryButton}>
+            See the ten parts
           </a>
         </div>
         <dl className='mt-16 grid grid-cols-2 gap-8 border-t border-line pt-7 md:mt-[clamp(64px,7vw,110px)] md:grid-cols-4'>
@@ -245,7 +240,7 @@ export const Mariposa = () => {
                       {part.promise}
                     </span>
                     <span className='col-start-2 row-start-3 font-mono text-[13px] tracking-[0.03em] text-muted md:col-start-auto md:row-start-auto md:text-right'>
-                      {part.when} · {part.price}
+                      {part.when}
                     </span>
                     <Plus
                       className={`col-start-3 row-start-1 self-center justify-self-end transition-transform duration-500 ease-soft md:col-start-auto md:row-start-auto ${
@@ -321,14 +316,14 @@ export const Mariposa = () => {
         </section>
       )}
 
-      <section className='pt-24 md:pt-[clamp(96px,10vw,160px)]' id='buy'>
+      <section className='pt-24 md:pt-[clamp(96px,10vw,160px)]' id='how'>
         <div className='flex flex-wrap items-end justify-between gap-6'>
           <h2 className='font-display text-[clamp(34px,3.6vw,56px)] tracking-[-0.02em]'>
-            How to buy
+            How it works
           </h2>
           <p className='max-w-[520px] text-[18px] leading-[1.6] text-muted'>
-            Start with the audit. Then take the whole build, or just the part
-            it points at.
+            After the teardown comes the audit. Then take the whole build, or
+            just the part it points at.
           </p>
         </div>
         <ul className='mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
@@ -346,35 +341,22 @@ export const Mariposa = () => {
               >
                 {offer.tag}
               </span>
-              <span className='mt-5 font-display text-[28px] leading-[1.1]'>
+              <span className='mt-5 font-display text-[clamp(30px,2.6vw,38px)] leading-[1.1] tracking-[-0.01em]'>
                 {offer.name}
-              </span>
-              <span className='mt-1.5 font-display text-[46px] leading-[1.1] tracking-[-0.02em]'>
-                {offer.price}
               </span>
               <span className='mt-4 font-mono text-[13px] text-muted'>
                 {offer.parts}
               </span>
-              <span className='mt-2 mb-8 text-[17px] leading-[1.55]'>
+              <span className='mt-2 text-[17px] leading-[1.55]'>
                 {offer.detail}
               </span>
-              <a
-                href={offer.href}
-                {...external(offer.href)}
-                className={`mt-auto inline-flex min-h-12 items-center self-start rounded-full px-[22px] font-mono text-[14px] tracking-[0.02em] transition-transform duration-300 ease-soft hover:-translate-y-0.5 ${
-                  offer.primary
-                    ? 'bg-accent text-on-accent'
-                    : 'border border-ink'
-                }`}
-              >
-                {offer.cta}
-              </a>
             </li>
           ))}
         </ul>
         <p className='mt-6 max-w-[640px] font-mono text-[13px] leading-[1.6] text-muted'>
-          Book the Website or App Augment within 7 days of your audit and the
-          $500 comes off the price. The credit doesn’t apply to single parts.
+          Book the Website or App Augment within 7 days of your audit and what
+          you paid for the audit comes off it. The credit doesn’t apply to
+          single parts.
         </p>
       </section>
 
@@ -403,22 +385,28 @@ export const Mariposa = () => {
         </div>
       </section>
 
-      <section className='pt-24 text-center md:pt-[clamp(96px,10vw,160px)]'>
-        <h2 className='mx-auto max-w-[900px] font-display text-[clamp(40px,4.6vw,72px)] leading-[1.08] tracking-[-0.02em]'>
-          Start with the audit.
-        </h2>
-        <p className='mx-auto mt-5 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
-          Or send me your link, and I’ll send back the three things I’d fix
-          first, free.
-        </p>
-        <div className='mt-9 flex flex-wrap justify-center gap-3'>
-          <a href={AUDIT_URL} className={primaryButton} {...external(AUDIT_URL)}>
-            Get the audit · $500
-          </a>
-          <a href={TEARDOWN_URL} className={secondaryButton} {...external(TEARDOWN_URL)}>
-            Request a free teardown
-          </a>
+      <section
+        className='grid scroll-mt-8 gap-12 pt-24 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-[clamp(40px,5vw,96px)] md:pt-[clamp(96px,10vw,160px)]'
+        id='teardown'
+      >
+        <div>
+          <p className='font-mono text-[13px] tracking-[0.1em] text-muted uppercase'>
+            Part 00 · Free
+          </p>
+          <h2 className='mt-5 font-display text-[clamp(40px,4.6vw,72px)] leading-[1.08] tracking-[-0.02em]'>
+            Start with a free teardown.
+          </h2>
+          <p className='mt-6 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
+            Send me your link. Within 24 hours I’ll send back the three things
+            I’d fix first, marked on a screenshot, with what each one costs you
+            and how to fix it.
+          </p>
+          <p className='mt-4 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
+            No call and no pitch. If you want more fixed after that, I’ll tell
+            you which parts you need and what they cost.
+          </p>
         </div>
+        <TeardownForm buttonClassName={primaryButton} />
       </section>
     </main>
   );
