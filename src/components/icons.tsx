@@ -46,3 +46,16 @@ export const Play = ({ size = 16, className }: IconProps) => (
     <path d='M8 5.5v13l10-6.5z' />
   </svg>
 );
+
+export const Check = ({ size = 20, className }: IconProps) => (
+  <svg width={size} height={size} className={className} {...base}>
+    <path d='M5 12.5l4.5 4.5L19 7.5' />
+  </svg>
+);
+
+export const Close = ({ size = 20, className }: IconProps) => (
+  <svg width={size} height={size} className={className} {...base}>
+    <path d='M6 6l12 12' />
+    <path d='M18 6L6 18' />
+  </svg>
+);

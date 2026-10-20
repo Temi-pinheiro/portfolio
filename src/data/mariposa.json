@@ -163,41 +163,62 @@
       ]
     }
   ],
-  "offers": [
+  "path": [
     {
+      "parts": "00",
+      "name": "The Teardown",
+      "when": "Free · within 24 hours",
+      "promise": "Three fixes, free, on one screenshot.",
+      "points": [
+        "The three things I’d fix first, marked on your site or app",
+        "What each one costs you, and how to fix it",
+        "No call and no pitch"
+      ]
+    },
+    {
+      "parts": "01",
       "name": "The Audit",
-      "tag": "Start here",
-      "parts": "Part 01",
-      "detail": "Delivered within 24 hours, with visitor tracking set up on day 1. At least 10 fixes worth making, or your money back.",
-      "primary": true
+      "when": "Within 24 hours",
+      "promise": "Everything that’s costing you users, ranked.",
+      "points": [
+        "Your key flows, walked as a first-time visitor, on desktop and mobile",
+        "Every issue ranked by what it costs you",
+        "A map of which parts you need",
+        "At least 10 fixes worth making, or your money back"
+      ]
     },
     {
-      "name": "Website Augment",
-      "tag": "The whole program, for your site",
-      "parts": "Parts 02 · 05 · 06 · 07 · 08",
-      "detail": "Your marketing site or landing page, rebuilt in one week, then re-audited with a before/after scorecard.",
-      "primary": false
+      "parts": "02–07",
+      "name": "The Build",
+      "when": "One week",
+      "promise": "The parts the audit points at, rebuilt.",
+      "points": [
+        "All six for your site or your app (the Augments), or one on its own. Book an Augment within 7 days of the audit and the audit comes off its price."
+      ],
+      "build": true
     },
     {
-      "name": "App Augment",
-      "tag": "The whole program, for your app",
-      "parts": "Parts 03 · 04 · 05 · 06 · 07 · 08",
-      "detail": "Your web app’s front end, rebuilt in one week, then re-audited with a before/after scorecard.",
-      "primary": false
+      "parts": "08",
+      "name": "The Re-Audit",
+      "when": "After the build",
+      "promise": "Proof it’s fixed.",
+      "points": [
+        "The audit again, on what shipped",
+        "Every finding marked fixed, with a before and after",
+        "How many visitors make it through each key flow, before and after",
+        "Anything still open, I fix for free"
+      ]
     },
     {
-      "name": "One part",
-      "tag": "When the audit points at one thing",
-      "parts": "Any one of parts 02 to 07",
-      "detail": "A single surface, fixed in two to three days. The audit credit doesn’t apply.",
-      "primary": false
-    },
-    {
+      "parts": "09",
       "name": "The Keep",
-      "tag": "After any build",
-      "parts": "Part 09",
-      "detail": "New screens reviewed before they ship, fixes as they come up, and a monthly audit with a visitor scorecard.",
-      "primary": false
+      "when": "Every month, if you want it",
+      "promise": "It stays good as you ship.",
+      "points": [
+        "New screens reviewed before they go live",
+        "UI fixes as they come up",
+        "A short audit and a visitor scorecard every month"
+      ]
     }
   ],
   "cases": [
