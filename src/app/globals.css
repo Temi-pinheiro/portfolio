@@ -65,9 +65,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 3px;
+/* In the base layer, so a utility on the element wins: outline-none on a
+   modal's panel, cursor-wait on a button that's sending. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  /* Tailwind v4 gives buttons the default arrow; anything clickable shows the
+     hand, as links do. */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 /* Motion. Everything here switches off under prefers-reduced-motion. */
