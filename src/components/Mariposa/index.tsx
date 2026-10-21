@@ -11,18 +11,20 @@ import {
   StaggerItem,
   WordReveal,
 } from '../motion/Reveal';
+import { CallEmbed } from './CallEmbed';
 import { CaseCard, type Case } from './CaseStudies';
 import { ModalContent, ModalHeader } from './Modal';
 import { Steps, type Step } from './Steps';
-import { TeardownForm, useTeardown } from './TeardownForm';
+import { REQUEST_HREF, TeardownForm, useTeardown } from './TeardownForm';
 
 // The page asks for one thing, the teardown, and every step after it leads to
 // exactly one next step. So the program is five steps in order, not a menu:
 // which parts someone needs is the audit's call, and the price comes with my
 // reply. Everything shows without a click; a case study opens in a modal that
 // ends on the same ask. Wherever the ask is made, the form opens in a modal,
-// so no one has to scroll to the end for it; it's also at the end, for anyone
-// who reads that far.
+// so no one has to scroll for it, and the button that follows you down the
+// page stays to the end. The end is for anyone who'd rather talk: a call,
+// booked through Calendly.
 
 const primaryButton =
   'inline-flex min-h-[52px] items-center rounded-full bg-accent px-7 font-mono text-[15px] font-semibold tracking-[0.02em] text-on-accent transition-[translate,scale] duration-300 ease-soft hover:-translate-y-0.5 active:scale-[0.97]';
@@ -59,9 +61,8 @@ export const Mariposa = () => {
     opener.current = from;
     setRequesting(true);
   };
-  // The ask is a link to the form at the end, so it works without script.
   const requestLink = {
-    href: '#teardown',
+    href: REQUEST_HREF,
     'aria-haspopup': 'dialog' as const,
     onClick: (event: MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -70,29 +71,19 @@ export const Mariposa = () => {
   };
 
   // The one button follows you down the page: it shows once the hero's button
-  // has scrolled away, and hides at the form and once a request is sent.
+  // has scrolled away, and stays until a request is sent.
   const heroButton = useRef<HTMLAnchorElement>(null);
-  const formSection = useRef<HTMLElement>(null);
   const [pastHero, setPastHero] = useState(false);
-  const [atForm, setAtForm] = useState(false);
   const sent = teardown.status === 'sent';
-  const showBar = pastHero && !atForm && !sent;
+  const showBar = pastHero && !sent;
 
   useEffect(() => {
     const hero = heroButton.current;
-    const form = formSection.current;
-    if (!hero || !form) return;
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.target === hero) {
-          setPastHero(!entry.isIntersecting && entry.boundingClientRect.top < 0);
-        } else {
-          setAtForm(entry.isIntersecting);
-        }
-      }
-    });
+    if (!hero) return;
+    const observer = new IntersectionObserver(([entry]) =>
+      setPastHero(!entry.isIntersecting && entry.boundingClientRect.top < 0)
+    );
     observer.observe(hero);
-    observer.observe(form);
     return () => observer.disconnect();
   }, []);
 
@@ -176,33 +167,40 @@ export const Mariposa = () => {
         </Stagger>
 
         <section
-          ref={formSection}
-          className='grid scroll-mt-8 gap-12 pt-24 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-[clamp(40px,5vw,96px)] md:pt-[clamp(96px,10vw,160px)]'
-          id='teardown'
+          className='grid scroll-mt-8 gap-12 pt-24 md:pt-[clamp(96px,10vw,160px)] lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-[clamp(40px,5vw,96px)]'
+          id='call'
         >
-          <div>
+          <div className='lg:sticky lg:top-10 lg:self-start'>
             <FadeUp>
               <p className='font-mono text-[13px] tracking-[0.1em] text-muted uppercase'>
-                Part 00 · Free
+                Schedule a call
               </p>
             </FadeUp>
             <WordReveal
-              text='Start with a free teardown.'
+              text='Rather talk it through?'
               className='mt-5 font-display text-[clamp(40px,4.6vw,72px)] leading-[1.08] tracking-[-0.02em]'
             />
             <FadeUp delay={0.25}>
               <p className='mt-6 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
-                Send me your link. Within 24 hours I’ll send back the three
-                things I’d fix first, marked on a screenshot, with what each one
-                costs you and how to fix it.
+                Pick a time that suits you, and we’ll go through your app
+                together on a call: what’s working, what isn’t, and whether the
+                program is a fit.
               </p>
               <p className='mt-4 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
-                No call and no pitch. If you want more fixed after that, I’ll
-                tell you which parts you need and what they cost.
+                Prefer it in writing?{' '}
+                <a
+                  {...requestLink}
+                  className='text-ink underline decoration-accent underline-offset-4'
+                >
+                  Request a free teardown
+                </a>{' '}
+                instead.
               </p>
             </FadeUp>
           </div>
-          <TeardownForm teardown={teardown} buttonClassName={primaryButton} />
+          <FadeUp delay={0.15}>
+            <CallEmbed />
+          </FadeUp>
         </section>
 
         <Dialog.Root open={requesting} onOpenChange={setRequesting}>
@@ -251,11 +249,7 @@ export const Mariposa = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <TeardownForm
-                teardown={teardown}
-                buttonClassName={primaryButton}
-                bare
-              />
+              <TeardownForm teardown={teardown} buttonClassName={primaryButton} />
             </div>
           </ModalContent>
         </Dialog.Root>

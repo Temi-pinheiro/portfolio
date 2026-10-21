@@ -2,10 +2,9 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { FormEvent, KeyboardEvent, useState } from 'react';
+import { EMAIL as INBOX } from '~~/lib/site';
 import { Check } from '../icons';
 import { EASE_OUT_EXPO } from '../motion/Reveal';
-
-const INBOX = 'temitopepinheiro@gmail.com';
 
 type Values = {
   name: string;
@@ -25,10 +24,14 @@ const input =
 // with everything they typed already in it.
 const mailto = (values: Values) =>
   `mailto:${INBOX}?subject=${encodeURIComponent(
-    `Teardown request: ${values.business}`
+    `Teardown request${values.business ? `: ${values.business}` : ''}`
   )}&body=${encodeURIComponent(
     `Name: ${values.name}\nBusiness: ${values.business}\nLink: ${values.url}\n\n${values.problem}`
   )}`;
+
+// Where the ask goes without script, which the modal needs: the same email,
+// with the form's questions in it.
+export const REQUEST_HREF = mailto(EMPTY);
 
 // "Within 24 hours" as a time they can hold me to: a day from now, rounded up
 // to the hour, in their own time zone.
@@ -40,9 +43,8 @@ const replyBy = () => {
   return `${day} at ${time}`;
 };
 
-// The request's state lives on the page, not in a form: the form shows both in
-// the modal and at the end of the page, and a request sent from one is sent in
-// both.
+// The request's state lives on the page, not in the form: it outlasts the
+// modal closing, and the page hides its floating button once it's sent.
 export const useTeardown = () => {
   const [values, setValues] = useState<Values>(EMPTY);
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>(
@@ -79,19 +81,14 @@ export type Teardown = ReturnType<typeof useTeardown>;
 // The motion follows the Bord waitlist form (~/Desktop/bord-web,
 // components/WaitlistForm.tsx), the house pattern for any form with a
 // confirmation: the form lifts out, the confirmation rises in on an expo-out
-// curve, and its mark pops in on a spring just after. `bare` drops the card
-// around it, for the modal.
+// curve, and its mark pops in on a spring just after.
 export const TeardownForm = ({
   teardown: { values, status, by, submit, edit },
   buttonClassName,
-  bare,
 }: {
   teardown: Teardown;
   buttonClassName: string;
-  bare?: boolean;
 }) => {
-  const frame = bare ? '' : 'rounded-[22px] border bg-tile p-7 md:p-[34px]';
-
   // ⌘/Ctrl+Enter sends from any field, the message box included, where Enter
   // alone is a new line. requestSubmit runs the same checks as the button.
   const onKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
@@ -106,7 +103,7 @@ export const TeardownForm = ({
         <motion.div
           key='sent'
           role='status'
-          className={`self-start border-accent ${bare ? 'pt-6' : frame}`}
+          className='pt-6'
           initial={{ opacity: 0, y: 16, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
@@ -141,7 +138,6 @@ export const TeardownForm = ({
           key='form'
           onSubmit={submit}
           onKeyDown={onKeyDown}
-          className={`border-line ${frame}`}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.25 }}
         >

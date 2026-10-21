@@ -6,6 +6,7 @@ import { LIFE_NAMES } from '~~/lib/metamorphosis';
 import { ArrowRight } from '../icons';
 import { FadeUp } from '../motion/Reveal';
 import { StepFigure } from './StepFigure';
+import { REQUEST_HREF } from './TeardownForm';
 
 export type Step = {
   parts: string;
@@ -179,7 +180,7 @@ export const Steps = ({
                   </p>
                 ) : (
                   <a
-                    href='#teardown'
+                    href={REQUEST_HREF}
                     aria-haspopup='dialog'
                     onClick={(event) => {
                       event.preventDefault();
