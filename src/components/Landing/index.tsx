@@ -211,52 +211,78 @@ export const Landing = ({
               })}
             </div>
 
-            <div className="relative mt-5 flex max-w-[680px] items-end gap-2 md:mt-12">
-              <div
-                role="group"
-                aria-label="Chapters"
-                className="grid flex-1 grid-cols-6 gap-2 md:gap-2.5"
-              >
-                {CHAPTERS.map((c, i) => (
-                  <button
-                    key={c.year}
-                    type="button"
-                    aria-pressed={i === chapter}
-                    aria-label={`${c.year}, chapter ${i + 1} of ${CHAPTERS.length}`}
-                    onClick={() => setChapter(i)}
-                    className={`flex min-h-11 flex-col items-start justify-end gap-2.5 pb-1.5 text-left font-mono text-[12px] tracking-[0.04em] transition-colors md:text-[13px] ${
-                      i === chapter ? 'text-ink' : 'text-muted hover:text-ink'
-                    }`}
-                  >
-                    <span>{c.year}</span>
-                    <span
-                      aria-hidden
-                      className="relative block h-0.5 w-full overflow-hidden rounded-full bg-line"
+            {/* The chapter bar, with the way to the whole story beside it (below
+                it on a phone). */}
+            <div className="relative mt-5 flex flex-col md:mt-12 md:flex-row md:items-end md:gap-8">
+              <div className="flex max-w-[680px] min-w-0 flex-1 items-end gap-2">
+                <div
+                  role="group"
+                  aria-label="Chapters"
+                  className="grid flex-1 grid-cols-6 gap-2 md:gap-2.5"
+                >
+                  {CHAPTERS.map((c, i) => (
+                    <button
+                      key={c.year}
+                      type="button"
+                      aria-pressed={i === chapter}
+                      aria-label={`${c.year}, chapter ${i + 1} of ${CHAPTERS.length}`}
+                      onClick={() => setChapter(i)}
+                      className={`flex min-h-11 flex-col items-start justify-end gap-2.5 pb-1.5 text-left font-mono text-[12px] tracking-[0.04em] transition-colors md:text-[13px] ${
+                        i === chapter ? 'text-ink' : 'text-muted hover:text-ink'
+                      }`}
                     >
-                      {i === chapter && (
-                        <span
-                          className="anim-fill absolute inset-0 bg-ink"
-                          style={{
-                            animationPlayState: paused ? 'paused' : 'running',
-                          }}
-                          onAnimationEnd={next}
-                        />
-                      )}
-                      {i < chapter && (
-                        <span className="absolute inset-0 bg-muted" />
-                      )}
-                    </span>
-                  </button>
-                ))}
+                      <span>{c.year}</span>
+                      <span
+                        aria-hidden
+                        className="relative block h-0.5 w-full overflow-hidden rounded-full bg-line"
+                      >
+                        {i === chapter && (
+                          <span
+                            className="anim-fill absolute inset-0 bg-ink"
+                            style={{
+                              animationPlayState: paused ? 'paused' : 'running',
+                            }}
+                            onAnimationEnd={next}
+                          />
+                        )}
+                        {i < chapter && (
+                          <span className="absolute inset-0 bg-muted" />
+                        )}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStopped((s) => !s)}
+                  aria-label={stopped ? 'Play the story' : 'Pause the story'}
+                  className="flex size-11 flex-none items-center justify-center text-muted transition-colors hover:text-ink"
+                >
+                  {stopped ? <Play /> : <Pause />}
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setStopped((s) => !s)}
-                aria-label={stopped ? 'Play the story' : 'Pause the story'}
-                className="flex size-11 flex-none items-center justify-center text-muted transition-colors hover:text-ink"
-              >
-                {stopped ? <Play /> : <Pause />}
-              </button>
+              <NavMorph name="about">
+                <Link
+                  href="/about"
+                  transitionTypes={LANDING}
+                  className="group inline-flex min-h-11 flex-none items-center gap-2.5 self-start font-mono text-[13px] tracking-[0.03em] text-muted transition-colors hover:text-ink md:self-auto md:text-[14px]"
+                >
+                  <span className="relative block size-7 overflow-hidden rounded-[8px]">
+                    <Image
+                      src="/about/temitope.jpg"
+                      alt=""
+                      fill
+                      sizes="28px"
+                      className="object-cover object-top"
+                    />
+                  </span>
+                  More about me
+                  <ArrowRight
+                    size={14}
+                    className="transition-transform duration-300 ease-soft group-hover:translate-x-0.5"
+                  />
+                </Link>
+              </NavMorph>
             </div>
           </section>
 

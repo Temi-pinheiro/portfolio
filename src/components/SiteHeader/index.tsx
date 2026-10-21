@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { LANDING, NavMorph } from '../PageTransition';
 
 // The header on every page but the landing: the wordmark, and the landing's
-// three tiles shrunk to pills, each with a small visual. These stay still;
-// only the landing's tiles drift. Navigating from the landing, each tile
-// morphs into its pill, and back again (NavMorph).
+// three tiles shrunk to pills, each with a small visual, then About me, which
+// is the "More about me" link beside the landing's chapters. These stay still;
+// only the landing's tiles drift. Navigating from the landing, each tile (and
+// that link) morphs into its pill, and back again (NavMorph).
 
-type Page = 'mariposa' | 'projects' | 'articles';
+type Page = 'mariposa' | 'projects' | 'articles' | 'about';
 
 const PILLS: { page: Page; href: string; label: string; visual: React.ReactNode }[] = [
   {
@@ -48,6 +49,22 @@ const PILLS: { page: Page; href: string; label: string; visual: React.ReactNode 
       </span>
     ),
   },
+  {
+    page: 'about',
+    href: '/about',
+    label: 'About me',
+    visual: (
+      <span className='relative block size-8 overflow-hidden rounded-[9px]'>
+        <Image
+          src='/about/temitope.jpg'
+          alt=''
+          fill
+          sizes='32px'
+          className='object-cover object-top'
+        />
+      </span>
+    ),
+  },
 ];
 
 export const SiteHeader = ({ current }: { current?: Page }) => (
@@ -61,8 +78,10 @@ export const SiteHeader = ({ current }: { current?: Page }) => (
         Temitope Pinheiro
       </Link>
     </NavMorph>
-    <nav aria-label='Main'>
-      <ul className='flex flex-wrap gap-2 md:gap-2.5'>
+    {/* Four pills don't fit one row on a phone, so there they're a two by
+        two grid rather than three and a straggler. */}
+    <nav aria-label='Main' className='w-full sm:w-auto'>
+      <ul className='grid grid-cols-2 gap-2 sm:flex sm:flex-wrap md:gap-2.5'>
         {PILLS.map((pill) => {
           const active = pill.page === current;
           return (
@@ -71,7 +90,7 @@ export const SiteHeader = ({ current }: { current?: Page }) => (
                 <Link
                   href={pill.href}
                   aria-current={active ? 'page' : undefined}
-                  className={`group inline-flex h-11 items-center gap-2.5 rounded-[14px] px-4 text-[15px] transition-colors sm:py-1.5 sm:pr-4 sm:pl-1.5 md:text-[16px] ${
+                  className={`group flex h-11 items-center gap-2.5 rounded-[14px] px-4 text-[15px] transition-colors sm:inline-flex sm:py-1.5 sm:pr-4 sm:pl-1.5 md:text-[16px] ${
                     active ? 'bg-ink text-paper' : 'bg-tile text-ink hover:bg-tile-2'
                   }`}
                 >
