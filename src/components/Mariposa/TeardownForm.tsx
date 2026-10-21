@@ -11,10 +11,10 @@ type Values = {
   email: string;
   business: string;
   url: string;
-  problem: string;
+  goal: string;
 };
 
-const EMPTY: Values = { name: '', email: '', business: '', url: '', problem: '' };
+const EMPTY: Values = { name: '', email: '', business: '', url: '', goal: '' };
 
 const label = 'font-mono text-[12px] tracking-[0.1em] text-muted uppercase';
 const input =
@@ -26,7 +26,7 @@ const mailto = (values: Values) =>
   `mailto:${INBOX}?subject=${encodeURIComponent(
     `Teardown request${values.business ? `: ${values.business}` : ''}`
   )}&body=${encodeURIComponent(
-    `Name: ${values.name}\nBusiness: ${values.business}\nLink: ${values.url}\n\n${values.problem}`
+    `Name: ${values.name}\nBusiness: ${values.business}\nLink: ${values.url}\nWho it’s for, and what they should do first: ${values.goal}`
   )}`;
 
 // Where the ask goes without script, which the modal needs: the same email,
@@ -89,8 +89,8 @@ export const TeardownForm = ({
   teardown: Teardown;
   buttonClassName: string;
 }) => {
-  // ⌘/Ctrl+Enter sends from any field, the message box included, where Enter
-  // alone is a new line. requestSubmit runs the same checks as the button.
+  // ⌘/Ctrl+Enter sends from any field. requestSubmit runs the same checks as
+  // the button.
   const onKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key !== 'Enter' || !(event.metaKey || event.ctrlKey)) return;
     event.preventDefault();
@@ -192,16 +192,19 @@ export const TeardownForm = ({
                 className={input}
               />
             </label>
+            {/* Not "what's not working": the page says you can tell something's
+                off but not what. This is what the teardown needs instead, as
+                the audit's checkout asks it. */}
             <label className='block md:col-span-2'>
-              <span className={label}>What’s not working right now?</span>
-              <textarea
-                name='problem'
-                required
-                maxLength={2000}
-                rows={4}
-                placeholder='People sign up, then never come back.'
-                defaultValue={values.problem}
-                className={`${input} resize-y`}
+              <span className={label}>
+                Who’s it for, and what should they do first? (optional)
+              </span>
+              <input
+                name='goal'
+                maxLength={500}
+                placeholder='Freelancers; send their first invoice'
+                defaultValue={values.goal}
+                className={input}
               />
             </label>
           </div>

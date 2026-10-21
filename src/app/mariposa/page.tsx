@@ -4,7 +4,7 @@ import { PageTransition } from '~~/components/PageTransition';
 import { SiteHeader } from '~~/components/SiteHeader';
 
 const description =
-  'The Mariposa Program: a ten-part UI/UX process for web apps built fast with AI. It starts with a free teardown: send your link, and get back the three things I’d fix first within 24 hours.';
+  'For founders who built their app with AI tools and can tell it feels off. It starts with a free teardown: send your link, and get back the three things I’d fix first within 24 hours.';
 
 export const metadata: Metadata = {
   title: 'The Mariposa Program',
