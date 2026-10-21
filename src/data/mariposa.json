@@ -10,7 +10,7 @@
       "steps": [
         "The three things I’d fix first, marked on a screenshot of your site or app",
         "For each one: what’s wrong, why it costs you, and the fix",
-        "No call and no pitch. If it’s useful, you’ll know what the audit is like"
+        "No call needed. If it’s useful, you’ll know what the audit is like"
       ]
     },
     {
@@ -19,7 +19,7 @@
       "when": "Day 1",
       "in": [],
       "pain": "You can tell something’s off. You can’t tell what.",
-      "promise": "Everything that’s costing you users, ranked.",
+      "promise": "What’s costing you users, first visit to checkout.",
       "steps": [
         "I walk your key flows as a first-time visitor: first visit, sign-up, the core action, upgrade and checkout",
         "Desktop and mobile",
@@ -27,7 +27,7 @@
         "Quick wins you can ship the same day",
         "A part map: which of parts 02 to 07 you need",
         "Visitor tracking set up with you on day 1, in an account you own, so a baseline builds before anything changes",
-        "Delivered within 24 hours of getting your app details. At least 10 fixes worth making, or your money back"
+        "Delivered within 24 hours of getting your app details. At least 10 fixes you think are worth making, or your money back"
       ]
     },
     {
@@ -172,19 +172,20 @@
       "points": [
         "The three things I’d fix first, marked on your site or app",
         "What each one costs you, and how to fix it",
-        "No call and no pitch"
+        "No call needed. The fixes are yours to ship, whatever you decide next"
       ]
     },
     {
       "parts": "01",
       "name": "The Audit",
       "when": "Within 24 hours",
-      "promise": "Everything that’s costing you users, ranked.",
+      "promise": "What’s costing you users, first visit to checkout.",
       "points": [
-        "Your key flows, walked as a first-time visitor, on desktop and mobile",
-        "Every issue ranked by what it costs you",
-        "A map of which parts you need",
-        "At least 10 fixes worth making, or your money back"
+        "The teardown sees one screen. The audit signs up and walks every key flow, on desktop and mobile",
+        "Every issue ranked by what it costs you, with a fix you or your AI builder can make",
+        "Visitor tracking set up on day 1, so you can see where people drop off",
+        "Which build parts you need, if any",
+        "At least 10 fixes you think are worth making, or your money back"
       ]
     },
     {
@@ -193,7 +194,7 @@
       "when": "One week",
       "promise": "The parts the audit points at, rebuilt.",
       "points": [
-        "All six for your site or your app (the Augments), or one on its own. Book an Augment within 7 days of the audit and the audit comes off its price."
+        "In one week: the set for your site or your app, or any one part on its own. Book a full set within 7 days of your audit and the audit’s cost comes off."
       ],
       "build": true
     },

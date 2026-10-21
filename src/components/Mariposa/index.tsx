@@ -39,11 +39,11 @@ const guarantees = [
   },
   {
     title: 'Any stack',
-    body: 'Lovable, Bolt, Replit, v0, Cursor, Next.js, React, Webflow, Framer, WordPress. If it’s live, I can work on it.',
+    body: 'Lovable, Base44, Bolt, Replit, v0, Cursor, Next.js, React, Webflow, Framer, WordPress. If it’s live, I can work on it.',
   },
   {
     title: 'Two guarantees',
-    body: 'At least 10 fixes worth making in your audit, or a full refund. After a build, anything the re-audit finds still open, I fix for free.',
+    body: 'At least 10 fixes you think are worth making in your audit, or a full refund. After a build, anything the re-audit finds still open, I fix for free.',
   },
 ];
 
@@ -103,9 +103,10 @@ export const Mariposa = () => {
           />
           <FadeUp delay={0.35}>
             <p className='mt-9 max-w-[640px] text-[clamp(18px,1.5vw,21px)] leading-[1.6] text-muted'>
-              A UI/UX process for founders who built their web app with
-              Lovable, Bolt, Replit, v0 or Cursor, and can tell it feels off. It
-              starts with a free teardown: send me your link, and I’ll send back
+              For founders who built their app with Lovable, Base44, Bolt or
+              Replit and can tell it feels off. I go through it as a new visitor
+              would, find what makes people hesitate or leave, and fix it. It
+              starts free: send me your link, and within 24 hours I’ll send back
               the three things I’d fix first.
             </p>
           </FadeUp>
@@ -113,6 +114,12 @@ export const Mariposa = () => {
             <a ref={heroButton} {...requestLink} className={primaryButton}>
               Request a free teardown
             </a>
+            {/* Who's asking for the link. No link of its own: the page has one
+                ask. Inside what happened (the bio-copy-accuracy rule). */}
+            <p className='mt-6 max-w-[520px] text-[16px] leading-[1.55] text-muted'>
+              I’m Temitope. I’ve built product front ends since 2021, including
+              features at Lendsqr used by a million people.
+            </p>
           </FadeUp>
         </section>
 
@@ -134,7 +141,9 @@ export const Mariposa = () => {
               <WordReveal text='Case studies' className={sectionTitle} />
               <FadeUp delay={0.2}>
                 <p className='max-w-[520px] text-[18px] leading-[1.6] text-muted'>
-                  Real teardowns, shared with the founders’ permission.
+                  {cases.length === 1
+                    ? 'A real teardown, shared with the founder’s permission.'
+                    : 'Real teardowns, shared with the founders’ permission.'}
                 </p>
               </FadeUp>
             </div>
@@ -182,9 +191,8 @@ export const Mariposa = () => {
             />
             <FadeUp delay={0.25}>
               <p className='mt-6 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
-                Pick a time that suits you, and we’ll go through your app
-                together on a call: what’s working, what isn’t, and whether the
-                program is a fit.
+                Book 30 minutes. We’ll open your app together and go through
+                what’s working, what isn’t, and what I’d fix first.
               </p>
               <p className='mt-4 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
                 Prefer it in writing?{' '}
@@ -243,8 +251,9 @@ export const Mariposa = () => {
                     <Dialog.Description className='max-w-[560px] pb-8 text-[18px] leading-[1.6] text-muted'>
                       Send me your link. Within 24 hours I’ll send back the
                       three things I’d fix first, marked on a screenshot, with
-                      what each one costs you and how to fix it. No call and no
-                      pitch.
+                      what each one costs you and how to fix it. No call
+                      needed. If you want the rest of your app looked at, I’ll
+                      tell you what the audit covers and costs.
                     </Dialog.Description>
                   </motion.div>
                 )}

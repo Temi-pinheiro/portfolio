@@ -14,9 +14,11 @@ const LIMITS = {
   email: 254,
   business: 120,
   url: 500,
-  problem: 2000,
+  goal: 500,
 } as const;
 type Field = keyof typeof LIMITS;
+// Who the app is for, and what they should do first. The rest is required.
+const OPTIONAL: ReadonlySet<Field> = new Set(['goal']);
 
 const escapeHtml = (value: string) =>
   value.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -37,7 +39,9 @@ export async function POST(req: NextRequest) {
   const fields = {} as Record<Field, string>;
   for (const field of Object.keys(LIMITS) as Field[]) {
     const value = typeof body[field] === 'string' ? body[field].trim() : '';
-    if (!value || value.length > LIMITS[field]) return invalid(field);
+    if ((!value && !OPTIONAL.has(field)) || value.length > LIMITS[field]) {
+      return invalid(field);
+    }
     fields[field] = value;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) return invalid('email');
@@ -64,8 +68,10 @@ export async function POST(req: NextRequest) {
     ['Email', fields.email],
     ['Business', fields.business],
     ['Link', link.href],
-    ['What’s not working', fields.problem],
   ];
+  if (fields.goal) {
+    rows.push(['Who it’s for, and what they should do first', fields.goal]);
+  }
   const text = rows.map(([label, value]) => `${label}\n${value}`).join('\n\n');
   const html = rows
     .map(([label, value]) => {
@@ -99,7 +105,7 @@ export async function POST(req: NextRequest) {
             new Date().toISOString().slice(0, 10),
             fields.email,
             link.href,
-            fields.problem,
+            fields.goal,
           ].join('\n')
         )
         .digest('hex'),
