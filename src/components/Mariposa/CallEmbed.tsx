@@ -40,6 +40,9 @@ export const CallEmbed = () => {
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
       if (event.origin !== 'https://calendly.com') return;
+      // Its first message means the calendar is drawn. The frame's load event
+      // can come seconds later, once every script on Calendly's page is in.
+      setLoaded(true);
       const data = event.data as { event?: string; payload?: { height?: string } };
       if (data.event !== 'calendly.page_height') return;
       const next = parseInt(data.payload?.height ?? '', 10);
