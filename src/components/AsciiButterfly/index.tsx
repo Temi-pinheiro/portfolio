@@ -24,10 +24,12 @@ import {
 // `ground` is the content the canvas sits behind: the butterfly is fitted
 // above it, dipping into its top by DIP of its height and fading there, and
 // the pollen fades as it falls through it. It must share the canvas's
-// offsetParent.
+// offsetParent. Where that leaves under MIN_ROOM pixels (a short phone), the
+// butterfly would be too small to read as one, so it isn't drawn.
 
 const MAX_SPECKS = 160;
 const DIP = 0.3;
+const MIN_ROOM = 120;
 // Specks flutter by swapping between a low and a high mark in their cell, and
 // the larger ones glint.
 const FLUTTER = ['.', ',', "'", '`'];
@@ -80,6 +82,7 @@ export const AsciiButterfly = ({
     // Where the ground starts, and how far into it the butterfly may dip.
     let groundTop = Infinity;
     let dip = 0;
+    let fits = true;
     let font = '';
     let color = '';
     const grid: Grid = {
@@ -111,6 +114,7 @@ export const AsciiButterfly = ({
         dip = below.offsetHeight * DIP;
       }
       const room = Math.min(height, groundTop + dip);
+      fits = room >= MIN_ROOM;
       Object.assign(grid, fit(extent, width, room, 0.94, 0.56, 0.5));
       const size = Math.min(12, Math.max(8, Math.round(grid.unit / 14)));
       font = `600 ${size}px ${style.fontFamily}`;
@@ -172,7 +176,7 @@ export const AsciiButterfly = ({
     const draw = (t: number) => {
       ctx.clearRect(0, 0, width, height);
       const { cols, rows, cellW, cellH } = grid;
-      if (cols < 8 || rows < 6) return;
+      if (cols < 8 || rows < 6 || !fits) return;
       rasterize(model, poseAt(t, lean), grid);
 
       // Thin glyphs on dark paper need a higher floor to read.
@@ -233,7 +237,7 @@ export const AsciiButterfly = ({
     const loop = (time: number) => {
       frame = requestAnimationFrame(loop);
       // 30 frames a second is plenty for something this calm.
-      if (time - last < 33 || !width) return;
+      if (time - last < 33 || !width || !fits) return;
       if (last === -Infinity) lastFlap = poseAt(time / 1000).flap;
       // A hidden tab pauses rAF; don't release a backlog of pollen after it.
       const dt = Math.min(0.1, (time - last) / 1000);

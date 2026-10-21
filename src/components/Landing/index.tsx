@@ -149,11 +149,13 @@ export const Landing = ({
             {/* The mariposa floats over the story, behind it: the canvas covers
                 the column and reaches up beside the wordmark (72px: main's 24px
                 padding, the header's 33px line and 15px of the page's top
-                padding). It fits itself above the chapters, dipping a little
-                behind them, and its pollen falls behind the text. */}
+                padding). On a phone the header spans the width, so it reaches
+                only into main's padding. It fits itself above the chapters,
+                dipping a little behind them, and its pollen falls behind the
+                text. */}
             <AsciiButterfly
               ground={story}
-              className="anim-rise-y absolute inset-x-0 -top-[72px] hidden h-[calc(100%+72px)] w-full md:block"
+              className="anim-rise-y absolute inset-x-0 -top-6 h-[calc(100%+24px)] w-full md:-top-[72px] md:h-[calc(100%+72px)]"
               style={{ animationDelay: '400ms' }}
             />
             {/* All six chapters share one grid cell, so the block keeps the
