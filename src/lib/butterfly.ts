@@ -18,6 +18,9 @@ const WING = 1;
 const ANTENNA = 2;
 // The wing's patterned margin, where the pollen sheds from.
 const EDGE = 3;
+// Each sample's last value is its kind; the Mariposa page's figure poses the
+// wings itself, so it needs to tell them apart.
+export const KIND = { BODY, WING, ANTENNA, EDGE } as const;
 
 function normalize(x: number, y: number, z: number) {
   const l = Math.hypot(x, y, z);

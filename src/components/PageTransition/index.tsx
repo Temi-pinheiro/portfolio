@@ -23,7 +23,7 @@ export const NavMorph = ({
   name,
   children,
 }: {
-  name: 'mariposa' | 'projects' | 'articles' | 'wordmark';
+  name: 'mariposa' | 'projects' | 'articles' | 'about' | 'wordmark';
   children: React.ReactNode;
 }) => (
   <ViewTransition

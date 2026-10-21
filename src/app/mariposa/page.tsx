@@ -4,7 +4,7 @@ import { PageTransition } from '~~/components/PageTransition';
 import { SiteHeader } from '~~/components/SiteHeader';
 
 const description =
-  'The Mariposa Program: a ten-part UI/UX process for web apps built fast with AI. A free teardown, a 24-hour audit, a one-week build, a re-audit and monthly care. Buy the parts you need, or all of them.';
+  'The Mariposa Program: a ten-part UI/UX process for web apps built fast with AI. It starts with a free teardown: send your link, and get back the three things I’d fix first within 24 hours.';
 
 export const metadata: Metadata = {
   title: 'The Mariposa Program',
@@ -20,6 +20,11 @@ export const metadata: Metadata = {
 export default function MariposaPage() {
   return (
     <>
+      {/* Motion server-renders revealed elements hidden; without JavaScript
+          nothing would show them. */}
+      <noscript>
+        <style>{'[data-reveal]{opacity:1!important;transform:none!important}'}</style>
+      </noscript>
       <SiteHeader current='mariposa' />
       <PageTransition>
         <Mariposa />

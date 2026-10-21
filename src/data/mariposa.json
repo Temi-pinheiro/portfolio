@@ -4,9 +4,8 @@
       "number": "00",
       "name": "The Teardown",
       "when": "Before you buy",
-      "price": "Free",
       "in": [],
-      "pain": "You don’t know yet if an audit is worth $500.",
+      "pain": "You don’t know yet if an audit is worth paying for.",
       "promise": "Three fixes, free, on one screenshot.",
       "steps": [
         "The three things I’d fix first, marked on a screenshot of your site or app",
@@ -18,7 +17,6 @@
       "number": "01",
       "name": "The Audit",
       "when": "Day 1",
-      "price": "$500",
       "in": [],
       "pain": "You can tell something’s off. You can’t tell what.",
       "promise": "Everything that’s costing you users, ranked.",
@@ -36,7 +34,6 @@
       "number": "02",
       "name": "The First Screen",
       "when": "Build week",
-      "price": "$900 alone",
       "in": [
         "Website Augment"
       ],
@@ -53,7 +50,6 @@
       "number": "03",
       "name": "The Way In",
       "when": "Build week",
-      "price": "$900 alone",
       "in": [
         "App Augment"
       ],
@@ -70,7 +66,6 @@
       "number": "04",
       "name": "The Core Action",
       "when": "Build week",
-      "price": "$900 alone",
       "in": [
         "App Augment"
       ],
@@ -87,7 +82,6 @@
       "number": "05",
       "name": "The Money Page",
       "when": "Build week",
-      "price": "$900 alone",
       "in": [
         "Website Augment",
         "App Augment"
@@ -106,7 +100,6 @@
       "number": "06",
       "name": "The System",
       "when": "Build week",
-      "price": "$900 alone",
       "in": [
         "Website Augment",
         "App Augment"
@@ -124,7 +117,6 @@
       "number": "07",
       "name": "The Edges",
       "when": "Build week",
-      "price": "$900 alone",
       "in": [
         "Website Augment",
         "App Augment"
@@ -142,7 +134,6 @@
       "number": "08",
       "name": "The Re-Audit",
       "when": "After the build",
-      "price": "Included",
       "in": [
         "Website Augment",
         "App Augment"
@@ -161,7 +152,6 @@
       "number": "09",
       "name": "The Keep",
       "when": "Every month",
-      "price": "$600/mo",
       "in": [],
       "pain": "You ship a new feature and it breaks the look.",
       "promise": "It stays good as you ship.",
@@ -173,66 +163,119 @@
       ]
     }
   ],
-  "offers": [
+  "path": [
     {
-      "name": "The Audit",
-      "tag": "Start here",
-      "price": "$500",
-      "parts": "Part 01",
-      "detail": "Delivered within 24 hours, with visitor tracking set up on day 1. At least 10 fixes worth making, or your money back.",
-      "cta": "Get the audit",
-      "href": "https://whop.com/temipinheiro/app-audit-pass/",
-      "primary": true
-    },
-    {
-      "name": "Website Augment",
-      "tag": "The whole program, for your site",
-      "price": "$2,500",
-      "parts": "Parts 02 · 05 · 06 · 07 · 08",
-      "detail": "Your marketing site or landing page, rebuilt in one week, then re-audited with a before/after scorecard.",
-      "cta": "Book the website build",
-      "href": "https://whop.com/temipinheiro/website-augment/",
-      "primary": false
-    },
-    {
-      "name": "App Augment",
-      "tag": "The whole program, for your app",
-      "price": "$3,000",
-      "parts": "Parts 03 · 04 · 05 · 06 · 07 · 08",
-      "detail": "Your web app’s front end, rebuilt in one week, then re-audited with a before/after scorecard. Two payments of $1,500.",
-      "cta": "Book the app build",
-      "href": "https://whop.com/temipinheiro/app-augment/",
-      "primary": false
-    },
-    {
-      "name": "One part",
-      "tag": "When the audit points at one thing",
-      "price": "$900",
-      "parts": "Any one of parts 02 to 07",
-      "detail": "A single surface, fixed in two to three days. The audit credit doesn’t apply.",
-      "cta": "Ask for a part",
-      "href": "https://whop.com/temipinheiro/one-part/",
-      "primary": false
-    },
-    {
-      "name": "The Keep",
-      "tag": "After any build",
-      "price": "$600/mo",
-      "parts": "Part 09",
-      "detail": "New screens reviewed before they ship, fixes as they come up, and a monthly audit with a visitor scorecard.",
-      "cta": "Ask about The Keep",
-      "href": "https://whop.com/temipinheiro/mariposa-keep/",
-      "primary": false
-    },
-    {
+      "parts": "00",
       "name": "The Teardown",
-      "tag": "Not ready yet?",
-      "price": "Free",
-      "parts": "Part 00",
-      "detail": "Send me your link and I’ll send back the three things I’d fix first.",
-      "cta": "Request a teardown",
-      "href": "https://whop.com/temipinheiro/free-teardown/",
-      "primary": false
+      "when": "Free · within 24 hours",
+      "promise": "Three fixes, free, on one screenshot.",
+      "points": [
+        "The three things I’d fix first, marked on your site or app",
+        "What each one costs you, and how to fix it",
+        "No call and no pitch"
+      ]
+    },
+    {
+      "parts": "01",
+      "name": "The Audit",
+      "when": "Within 24 hours",
+      "promise": "Everything that’s costing you users, ranked.",
+      "points": [
+        "Your key flows, walked as a first-time visitor, on desktop and mobile",
+        "Every issue ranked by what it costs you",
+        "A map of which parts you need",
+        "At least 10 fixes worth making, or your money back"
+      ]
+    },
+    {
+      "parts": "02–07",
+      "name": "The Build",
+      "when": "One week",
+      "promise": "The parts the audit points at, rebuilt.",
+      "points": [
+        "All six for your site or your app (the Augments), or one on its own. Book an Augment within 7 days of the audit and the audit comes off its price."
+      ],
+      "build": true
+    },
+    {
+      "parts": "08",
+      "name": "The Re-Audit",
+      "when": "After the build",
+      "promise": "Proof it’s fixed.",
+      "points": [
+        "The audit again, on what shipped",
+        "Every finding marked fixed, with a before and after",
+        "How many visitors make it through each key flow, before and after",
+        "Anything still open, I fix for free"
+      ]
+    },
+    {
+      "parts": "09",
+      "name": "The Keep",
+      "when": "Every month, if you want it",
+      "promise": "It stays good as you ship.",
+      "points": [
+        "New screens reviewed before they go live",
+        "UI fixes as they come up",
+        "A short audit and a visitor scorecard every month"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "name": "WellNest",
+      "url": "https://wellnest.services",
+      "summary": "A health tracker for people living with chronic illness, built in Base44. Its founder asked for feedback on Reddit, so I sent a free teardown.",
+      "facts": [
+        {
+          "label": "Found",
+          "value": "Five fixes"
+        },
+        {
+          "label": "Shipped",
+          "value": "All five"
+        },
+        {
+          "label": "Live",
+          "value": "Within 24 hours"
+        },
+        {
+          "label": "Cost",
+          "value": "Free teardown"
+        }
+      ],
+      "before": {
+        "src": "/cases/wellnest-before.jpg",
+        "alt": "WellNest’s homepage before: floating cards cover the paragraph, a waitlist sits under the main button, and two “FREE” pills sit beside the price. Each is marked with a red number.",
+        "caption": "Before · the teardown, numbered to match the fixes below"
+      },
+      "after": {
+        "src": "/cases/wellnest-after.jpg",
+        "alt": "WellNest’s homepage after: the floating cards sit clear of the text, one line explains the price, and the trial is the only sign-up.",
+        "caption": "After · the same screen, once the fixes were live"
+      },
+      "fixes": [
+        {
+          "found": "On a laptop, the floating preview cards landed on the headline and the paragraph.",
+          "shipped": "The cards moved to the sides, clear of the text."
+        },
+        {
+          "found": "A waitlist for a feature that wasn’t out yet sat right under the main button.",
+          "shipped": "The free trial is the only sign-up on the first screen."
+        },
+        {
+          "found": "Two “FREE” pills beside “From AU$4.99/month” left people guessing what was free.",
+          "shipped": "One plain line: free for 7 days, then AU$4.99 a month."
+        },
+        {
+          "found": "The link for people managing more than one condition was dark green on near-black, at 1.9:1 contrast.",
+          "shipped": "Light text at 14:1. Readable text needs 4.5:1."
+        },
+        {
+          "found": "In the free preview, the pain slider started at 5 but said “Not selected”, so tapping 5 did nothing.",
+          "shipped": "The first tap counts, 5 included."
+        }
+      ]
     }
   ]
 }
