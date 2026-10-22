@@ -5,10 +5,9 @@ import { type FormEvent, useState } from 'react';
 import { Check } from '../icons';
 import { EASE_OUT_EXPO } from '../motion/Reveal';
 
-// The mailing list beside the free chapter: an email, and nothing else. The
-// list is double opt-in, so the confirmation here says to look for Sendbyte's
-// email. The motion is the Bord waitlist form's, the house pattern for any
-// form with a confirmation.
+// The mailing list beside the free chapter: an email, and nothing else. It's
+// single opt-in, so signing up is the whole step. The motion is the Bord
+// waitlist form's, the house pattern for any form with a confirmation.
 export const ListForm = ({ buttonClassName }: { buttonClassName: string }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
@@ -51,10 +50,10 @@ export const ListForm = ({ buttonClassName }: { buttonClassName: string }) => {
             <Check size={20} />
           </motion.span>
           <div>
-            <p className='font-display text-[24px] leading-[1.2]'>Check your inbox.</p>
+            <p className='font-display text-[24px] leading-[1.2]'>You’re on the list.</p>
             <p className='mt-2 text-[17px] leading-[1.6] text-muted'>
-              Confirm the email that just went to{' '}
-              <span className='text-ink'>{email}</span>, and you’re on the list.{' '}
+              I’ll write to <span className='text-ink'>{email}</span> when
+              there’s a new edition.{' '}
               <button
                 type='button'
                 onClick={() => setStatus('idle')}
@@ -117,8 +116,8 @@ export const ListForm = ({ buttonClassName }: { buttonClassName: string }) => {
             )}
           </AnimatePresence>
           <p className='mt-4 text-[15px] leading-[1.55] text-muted'>
-            You’ll get one email first, to confirm. After that, I write when
-            there’s a new edition.
+            I write when there’s a new edition, and every email has an
+            unsubscribe link.
           </p>
         </motion.form>
       )}
