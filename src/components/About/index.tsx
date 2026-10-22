@@ -9,7 +9,9 @@ import { FadeUp, WordReveal } from '../motion/Reveal';
 
 // The longer story behind the landing's chapters: who I am beside my photo,
 // then each chapter told in full, then the trip to Bali that ties them
-// together and leads to the one next step, The Mariposa Program. The facts
+// together. Bali's gap has two halves: knowing how to use AI well, which my
+// guide The Quiet Edge covers, and taste, which leads to the one next step,
+// The Mariposa Program. The facts
 // come from the user's résumé (September 2024) and the old site's
 // experiences, as corrected by the user.
 
@@ -199,6 +201,48 @@ export const About = () => (
               feels finished.
             </p>
           </blockquote>
+        </FadeUp>
+        {/* The first half of the gap: the guide. */}
+        <FadeUp className='mt-12 md:mt-16'>
+          <p className='max-w-[680px] text-[19px] leading-[1.65]'>
+            The first half of that gap can be taught, so I wrote a guide to
+            it: The Quiet Edge, for people who use AI at work and suspect
+            they’re getting a fraction of what it can do.
+          </p>
+        </FadeUp>
+        <FadeUp className='mt-8'>
+          <Link
+            href='/quiet-edge'
+            className='group flex max-w-[680px] items-center gap-5 rounded-[22px] border border-line p-4 transition-[border-color,translate] duration-500 ease-soft hover:-translate-y-1 hover:border-muted md:gap-7 md:p-5'
+          >
+            <span className='relative aspect-[612/792] w-[84px] flex-none overflow-hidden rounded-[8px] border border-white/10 shadow-[0_16px_36px_-18px_rgb(0_0_0/0.55)] md:w-[104px]'>
+              <Image
+                src='/quiet-edge/cover.jpg'
+                alt=''
+                fill
+                sizes='104px'
+                className='object-cover'
+              />
+            </span>
+            <span className='min-w-0'>
+              <span className='block font-mono text-[12px] tracking-[0.1em] text-muted uppercase'>
+                A guide · $27
+              </span>
+              <span className='mt-2 block font-display text-[clamp(26px,2.4vw,34px)] leading-[1.1]'>
+                The Quiet Edge
+              </span>
+              <span className='mt-1.5 block text-[16px] leading-[1.5] text-muted'>
+                How smart people are actually using AI at work
+              </span>
+              <span className='mt-3 flex items-center gap-2 font-mono text-[13px] tracking-[0.03em]'>
+                See what’s inside
+                <ArrowRight
+                  size={16}
+                  className='transition-transform duration-500 ease-soft group-hover:translate-x-1'
+                />
+              </span>
+            </span>
+          </Link>
         </FadeUp>
         <FadeUp className='mt-12 md:mt-16'>
           <p className='max-w-[680px] text-[19px] leading-[1.65]'>
