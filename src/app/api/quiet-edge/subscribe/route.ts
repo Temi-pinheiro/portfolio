@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // The Quiet Edge mailing list, for news of new editions: the "Temi Pinheiro"
-// brand and its "The Quiet Edge" list on Sendbyte. The list is double opt-in,
-// so Sendbyte emails a confirmation and nobody is mailed before they click it.
-// That's also what makes it safe to accept any address here.
+// brand's "The Quiet Edge: new editions" list on Sendbyte. It's single
+// opt-in, so people are on it as soon as they sign up. The first list was
+// double opt-in, but Sendbyte never sent its confirmation email to people
+// added through the API, so they all sat unconfirmed (the user's call,
+// 2026-10-22). Anyone can put any address here; every campaign carries
+// Sendbyte's unsubscribe link, and the honeypot keeps the bots out.
 const LIST =
-  'https://api.sendbyte.africa/v1/brands/57e33839-04b9-4fa0-a076-4da7fee55def/lists/277e3e48-721c-4549-82e8-b073fc419d71/subscribers';
+  'https://api.sendbyte.africa/v1/brands/57e33839-04b9-4fa0-a076-4da7fee55def/lists/491eff85-c9b1-4154-8dfd-542357e326da/subscribers';
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
