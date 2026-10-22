@@ -5,6 +5,7 @@ import posthog from 'posthog-js';
 // an email. PostHog only runs on temipinheiro.com (instrumentation-client.ts),
 // so anywhere else these do nothing.
 export type AnalyticsEvent =
+  | 'teardown_form_opened'
   | 'teardown_requested'
   | 'call_booked'
   | 'guide_checkout_opened'
