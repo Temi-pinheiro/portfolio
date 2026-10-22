@@ -4,6 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import { type MouseEvent, useEffect, useRef, useState } from 'react';
 import data from '~~/data/mariposa.json';
+import { track } from '~~/lib/analytics';
 import {
   EASE_OUT_EXPO,
   FadeUp,
@@ -59,6 +60,7 @@ export const Mariposa = () => {
   const opener = useRef<HTMLElement | null>(null);
   const request = (from: HTMLElement | null) => {
     opener.current = from;
+    track('teardown_form_opened');
     setRequesting(true);
   };
   const requestLink = {
