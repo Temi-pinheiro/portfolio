@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { FormEvent, KeyboardEvent, useState } from 'react';
+import { track } from '~~/lib/analytics';
 import { EMAIL as INBOX } from '~~/lib/site';
 import { Check } from '../icons';
 import { EASE_OUT_EXPO } from '../motion/Reveal';
@@ -66,7 +67,10 @@ export const useTeardown = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...next, _gotcha: form.get('_gotcha') }),
       });
-      if (res.ok) setBy(replyBy());
+      if (res.ok) {
+        setBy(replyBy());
+        track('teardown_requested');
+      }
       setStatus(res.ok ? 'sent' : 'failed');
     } catch {
       setStatus('failed');
@@ -121,7 +125,7 @@ export const TeardownForm = ({
           </p>
           <p className='mt-4 text-[18px] leading-[1.6] text-muted'>
             Your teardown will be in{' '}
-            <span className='text-ink'>{values.email}</span> by{' '}
+            <span className='ph-no-capture text-ink'>{values.email}</span> by{' '}
             <span className='text-ink'>{by}</span>, from {INBOX}. If it’s not
             there, check spam.
           </p>

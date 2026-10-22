@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useSyncExternalStore } from 'react';
+import { track } from '~~/lib/analytics';
 import { CALENDLY_URL, EMAIL } from '~~/lib/site';
 
 // Calendly's inline embed as a plain iframe rather than its widget script: the
@@ -44,6 +45,7 @@ export const CallEmbed = () => {
       // can come seconds later, once every script on Calendly's page is in.
       setLoaded(true);
       const data = event.data as { event?: string; payload?: { height?: string } };
+      if (data.event === 'calendly.event_scheduled') track('call_booked');
       if (data.event !== 'calendly.page_height') return;
       const next = parseInt(data.payload?.height ?? '', 10);
       if (next > 0) setHeight(next);

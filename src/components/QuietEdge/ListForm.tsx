@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { type FormEvent, useState } from 'react';
+import { track } from '~~/lib/analytics';
 import { Check } from '../icons';
 import { EASE_OUT_EXPO } from '../motion/Reveal';
 
@@ -24,6 +25,7 @@ export const ListForm = ({ buttonClassName }: { buttonClassName: string }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: value, _gotcha: form.get('_gotcha') }),
       });
+      if (res.ok) track('list_joined');
       setStatus(res.ok ? 'sent' : 'failed');
     } catch {
       setStatus('failed');
@@ -52,7 +54,7 @@ export const ListForm = ({ buttonClassName }: { buttonClassName: string }) => {
           <div>
             <p className='font-display text-[24px] leading-[1.2]'>You’re on the list.</p>
             <p className='mt-2 text-[17px] leading-[1.6] text-muted'>
-              I’ll write to <span className='text-ink'>{email}</span> when
+              I’ll write to <span className='ph-no-capture text-ink'>{email}</span> when
               there’s a new edition.{' '}
               <button
                 type='button'

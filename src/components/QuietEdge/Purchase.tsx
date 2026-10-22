@@ -4,6 +4,7 @@ import { loadWhop } from '@whop/elements';
 import { Checkout, CheckoutElement, WhopElements } from '@whop/elements-react';
 import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
+import { track } from '~~/lib/analytics';
 import { QUIET_EDGE } from '~~/lib/quietEdge';
 import { EMAIL } from '~~/lib/site';
 import { ArrowRight, Check } from '../icons';
@@ -51,6 +52,7 @@ export const usePurchase = () => {
       const data = await res?.json().catch(() => null);
       last = data?.state ?? 'unavailable';
       if (last === 'paid') {
+        track('guide_purchased');
         try {
           sessionStorage.removeItem(STORED_PAYMENT);
         } catch {}
@@ -77,6 +79,7 @@ export const usePurchase = () => {
 
   // Opening it again after a problem starts a fresh checkout.
   const start = useCallback(() => {
+    track('guide_checkout_opened');
     setPurchase((current) => (current.step === 'problem' ? { step: 'checkout' } : current));
     setOpen(true);
   }, []);
@@ -174,7 +177,7 @@ export const PurchaseBody = ({
           have started. If it didn’t, use the button.{' '}
           {purchase.email ? (
             <>
-              The link is also in <span className='text-ink'>{purchase.email}</span>,
+              The link is also in <span className='ph-no-capture text-ink'>{purchase.email}</span>,
               and it gets you every new edition too.
             </>
           ) : (

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inconsolata, Newsreader, Playfair_Display } from 'next/font/google';
+import { CookieBanner } from '~~/components/CookieBanner';
 import { Navigated } from '~~/components/Navigated';
 import './globals.css';
 
@@ -144,6 +145,7 @@ export default function RootLayout({
       <body>
         <Navigated />
         {children}
+        <CookieBanner />
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
