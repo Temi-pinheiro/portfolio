@@ -5,6 +5,7 @@ import { MotionConfig } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { type MouseEvent, useEffect, useRef } from 'react';
+import { track } from '~~/lib/analytics';
 import { isPaymentId, QUIET_EDGE } from '~~/lib/quietEdge';
 import { ArrowRight } from '../icons';
 import { ModalContent, ModalHeader } from '../Mariposa/Modal';
@@ -288,6 +289,7 @@ export const QuietEdge = () => {
               <a
                 href={QUIET_EDGE.chapterOne}
                 download='The Quiet Edge - Chapter 1.pdf'
+                onClick={() => track('chapter_one_downloaded')}
                 className={`mt-8 ${secondaryButton}`}
               >
                 Download Chapter 1
