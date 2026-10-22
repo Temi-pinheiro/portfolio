@@ -12,9 +12,9 @@ import posthog from 'posthog-js';
 // (my own visits); ?posthog=on undoes it.
 
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
-// The managed reverse proxy once it's set up (so ad blockers don't drop
-// events), PostHog itself until then.
-const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com';
+// PostHog's managed reverse proxy on my domain (a CNAME to its US proxy), so
+// ad blockers don't drop the events.
+const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://e.temipinheiro.com';
 const LIVE = new Set(['temipinheiro.com', 'www.temipinheiro.com']);
 const OFF = 'posthog-off';
 
@@ -33,7 +33,8 @@ if (token && LIVE.has(location.hostname) && !switchedOff()) {
   posthog.init(token, {
     api_host: host,
     ui_host: 'https://us.posthog.com',
-    defaults: '2026-08-30',
+    // The date in the project's own snippet (Project settings → web snippet).
+    defaults: '2026-05-30',
     cookieless_mode: 'on_reject',
     session_recording: {
       // Never record network traffic: the purchase claim's reply carries the
