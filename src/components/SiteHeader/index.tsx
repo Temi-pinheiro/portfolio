@@ -60,7 +60,7 @@ const PILLS: { page: Page; href: string; label: string; visual: React.ReactNode 
           alt=''
           fill
           sizes='32px'
-          className='object-cover object-top'
+          className='object-cover object-[50%_82%]'
         />
       </span>
     ),

@@ -114,7 +114,9 @@ export const About = () => (
               fill
               preload
               sizes='(min-width: 768px) 360px, (min-width: 640px) 260px, 180px'
-              className='object-cover'
+              // The photo is tall; the frame keeps its lower part, as the
+              // original 377×400 crop did.
+              className='object-cover object-bottom'
             />
           </div>
         </FadeUp>

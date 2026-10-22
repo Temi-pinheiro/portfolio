@@ -275,7 +275,7 @@ export const Landing = ({
                       alt=""
                       fill
                       sizes="28px"
-                      className="object-cover object-top"
+                      className="object-cover object-[50%_82%]"
                     />
                   </span>
                   More about me
