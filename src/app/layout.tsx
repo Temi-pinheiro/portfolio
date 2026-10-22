@@ -61,6 +61,21 @@ export const metadata: Metadata = {
     title,
     description,
     locale: 'en_US',
+    // The landing's butterfly flapping: two wingbeats (6.4s) that loop,
+    // rendered from lib/butterfly at the image's size. Where a platform plays
+    // og:video it shows this; everywhere else shows the image. Only the home
+    // page (and the 404) inherit it: every other page sets its own openGraph.
+    // Absolute, because Next resolves images against metadataBase but not
+    // videos.
+    videos: [
+      {
+        url: `${siteUrl}/og/butterfly.mp4`,
+        secureUrl: `${siteUrl}/og/butterfly.mp4`,
+        type: 'video/mp4',
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
