@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: '/projects' },
   openGraph: {
-    title: 'Projects | Temitope Pinheiro',
+    title: 'Projects | Temi Pinheiro',
     description,
     url: 'https://temipinheiro.com/projects',
   },

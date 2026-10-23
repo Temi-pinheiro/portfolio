@@ -11,6 +11,25 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/articles/**': ['./src/content/articles/**/*', './src/assets/fonts/*.ttf'],
   },
+  async redirects() {
+    return [
+      // The Netlify address served a full copy of the site. Deploy Previews
+      // live on other hosts (deploy-preview-N--…), so they're untouched.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'melodious-babka-ea0c89.netlify.app' }],
+        destination: 'https://temipinheiro.com/:path*',
+        permanent: true,
+      },
+      // The v3 site served the résumé here until 2026-10-19; old links and
+      // CVs still point at it. The archive keeps it.
+      {
+        source: '/resume.pdf',
+        destination: 'https://archive.temipinheiro.com/resume.pdf',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

@@ -110,14 +110,17 @@ export const Landing = () => {
     <PageTransition>
       <div className="flex min-h-dvh flex-col px-5 pt-5 pb-5 md:h-dvh md:min-h-[640px] md:overflow-hidden md:px-10 md:pt-7 md:pb-8">
         <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-          <NavMorph name="wordmark">
-            <Link
-              href="/"
-              className="font-display text-[19px] tracking-[-0.01em] md:text-[22px]"
-            >
-              Temitope Pinheiro
-            </Link>
-          </NavMorph>
+          {/* The home page's one heading: the name people search for. */}
+          <h1>
+            <NavMorph name="wordmark">
+              <Link
+                href="/"
+                className="font-display text-[19px] tracking-[-0.01em] md:text-[22px]"
+              >
+                Temitope Pinheiro
+              </Link>
+            </NavMorph>
+          </h1>
           <div className="flex items-center gap-5 font-mono text-[12px] tracking-[0.04em] text-muted md:text-[13px]">
             <span className="tabular-nums">Bali {time}</span>
             <span aria-hidden className="hidden h-3.5 w-px bg-line md:block" />
@@ -333,6 +336,9 @@ export const Landing = () => {
               </NavMorph>
             </div>
 
+            {/* The guide's own black, with its cover tucked in at the top right
+                and cut off by the tile's bottom edge. No NavMorph: the inner
+                pages have no pill for it. */}
             <div
               className="anim-rise-x flex h-[112px] basis-0 transition-[flex-grow] duration-700 ease-soft md:h-auto md:min-h-0"
               style={{ flexGrow: grow('edge'), animationDelay: '250ms' }}
@@ -389,9 +395,6 @@ export const Landing = () => {
             <div
               className="anim-rise-x flex h-[112px] basis-0 transition-[flex-grow] duration-700 ease-soft md:h-auto md:min-h-0"
               style={{ flexGrow: grow('projects'), animationDelay: '350ms' }}
-            {/* The guide's own black, with its cover tucked in at the top right
-                and cut off by the tile's bottom edge. No NavMorph: the inner
-                pages have no pill for it. */}
             >
               <NavMorph name="projects">
                 <Link
@@ -438,12 +441,12 @@ export const Landing = () => {
               </NavMorph>
             </div>
 
-            <div
-              className="anim-rise-x hidden flex-none md:block"
-              style={{ animationDelay: '450ms' }}
             {/* The smallest way in, where the old site's link was: the same
                 height (the Projects screenshot's sizing counts on it), and the
                 Articles pill's visual, so it morphs into that pill. */}
+            <div
+              className="anim-rise-x hidden flex-none md:block"
+              style={{ animationDelay: '450ms' }}
             >
               <NavMorph name="articles">
                 <Link
@@ -459,14 +462,14 @@ export const Landing = () => {
                     <span className="h-0.5 rounded-full bg-muted" />
                     <span className="h-0.5 w-3/5 rounded-full bg-muted" />
                   </span>
-                </Link>
-              </NavMorph>
-            </div>
                   Articles
                   <ArrowRight
                     size={14}
                     className="ml-auto text-muted transition-transform duration-300 ease-soft group-hover:translate-x-0.5"
                   />
+                </Link>
+              </NavMorph>
+            </div>
           </nav>
         </main>
 

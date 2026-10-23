@@ -133,16 +133,23 @@ export const QuietEdge = () => {
             <FadeUp>
               <p className={eyebrow}>A guide by Temitope Pinheiro</p>
             </FadeUp>
-            <WordReveal
-              as='h1'
-              text='The Quiet Edge'
-              className='mt-5 font-display text-[clamp(52px,7vw,112px)] leading-[1] tracking-[-0.03em]'
-            />
-            <FadeUp delay={0.25}>
-              <p className='mt-5 max-w-[720px] font-display text-[clamp(24px,2.4vw,36px)] leading-[1.2] tracking-[-0.01em] text-muted italic'>
+            {/* The subtitle is part of the heading: the name alone is shared
+                with other things people search for. */}
+            <h1>
+              <WordReveal
+                as='span'
+                text='The Quiet Edge'
+                className='mt-5 block font-display text-[clamp(52px,7vw,112px)] leading-[1] tracking-[-0.03em]'
+              />
+              <span className='sr-only'>: </span>
+              <FadeUp
+                as='span'
+                delay={0.25}
+                className='mt-5 block max-w-[720px] font-display text-[clamp(24px,2.4vw,36px)] leading-[1.2] tracking-[-0.01em] text-muted italic'
+              >
                 How smart people are actually using AI at work
-              </p>
-            </FadeUp>
+              </FadeUp>
+            </h1>
             <FadeUp delay={0.4}>
               <p className='mt-9 max-w-[620px] text-[clamp(18px,1.5vw,21px)] leading-[1.6]'>
                 You already use ChatGPT, Claude or Gemini a few times a week,

@@ -11,8 +11,11 @@ export const metadata: Metadata = {
   title: 'Articles',
   description,
   alternates: { canonical: '/articles' },
+  // Out of search until the first piece is published: an empty list has
+  // nothing to rank for (the 2026-10-23 search audit). The sitemap skips it too.
+  ...(getArticles().length === 0 && { robots: { index: false, follow: true } }),
   openGraph: {
-    title: 'Articles | Temitope Pinheiro',
+    title: 'Articles | Temi Pinheiro',
     description,
     url: 'https://temipinheiro.com/articles',
   },

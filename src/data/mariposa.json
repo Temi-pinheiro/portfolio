@@ -225,6 +225,7 @@
   "cases": [
     {
       "name": "WellNest",
+      "title": "WellNest: a free UX teardown of a Base44 app",
       "url": "https://wellnest.services",
       "summary": "A health tracker for people living with chronic illness, built in Base44. Its founder asked for feedback on Reddit, so I sent a free teardown.",
       "facts": [
