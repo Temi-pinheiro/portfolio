@@ -4,9 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState, useSyncExternalStore } from 'react';
 import mariposa from '~~/data/mariposa.json';
-import { ARCHIVE_URL, SOCIALS } from '~~/lib/site';
+import { QUIET_EDGE } from '~~/lib/quietEdge';
+import { SOCIALS } from '~~/lib/site';
 import { AsciiButterfly } from '../AsciiButterfly';
-import { ArrowRight, ArrowUpRight, Pause, Play } from '../icons';
+import { ArrowRight, Pause, Play } from '../icons';
 import { LANDING, NavMorph, PageTransition } from '../PageTransition';
 
 // Landing B from the redesign canvas: the story told one chapter at a time,
@@ -64,11 +65,11 @@ const COVERS = [
   { src: '/projects/portfolio-v3.jpg', delay: '-4s' },
 ];
 
-type TileKey = 'work' | 'projects' | 'articles';
+type TileKey = 'work' | 'edge' | 'projects';
 const BASE_GROW: Record<TileKey, number> = {
   work: 1.3,
-  projects: 1.3,
-  articles: 0.9,
+  edge: 1.3,
+  projects: 1.1,
 };
 
 const baliTime = new Intl.DateTimeFormat('en-GB', {
@@ -81,11 +82,7 @@ const subscribeClock = (onChange: () => void) => {
   return () => clearInterval(id);
 };
 
-export const Landing = ({
-  latest,
-}: {
-  latest?: { title: string; format: string };
-}) => {
+export const Landing = () => {
   const [chapter, setChapter] = useState(0);
   const [hovering, setHovering] = useState(false);
   const [stopped, setStopped] = useState(false);
@@ -338,7 +335,63 @@ export const Landing = ({
 
             <div
               className="anim-rise-x flex h-[112px] basis-0 transition-[flex-grow] duration-700 ease-soft md:h-auto md:min-h-0"
-              style={{ flexGrow: grow('projects'), animationDelay: '250ms' }}
+              style={{ flexGrow: grow('edge'), animationDelay: '250ms' }}
+            >
+              <Link
+                href="/quiet-edge"
+                transitionTypes={LANDING}
+                {...tileEvents('edge')}
+                className="edge-tile anim-drift relative flex min-h-0 flex-1 flex-col justify-between gap-3 overflow-hidden rounded-[20px] bg-[#070709] px-4 py-3.5 text-white ring-1 ring-white/10 md:rounded-[22px] md:px-[26px] md:py-[22px]"
+                style={{ animationDelay: '-7s' }}
+              >
+                {/* On desktop the cover is 30% of the tile's width, or shorter
+                    when the tile is, so it never runs into the bottom row. */}
+                <span
+                  aria-hidden
+                  className={`edge-tile-cover absolute top-2.5 right-2.5 aspect-[1100/1423] w-[27%] rotate-[3deg] overflow-hidden rounded-[5px] shadow-[0_18px_40px_-18px_rgb(0_0_0/0.9)] ring-1 ring-white/15 transition-[transform,opacity] duration-700 ease-soft md:top-5 md:right-5 md:h-[min(38.8cqw,calc(100cqh-40px))] md:w-auto md:rounded-[7px] ${
+                    tile === 'edge' ? 'md:-translate-y-1 md:rotate-[1deg]' : ''
+                  }`}
+                >
+                  <Image
+                    src="/quiet-edge/cover.jpg"
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 140px, 60px"
+                    className="object-cover"
+                  />
+                </span>
+                <span className="edge-tile-label relative hidden font-mono text-[13px] tracking-[0.08em] text-white/60 uppercase md:block">
+                  A guide · {QUIET_EDGE.price}
+                </span>
+                {/* Fades out while another tile has squeezed this one, so the
+                    clamp never cuts through the middle of a line. At rest it
+                    fits the tile's height (see .edge-tile in globals.css), and
+                    its width stops short of the cover, whatever size that is. */}
+                <span
+                  className={`edge-tile-title relative hidden min-h-0 font-display md:max-w-[calc(100cqw-min(30cqw,77.3cqh-31px)-16px)] text-[22px] leading-[1.25] text-white/80 italic transition-opacity duration-500 md:line-clamp-3 ${
+                    tile && tile !== 'edge' ? 'md:opacity-0' : ''
+                  }`}
+                >
+                  How smart people are actually using AI at work
+                </span>
+                <span className="relative mt-auto flex items-end justify-between gap-3">
+                  <span className="max-w-[60%] font-display text-[17px] leading-[1.1] md:max-w-none md:text-[24px]">
+                    The Quiet Edge
+                  </span>
+                  <ArrowRight
+                    size={20}
+                    className={`hidden flex-none transition-transform duration-500 ease-soft md:block ${tile === 'edge' ? 'translate-x-1' : ''}`}
+                  />
+                </span>
+              </Link>
+            </div>
+
+            <div
+              className="anim-rise-x flex h-[112px] basis-0 transition-[flex-grow] duration-700 ease-soft md:h-auto md:min-h-0"
+              style={{ flexGrow: grow('projects'), animationDelay: '350ms' }}
+            {/* The guide's own black, with its cover tucked in at the top right
+                and cut off by the tile's bottom edge. No NavMorph: the inner
+                pages have no pill for it. */}
             >
               <NavMorph name="projects">
                 <Link
@@ -350,7 +403,7 @@ export const Landing = ({
                 >
                   {/* Hovering grows this tile by about half again. Sized to the
                       tile, the screenshot would zoom with it (~30%), so on desktop
-                      it's sized off the column instead (100cqh, less the archive
+                      it's sized off the column instead (100cqh, less the Articles
                       link and gaps), a little short of the grown height: the tile
                       reveals more of it and zooms it under 10%. */}
                   <span
@@ -386,77 +439,45 @@ export const Landing = ({
             </div>
 
             <div
-              className="anim-rise-x flex h-[112px] basis-0 transition-[flex-grow] duration-700 ease-soft md:h-auto md:min-h-0"
-              style={{ flexGrow: grow('articles'), animationDelay: '350ms' }}
+              className="anim-rise-x hidden flex-none md:block"
+              style={{ animationDelay: '450ms' }}
+            {/* The smallest way in, where the old site's link was: the same
+                height (the Projects screenshot's sizing counts on it), and the
+                Articles pill's visual, so it morphs into that pill. */}
             >
               <NavMorph name="articles">
                 <Link
                   href="/articles"
                   transitionTypes={LANDING}
-                  {...tileEvents('articles')}
-                  className="articles-tile anim-drift relative flex min-h-0 flex-1 flex-col justify-between gap-3 overflow-hidden rounded-[20px] bg-tile px-4 py-3.5 md:rounded-[22px] md:px-[26px] md:py-[22px]"
-                  style={{ animationDelay: '-7s' }}
+                  className="group flex items-center gap-3.5 rounded-2xl border border-line py-2.5 pr-[18px] pl-2.5 font-mono text-[13px] tracking-[0.03em] text-ink transition-colors hover:bg-tile"
                 >
-                  <span className="articles-tile-label hidden font-mono text-[13px] tracking-[0.08em] text-muted uppercase md:block">
-                    {latest
-                      ? `Latest ${latest.format.toLowerCase()}`
-                      : 'Coming soon'}
-                  </span>
-                  {/* Fades out while another tile has squeezed this one, so the
-                      clamp never cuts through the middle of a line. At rest it
-                      fits the tile's height (see .articles-tile in globals.css). */}
                   <span
-                    className={`articles-tile-title line-clamp-2 min-h-0 font-display text-[14px] leading-[1.25] italic transition-opacity duration-500 md:line-clamp-3 md:text-[22px] ${
-                      tile && tile !== 'articles' ? 'md:opacity-0' : ''
-                    }`}
+                    aria-hidden
+                    className="flex size-9 flex-col justify-center gap-1 rounded-lg border border-line bg-paper px-2"
                   >
-                    {latest
-                      ? `“${latest.title}”`
-                      : 'Mostly interviews, where I answer questions about what I’ve built.'}
-                  </span>
-                  <span className="flex items-center justify-between gap-3">
-                    <span className="font-display text-[19px] leading-[1.1] md:text-[24px]">
-                      Articles
-                    </span>
-                    <ArrowRight
-                      size={20}
-                      className={`transition-transform duration-500 ease-soft ${tile === 'articles' ? 'translate-x-1' : ''}`}
-                    />
+                    <span className="h-0.5 rounded-full bg-ink" />
+                    <span className="h-0.5 rounded-full bg-muted" />
+                    <span className="h-0.5 w-3/5 rounded-full bg-muted" />
                   </span>
                 </Link>
               </NavMorph>
             </div>
-
-            <a
-              href={ARCHIVE_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="anim-rise-x hidden flex-none items-center gap-3.5 rounded-2xl border border-line py-2.5 pr-[18px] pl-2.5 font-mono text-[13px] tracking-[0.03em] text-muted transition-colors hover:text-ink md:flex"
-              style={{ animationDelay: '450ms' }}
-            >
-              <Image
-                src="/projects/portfolio-v3.jpg"
-                alt=""
-                width={52}
-                height={36}
-                className="h-9 w-[52px] rounded-lg object-cover object-left-top"
-              />
-              <span className="text-ink">The old site</span>
-              <span className="ml-auto">archive.temipinheiro.com</span>
-              <ArrowUpRight />
-            </a>
+                  Articles
+                  <ArrowRight
+                    size={14}
+                    className="ml-auto text-muted transition-transform duration-300 ease-soft group-hover:translate-x-0.5"
+                  />
           </nav>
         </main>
 
         <div className="mt-3 flex items-center justify-between gap-3 font-mono text-[12px] tracking-[0.03em] text-muted md:hidden">
-          <a
-            href={ARCHIVE_URL}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/articles"
+            transitionTypes={LANDING}
             className="inline-flex min-h-11 items-center gap-1.5"
           >
-            The old site <ArrowUpRight size={13} />
-          </a>
+            Articles <ArrowRight size={13} />
+          </Link>
           <ul className="flex gap-3.5">
             {SOCIALS.slice(0, 3).map((s) => (
               <li key={s.label}>
