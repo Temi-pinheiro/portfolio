@@ -261,10 +261,27 @@ body {
      (see Landing), and fades out below 100px, where it would be stamp-sized.
    - Work with me (48px padding): the rolling part names go first. Label 19.5,
      roll 40 + 16, title 33; it may use 8px of the bottom padding. */
+
+/* The Quiet Edge card's art (Landing): the cover at about twice the card's
+   height, placed so the figure on the cliff sits right of centre and the
+   cover's lettering falls outside the card, above and below. On a phone the
+   card is 112px tall. On desktop its height comes from the container, and
+   cqh measures the content box, so the 44px of padding is added back. */
+.edge-tile-art {
+  height: 220%;
+  top: -34%;
+  right: calc(26% - 73px);
+}
+
 @media (width >= 48rem) {
   .edge-tile,
   .work-tile {
     container-type: size;
+  }
+  .edge-tile-art {
+    height: 210%;
+    top: -20.6%;
+    right: calc(28% - 62.5cqh - 27.5px);
   }
   @container (height < 100px) {
     .work-tile-roll {

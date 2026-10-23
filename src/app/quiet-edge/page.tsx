@@ -50,7 +50,7 @@ export default function QuietEdgePage() {
       <noscript>
         <style>{'[data-reveal]{opacity:1!important;transform:none!important}'}</style>
       </noscript>
-      <SiteHeader />
+      <SiteHeader current='quiet-edge' />
       <PageTransition>
         <QuietEdge />
       </PageTransition>

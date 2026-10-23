@@ -336,60 +336,89 @@ export const Landing = () => {
               </NavMorph>
             </div>
 
-            {/* The guide's own black, with its cover tucked in at the top right
-                and cut off by the tile's bottom edge. No NavMorph: the inner
-                pages have no pill for it. */}
+            {/* The guide's own black. Its cover's art fills the card's right
+                side on a phone, and on desktop it's the background of the
+                expanded card; at rest on desktop the cover is tucked in at the
+                top right instead. Morphs into the header's Quiet Edge pill. */}
             <div
               className="anim-rise-x flex h-[112px] basis-0 transition-[flex-grow] duration-700 ease-soft md:h-auto md:min-h-0"
               style={{ flexGrow: grow('edge'), animationDelay: '250ms' }}
             >
-              <Link
-                href="/quiet-edge"
-                transitionTypes={LANDING}
-                {...tileEvents('edge')}
-                className="edge-tile anim-drift relative flex min-h-0 flex-1 flex-col justify-between gap-3 overflow-hidden rounded-[20px] bg-[#070709] px-4 py-3.5 text-white ring-1 ring-white/10 md:rounded-[22px] md:px-[26px] md:py-[22px]"
-                style={{ animationDelay: '-7s' }}
-              >
-                {/* On desktop the cover is 30% of the tile's width, or shorter
-                    when the tile is, so it never runs into the bottom row. */}
-                <span
-                  aria-hidden
-                  className={`edge-tile-cover absolute top-2.5 right-2.5 aspect-[1100/1423] w-[27%] rotate-[3deg] overflow-hidden rounded-[5px] shadow-[0_18px_40px_-18px_rgb(0_0_0/0.9)] ring-1 ring-white/15 transition-[transform,opacity] duration-700 ease-soft md:top-5 md:right-5 md:h-[min(38.8cqw,calc(100cqh-40px))] md:w-auto md:rounded-[7px] ${
-                    tile === 'edge' ? 'md:-translate-y-1 md:rotate-[1deg]' : ''
-                  }`}
+              <NavMorph name="quiet-edge">
+                <Link
+                  href="/quiet-edge"
+                  transitionTypes={LANDING}
+                  {...tileEvents('edge')}
+                  className="edge-tile anim-drift relative flex min-h-0 flex-1 flex-col justify-between gap-3 overflow-hidden rounded-[20px] bg-[#070709] px-4 py-3.5 text-white ring-1 ring-white/10 md:rounded-[22px] md:px-[26px] md:py-[22px]"
+                  style={{ animationDelay: '-7s' }}
                 >
-                  <Image
-                    src="/quiet-edge/cover.jpg"
-                    alt=""
-                    fill
-                    sizes="(min-width: 768px) 140px, 60px"
-                    className="object-cover"
-                  />
-                </span>
-                <span className="edge-tile-label relative hidden font-mono text-[13px] tracking-[0.08em] text-white/60 uppercase md:block">
-                  A guide · {QUIET_EDGE.price}
-                </span>
-                {/* Fades out while another tile has squeezed this one, so the
-                    clamp never cuts through the middle of a line. At rest it
-                    fits the tile's height (see .edge-tile in globals.css), and
-                    its width stops short of the cover, whatever size that is. */}
-                <span
-                  className={`edge-tile-title relative hidden min-h-0 font-display md:max-w-[calc(100cqw-min(30cqw,77.3cqh-31px)-16px)] text-[22px] leading-[1.25] text-white/80 italic transition-opacity duration-500 md:line-clamp-3 ${
-                    tile && tile !== 'edge' ? 'md:opacity-0' : ''
-                  }`}
-                >
-                  How smart people are actually using AI at work
-                </span>
-                <span className="relative mt-auto flex items-end justify-between gap-3">
-                  <span className="max-w-[60%] font-display text-[17px] leading-[1.1] md:max-w-none md:text-[24px]">
-                    The Quiet Edge
+                  {/* The art: the cover drawn at several times the card's
+                      height and pushed right, so the moon and the figure on
+                      the cliff sit in the right half and the cover's own
+                      lettering stays out of frame. The gradient keeps the
+                      words on the left readable. */}
+                  <span
+                    aria-hidden
+                    className={`absolute inset-0 transition-opacity duration-700 ease-soft ${
+                      tile === 'edge' ? '' : 'md:opacity-0'
+                    }`}
+                  >
+                    <span className="edge-tile-art absolute aspect-[1100/1423]">
+                      <Image
+                        src="/quiet-edge/cover.jpg"
+                        alt=""
+                        fill
+                        sizes="(min-width: 768px) 720px, 200px"
+                        className="object-cover"
+                      />
+                    </span>
+                    <span className="absolute inset-0 bg-linear-to-r from-[#070709] from-15% via-[#070709]/60 via-45% to-transparent to-70%" />
                   </span>
-                  <ArrowRight
-                    size={20}
-                    className={`hidden flex-none transition-transform duration-500 ease-soft md:block ${tile === 'edge' ? 'translate-x-1' : ''}`}
-                  />
-                </span>
-              </Link>
+                  {/* At rest on desktop: the cover is 30% of the card's width,
+                      or shorter when the card is, so it never runs into the
+                      bottom row. It gives way to the art when the card grows. */}
+                  <span
+                    aria-hidden
+                    className={`edge-tile-cover absolute top-5 right-5 hidden aspect-[1100/1423] h-[min(38.8cqw,calc(100cqh-40px))] rotate-[3deg] overflow-hidden rounded-[7px] shadow-[0_18px_40px_-18px_rgb(0_0_0/0.9)] ring-1 ring-white/15 transition-[transform,opacity] duration-700 ease-soft md:block ${
+                      tile === 'edge' ? 'md:scale-90 md:opacity-0' : ''
+                    }`}
+                  >
+                    <Image
+                      src="/quiet-edge/cover.jpg"
+                      alt=""
+                      fill
+                      sizes="140px"
+                      className="object-cover"
+                    />
+                  </span>
+                  <span className="edge-tile-label relative hidden font-mono text-[13px] tracking-[0.08em] text-white/60 uppercase md:block">
+                    A guide · {QUIET_EDGE.price}
+                  </span>
+                  {/* Fades out while another card has squeezed this one, so the
+                      clamp never cuts through the middle of a line. At rest it
+                      fits the card's height (see .edge-tile in globals.css), and
+                      its width stops short of the cover, whatever size that is;
+                      expanded, it stops short of the figure in the art. */}
+                  <span
+                    className={`edge-tile-title relative hidden min-h-0 font-display text-[22px] leading-[1.25] text-white/80 italic transition-opacity duration-500 md:line-clamp-3 ${
+                      tile === 'edge'
+                        ? 'md:max-w-[75%]'
+                        : 'md:max-w-[calc(100cqw-min(30cqw,77.3cqh-31px)-16px)]'
+                    } ${tile && tile !== 'edge' ? 'md:opacity-0' : ''}`}
+                  >
+                    How smart people are actually using AI at work
+                  </span>
+                  <span className="relative mt-auto flex items-end justify-between gap-3">
+                    <span className="max-w-[60%] font-display text-[17px] leading-[1.1] md:max-w-none md:text-[24px]">
+                      The Quiet Edge
+                    </span>
+                    <ArrowRight
+                      size={20}
+                      className={`hidden flex-none transition-transform duration-500 ease-soft md:block ${tile === 'edge' ? 'translate-x-1' : ''}`}
+                    />
+                  </span>
+                </Link>
+              </NavMorph>
             </div>
 
             <div
@@ -441,34 +470,31 @@ export const Landing = () => {
               </NavMorph>
             </div>
 
-            {/* The smallest way in, where the old site's link was: the same
-                height (the Projects screenshot's sizing counts on it), and the
-                Articles pill's visual, so it morphs into that pill. */}
+            {/* The smallest way in, where the old site's link was, at the same
+                height (the Projects screenshot's sizing counts on it). */}
             <div
               className="anim-rise-x hidden flex-none md:block"
               style={{ animationDelay: '450ms' }}
             >
-              <NavMorph name="articles">
-                <Link
-                  href="/articles"
-                  transitionTypes={LANDING}
-                  className="group flex items-center gap-3.5 rounded-2xl border border-line py-2.5 pr-[18px] pl-2.5 font-mono text-[13px] tracking-[0.03em] text-ink transition-colors hover:bg-tile"
+              <Link
+                href="/articles"
+                transitionTypes={LANDING}
+                className="group flex items-center gap-3.5 rounded-2xl border border-line py-2.5 pr-[18px] pl-2.5 font-mono text-[13px] tracking-[0.03em] text-ink transition-colors hover:bg-tile"
+              >
+                <span
+                  aria-hidden
+                  className="flex size-9 flex-col justify-center gap-1 rounded-lg border border-line bg-paper px-2"
                 >
-                  <span
-                    aria-hidden
-                    className="flex size-9 flex-col justify-center gap-1 rounded-lg border border-line bg-paper px-2"
-                  >
-                    <span className="h-0.5 rounded-full bg-ink" />
-                    <span className="h-0.5 rounded-full bg-muted" />
-                    <span className="h-0.5 w-3/5 rounded-full bg-muted" />
-                  </span>
-                  Articles
-                  <ArrowRight
-                    size={14}
-                    className="ml-auto text-muted transition-transform duration-300 ease-soft group-hover:translate-x-0.5"
-                  />
-                </Link>
-              </NavMorph>
+                  <span className="h-0.5 rounded-full bg-ink" />
+                  <span className="h-0.5 rounded-full bg-muted" />
+                  <span className="h-0.5 w-3/5 rounded-full bg-muted" />
+                </span>
+                Articles
+                <ArrowRight
+                  size={14}
+                  className="ml-auto text-muted transition-transform duration-300 ease-soft group-hover:translate-x-0.5"
+                />
+              </Link>
             </div>
           </nav>
         </main>

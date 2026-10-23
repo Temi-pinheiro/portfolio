@@ -3,14 +3,16 @@ import Link from 'next/link';
 import { LANDING, NavMorph } from '../PageTransition';
 
 // The header on every page but the landing: the wordmark, and the landing's
-// three tiles shrunk to pills, each with a small visual, then About me, which
+// three cards shrunk to pills, each with a small visual, then About me, which
 // is the "More about me" link beside the landing's chapters. These stay still;
-// only the landing's tiles drift. Navigating from the landing, each tile (and
-// that link) morphs into its pill, and back again (NavMorph).
+// only the landing's cards drift. Navigating from the landing, each card (and
+// that link) morphs into its pill, and back again (NavMorph). Articles has no
+// pill, as it has no card: the landing's smallest link and its footer reach it.
 
-type Page = 'mariposa' | 'projects' | 'articles' | 'about';
+type Page = 'mariposa' | 'quiet-edge' | 'projects' | 'articles' | 'about';
+type PillPage = Exclude<Page, 'articles'>;
 
-const PILLS: { page: Page; href: string; label: string; visual: React.ReactNode }[] = [
+const PILLS: { page: PillPage; href: string; label: string; visual: React.ReactNode }[] = [
   {
     page: 'mariposa',
     href: '/mariposa',
@@ -18,6 +20,22 @@ const PILLS: { page: Page; href: string; label: string; visual: React.ReactNode 
     visual: (
       <span className='flex size-8 items-center justify-center rounded-[9px] bg-accent font-mono text-[11px] text-on-accent'>
         09
+      </span>
+    ),
+  },
+  {
+    page: 'quiet-edge',
+    href: '/quiet-edge',
+    label: 'The Quiet Edge',
+    visual: (
+      <span className='relative block size-8 overflow-hidden rounded-[9px] bg-[#070709]'>
+        <Image
+          src='/quiet-edge/cover.jpg'
+          alt=''
+          fill
+          sizes='32px'
+          className='object-cover object-[60%_20%]'
+        />
       </span>
     ),
   },
@@ -34,18 +52,6 @@ const PILLS: { page: Page; href: string; label: string; visual: React.ReactNode 
           sizes='32px'
           className='object-cover object-left-top'
         />
-      </span>
-    ),
-  },
-  {
-    page: 'articles',
-    href: '/articles',
-    label: 'Articles',
-    visual: (
-      <span className='flex size-8 flex-col justify-center gap-1 rounded-[9px] border border-line bg-paper px-[7px]'>
-        <span className='h-0.5 rounded-full bg-ink' />
-        <span className='h-0.5 rounded-full bg-muted' />
-        <span className='h-0.5 w-3/5 rounded-full bg-muted' />
       </span>
     ),
   },
