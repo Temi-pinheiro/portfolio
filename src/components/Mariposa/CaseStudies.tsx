@@ -2,7 +2,9 @@
 
 import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef, useState } from 'react';
+import { caseSlug } from '~~/lib/cases';
 import { ArrowRight, ArrowUpRight } from '../icons';
 import { ModalContent, ModalHeader, modalEyebrow as eyebrow } from './Modal';
 
@@ -19,6 +21,8 @@ export type Case = {
   after: Shot;
   fixes: { found: string; shipped: string }[];
   quote?: { text: string; by: string };
+  // The case page's title and heading: what it shows, in searchable words.
+  title: string;
 };
 
 // Fixes read across on desktop (number, found, shipped) and stack on a phone.
@@ -36,8 +40,115 @@ const Facts = ({ facts }: { facts: Case['facts'] }) => (
   </dl>
 );
 
-// The case itself, as the modal shows it. It ends on the one next step: the
-// "Request a free teardown" button swaps this modal for the form's.
+const linkClassName =
+  'inline-flex items-center gap-2 font-mono text-[13px] tracking-[0.04em] text-muted underline decoration-transparent underline-offset-4 transition-[text-decoration-color] duration-300 hover:decoration-current';
+const summaryClassName = 'mt-4 max-w-[640px] text-[18px] leading-[1.6] text-muted';
+
+// The case itself: the same body in the modal on /mariposa and on its own page
+// (/mariposa/<slug>), which exists so the case can be found and linked to. It
+// ends on the one next step, `cta`. In the modal the summary describes the
+// dialog, and a link leads to the page.
+export const CaseBody = ({
+  study,
+  cta,
+  inDialog = false,
+}: {
+  study: Case;
+  cta: React.ReactNode;
+  inDialog?: boolean;
+}) => (
+  <>
+    <div className='flex flex-wrap gap-x-6 gap-y-2'>
+      <a href={study.url} target='_blank' rel='noreferrer' className={linkClassName}>
+        {study.url.replace('https://', '')}
+        <ArrowUpRight size={15} />
+      </a>
+      {inDialog && (
+        <Link href={`/mariposa/${caseSlug(study.name)}`} className={linkClassName}>
+          Link to this case
+          <ArrowRight size={15} />
+        </Link>
+      )}
+    </div>
+    {inDialog ? (
+      <Dialog.Description className={summaryClassName}>{study.summary}</Dialog.Description>
+    ) : (
+      <p className={summaryClassName}>{study.summary}</p>
+    )}
+    <div className='mt-8'>
+      <Facts facts={study.facts} />
+    </div>
+    <div className='mt-10 grid gap-x-4 gap-y-8 md:grid-cols-2'>
+      {[study.before, study.after].map((shot) => (
+        <figure key={shot.src}>
+          <div className='relative aspect-[16/10] overflow-hidden rounded-[18px] border border-line bg-tile'>
+            <Image
+              src={shot.src}
+              alt={shot.alt}
+              fill
+              sizes='(min-width: 1120px) 520px, (min-width: 768px) 45vw, 100vw'
+              className='object-cover object-top'
+            />
+          </div>
+          <figcaption className='mt-3 font-mono text-[13px] tracking-[0.03em] text-muted'>
+            {shot.caption}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <div className='mt-12'>
+      <div
+        aria-hidden
+        className={`hidden gap-x-6 pb-4 ${eyebrow} md:grid ${FIX_COLUMNS}`}
+      >
+        <span />
+        <span>What I found</span>
+        <span>What shipped</span>
+      </div>
+      <ol className='border-t border-line'>
+        {study.fixes.map((fix, i) => (
+          <li
+            key={fix.found}
+            className={`grid gap-x-4 gap-y-3 border-b border-line py-5 md:gap-x-6 ${FIX_COLUMNS}`}
+          >
+            <span className='font-mono text-[15px] font-semibold text-accent-text'>
+              {i + 1}
+            </span>
+            <p className='text-[17px] leading-[1.55] text-muted'>
+              <span className='sr-only'>Found: </span>
+              {fix.found}
+            </p>
+            <p className='col-start-2 text-[17px] leading-[1.55] md:col-start-auto'>
+              <span className='mr-2 font-mono text-[12px] tracking-[0.1em] text-accent-text uppercase md:sr-only'>
+                Shipped
+              </span>
+              {fix.shipped}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+    {study.quote && (
+      <blockquote className='mt-12 max-w-[900px]'>
+        <p className='font-display text-[clamp(24px,2.4vw,34px)] leading-[1.3] italic'>
+          “{study.quote.text}”
+        </p>
+        <footer className='mt-4 font-mono text-[13px] tracking-[0.03em] text-muted'>
+          {study.quote.by}
+        </footer>
+      </blockquote>
+    )}
+    <div className='mt-12 flex flex-wrap items-center justify-between gap-6 rounded-[22px] bg-tile p-7 md:p-9'>
+      <p className='font-display text-[clamp(26px,2.4vw,34px)] leading-[1.15]'>
+        Want the same for yours?
+      </p>
+      {cta}
+    </div>
+  </>
+);
+
+// In the modal, the "Request a free teardown" button swaps this modal for the
+// form's.
 const CaseModal = ({
   study,
   buttonClassName,
@@ -50,89 +161,15 @@ const CaseModal = ({
   <>
     <ModalHeader eyebrow='Case study' title={study.name} />
     <div className='px-6 pb-8 md:px-12 md:pb-12'>
-      <a
-        href={study.url}
-        target='_blank'
-        rel='noreferrer'
-        className='inline-flex items-center gap-2 font-mono text-[13px] tracking-[0.04em] text-muted underline decoration-transparent underline-offset-4 transition-[text-decoration-color] duration-300 hover:decoration-current'
-      >
-        {study.url.replace('https://', '')}
-        <ArrowUpRight size={15} />
-      </a>
-      <Dialog.Description className='mt-4 max-w-[640px] text-[18px] leading-[1.6] text-muted'>
-        {study.summary}
-      </Dialog.Description>
-      <div className='mt-8'>
-        <Facts facts={study.facts} />
-      </div>
-      <div className='mt-10 grid gap-x-4 gap-y-8 md:grid-cols-2'>
-        {[study.before, study.after].map((shot) => (
-          <figure key={shot.src}>
-            <div className='relative aspect-[16/10] overflow-hidden rounded-[18px] border border-line bg-tile'>
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                fill
-                sizes='(min-width: 1120px) 520px, (min-width: 768px) 45vw, 100vw'
-                className='object-cover object-top'
-              />
-            </div>
-            <figcaption className='mt-3 font-mono text-[13px] tracking-[0.03em] text-muted'>
-              {shot.caption}
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-      <div className='mt-12'>
-        <div
-          aria-hidden
-          className={`hidden gap-x-6 pb-4 ${eyebrow} md:grid ${FIX_COLUMNS}`}
-        >
-          <span />
-          <span>What I found</span>
-          <span>What shipped</span>
-        </div>
-        <ol className='border-t border-line'>
-          {study.fixes.map((fix, i) => (
-            <li
-              key={fix.found}
-              className={`grid gap-x-4 gap-y-3 border-b border-line py-5 md:gap-x-6 ${FIX_COLUMNS}`}
-            >
-              <span className='font-mono text-[15px] font-semibold text-accent-text'>
-                {i + 1}
-              </span>
-              <p className='text-[17px] leading-[1.55] text-muted'>
-                <span className='sr-only'>Found: </span>
-                {fix.found}
-              </p>
-              <p className='col-start-2 text-[17px] leading-[1.55] md:col-start-auto'>
-                <span className='mr-2 font-mono text-[12px] tracking-[0.1em] text-accent-text uppercase md:sr-only'>
-                  Shipped
-                </span>
-                {fix.shipped}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </div>
-      {study.quote && (
-        <blockquote className='mt-12 max-w-[900px]'>
-          <p className='font-display text-[clamp(24px,2.4vw,34px)] leading-[1.3] italic'>
-            “{study.quote.text}”
-          </p>
-          <footer className='mt-4 font-mono text-[13px] tracking-[0.03em] text-muted'>
-            {study.quote.by}
-          </footer>
-        </blockquote>
-      )}
-      <div className='mt-12 flex flex-wrap items-center justify-between gap-6 rounded-[22px] bg-tile p-7 md:p-9'>
-        <p className='font-display text-[clamp(26px,2.4vw,34px)] leading-[1.15]'>
-          Want the same for yours?
-        </p>
-        <button type='button' onClick={onRequest} className={buttonClassName}>
-          Request a free teardown
-        </button>
-      </div>
+      <CaseBody
+        study={study}
+        inDialog
+        cta={
+          <button type='button' onClick={onRequest} className={buttonClassName}>
+            Request a free teardown
+          </button>
+        }
+      />
     </div>
   </>
 );

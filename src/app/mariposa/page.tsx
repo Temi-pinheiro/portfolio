@@ -3,15 +3,19 @@ import { Mariposa } from '~~/components/Mariposa';
 import { PageTransition } from '~~/components/PageTransition';
 import { SiteHeader } from '~~/components/SiteHeader';
 
+// What founders search for, not the program's name: "Mariposa Program" brings
+// up county services, and "lovable app" is searched about 7 times as often as
+// "ux audit" (the 2026-10-23 search audit).
+const title = 'UI/UX audit for Lovable, Bolt and Replit apps';
 const description =
-  'For founders who built their app with AI tools and can tell it feels off. It starts with a free teardown: send your link, and get back the three things I’d fix first within 24 hours.';
+  'UI/UX audits for apps built with Lovable, Base44, Bolt or Replit, delivered within 24 hours. It starts with a free teardown: the three things I’d fix first.';
 
 export const metadata: Metadata = {
-  title: 'The Mariposa Program',
+  title,
   description,
   alternates: { canonical: '/mariposa' },
   openGraph: {
-    title: 'The Mariposa Program | Temitope Pinheiro',
+    title: `${title} | Temi Pinheiro`,
     description,
     url: 'https://temipinheiro.com/mariposa',
   },

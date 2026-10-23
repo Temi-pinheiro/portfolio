@@ -1,5 +1,8 @@
 export const SITE_URL = 'https://temipinheiro.com';
 
+// The structured-data id of the person the site is about (app/layout.tsx).
+export const PERSON_ID = `${SITE_URL}/#person`;
+
 // The pre-2026 site, kept as it was in its own repo (portfolio-archive).
 export const ARCHIVE_URL = 'https://archive.temipinheiro.com';
 

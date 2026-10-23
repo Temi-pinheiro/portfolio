@@ -92,7 +92,7 @@ export const About = () => (
           </FadeUp>
           <WordReveal
             as='h1'
-            text='I’m Temitope, a developer from Lagos, Nigeria.'
+            text='I’m Temitope (Temi), a developer from Lagos, Nigeria.'
             className='mt-5 max-w-[960px] font-display text-[clamp(44px,5.6vw,88px)] leading-[1.04] tracking-[-0.025em]'
           />
           <FadeUp delay={0.35}>

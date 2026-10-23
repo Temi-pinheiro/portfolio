@@ -16,6 +16,7 @@ import { CallEmbed } from './CallEmbed';
 import { CaseCard, type Case } from './CaseStudies';
 import { ModalContent, ModalHeader } from './Modal';
 import { Steps, type Step } from './Steps';
+import { primaryButton } from './styles';
 import { REQUEST_HREF, TeardownForm, useTeardown } from './TeardownForm';
 
 // The page asks for one thing, the teardown, and every step after it leads to
@@ -27,8 +28,6 @@ import { REQUEST_HREF, TeardownForm, useTeardown } from './TeardownForm';
 // page stays to the end. The end is for anyone who'd rather talk: a call,
 // booked through Calendly.
 
-const primaryButton =
-  'inline-flex min-h-[52px] items-center rounded-full bg-accent px-7 font-mono text-[15px] font-semibold tracking-[0.02em] text-on-accent transition-[translate,scale] duration-300 ease-soft hover:-translate-y-0.5 active:scale-[0.97]';
 
 const sectionTitle =
   'font-display text-[clamp(34px,3.6vw,56px)] leading-[1.08] tracking-[-0.02em]';
@@ -72,6 +71,21 @@ export const Mariposa = () => {
     },
   };
 
+  // A case page's "Request a free teardown" comes back here as ?teardown: open
+  // the form, and take the flag out of the address so a reload doesn't reopen
+  // it. A frame later, so the modal opens over a painted page.
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      const url = new URL(window.location.href);
+      if (!url.searchParams.has('teardown')) return;
+      url.searchParams.delete('teardown');
+      window.history.replaceState(window.history.state, '', url);
+      track('teardown_form_opened');
+      setRequesting(true);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   // The one button follows you down the page: it shows once the hero's button
   // has scrolled away, and stays until a request is sent.
   const heroButton = useRef<HTMLAnchorElement>(null);
@@ -93,16 +107,22 @@ export const Mariposa = () => {
     <MotionConfig reducedMotion='user'>
       <main className='mx-auto max-w-[1440px] px-5 pb-28 md:px-10'>
         <section className='pt-16 md:pt-[clamp(64px,9vw,140px)]'>
-          <FadeUp>
-            <p className='font-mono text-[13px] tracking-[0.1em] text-muted uppercase'>
-              The Mariposa Program
-            </p>
-          </FadeUp>
-          <WordReveal
-            as='h1'
-            text='You built it fast. Now make it feel finished.'
-            className='mt-5 max-w-[1040px] font-display text-[clamp(44px,6.4vw,100px)] leading-[1.03] tracking-[-0.025em]'
-          />
+          {/* The label says what this is in the words founders search for,
+              and it's part of the heading, so search engines read it too. */}
+          <h1>
+            <FadeUp
+              as='span'
+              className='block font-mono text-[13px] tracking-[0.1em] text-muted uppercase'
+            >
+              The Mariposa Program · UI/UX audits for apps built with AI
+            </FadeUp>
+            <span className='sr-only'>. </span>
+            <WordReveal
+              as='span'
+              text='You built it fast. Now make it feel finished.'
+              className='mt-5 block max-w-[1040px] font-display text-[clamp(44px,6.4vw,100px)] leading-[1.03] tracking-[-0.025em]'
+            />
+          </h1>
           <FadeUp delay={0.35}>
             <p className='mt-9 max-w-[640px] text-[clamp(18px,1.5vw,21px)] leading-[1.6] text-muted'>
               For founders who built their app with Lovable, Base44, Bolt or

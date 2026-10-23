@@ -24,7 +24,7 @@ export const FadeUp = ({
   className?: string;
   delay?: number;
   y?: number;
-  as?: 'div' | 'p' | 'li' | 'section';
+  as?: 'div' | 'p' | 'li' | 'section' | 'span';
 }) => {
   const Tag = motion[as] as typeof motion.div;
   return (

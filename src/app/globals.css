@@ -255,37 +255,59 @@ body {
    hover, so their text fits each tile's own height and a line is never cut in
    half. Desktop only; on a phone the tiles have fixed heights. Heights are
    content boxes (the tile less its padding).
-   - Articles (44px padding): fewer title lines as it shrinks, then the label
-     goes, then the title. Label 20, gaps 12, a title line 27.5, bottom row 26.
+   - The Quiet Edge (44px padding): fewer subtitle lines as it shrinks, then
+     the label goes, then the subtitle. Label 20, gaps 12, a subtitle line
+     27.5, bottom row 26. The cover fits the height above the bottom row
+     (see Landing), and fades out below 100px, where it would be stamp-sized.
    - Work with me (48px padding): the rolling part names go first. Label 19.5,
      roll 40 + 16, title 33; it may use 8px of the bottom padding. */
+
+/* The Quiet Edge card's art (Landing): the cover at about twice the card's
+   height, placed so the figure on the cliff sits right of centre and the
+   cover's lettering falls outside the card, above and below. On a phone the
+   card is 112px tall. On desktop its height comes from the container, and
+   cqh measures the content box, so the 44px of padding is added back. */
+.edge-tile-art {
+  height: 220%;
+  top: -34%;
+  right: calc(26% - 73px);
+}
+
 @media (width >= 48rem) {
-  .articles-tile,
+  .edge-tile,
   .work-tile {
     container-type: size;
+  }
+  .edge-tile-art {
+    height: 210%;
+    top: -20.6%;
+    right: calc(28% - 62.5cqh - 27.5px);
   }
   @container (height < 100px) {
     .work-tile-roll {
       display: none;
     }
+    .edge-tile-cover {
+      opacity: 0;
+    }
   }
   @container (height < 153px) {
-    .articles-tile-title {
+    .edge-tile-title {
       -webkit-line-clamp: 2;
     }
   }
   @container (height < 125px) {
-    .articles-tile-label {
+    .edge-tile-label {
       display: none;
     }
   }
   @container (height < 93px) {
-    .articles-tile-title {
+    .edge-tile-title {
       -webkit-line-clamp: 1;
     }
   }
   @container (height < 66px) {
-    .articles-tile-title {
+    .edge-tile-title {
       opacity: 0;
     }
   }
