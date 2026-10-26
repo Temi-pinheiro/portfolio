@@ -26,7 +26,7 @@ export type Article = {
   format: ArticleFormat;
   tags: string[];
   links: ArticleLink[];
-  /** Optional preview image (a path under public/), shown on hover in the index. */
+  /** Optional cover (a path under public/): the top of the piece, the index's hover preview and the share image. */
   image?: string;
   draft: boolean;
   /** Markdown body with the front matter removed. */
