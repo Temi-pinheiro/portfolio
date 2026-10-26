@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
@@ -109,7 +110,22 @@ export default async function ArticlePage({
                 {article.description}
               </p>
             )}
-            <hr className='mt-10 border-line md:mt-12' />
+            {/* The cover is also the article's share image (opengraph-image.tsx),
+                so it keeps the share card's shape. */}
+            {article.image ? (
+              <div className='relative mt-10 aspect-[1200/630] overflow-hidden rounded-[14px] md:mt-12'>
+                <Image
+                  src={article.image}
+                  alt=''
+                  fill
+                  preload
+                  sizes='(min-width: 768px) 720px, 100vw'
+                  className='object-cover'
+                />
+              </div>
+            ) : (
+              <hr className='mt-10 border-line md:mt-12' />
+            )}
             <div
               className={`article-body mt-10 md:mt-12${
                 article.format === 'interview' ? ' article-interview' : ''

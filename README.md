@@ -54,12 +54,17 @@ tags: [bord, ios]
 links:                    # optional, shown as "Mentioned" at the end
   - label: Bord
     url: https://mybord.vercel.app/
-image: /projects/bord.jpg # optional: a path under public/, shown on hover in the index
+image: /articles/bord.png  # optional: a 1200×630 cover under public/ (see below)
 draft: true               # optional: keep a committed piece out of production
 ---
 ```
 
 The body is Markdown (GitHub flavoured). Drafts are left out of production
 builds and the sitemap. The Articles page is always linked; until the first
-piece is published it says the first pieces are being written, and the
-landing's Articles tile shows the newest piece once there is one.
+piece is published it says the first pieces are being written, and stays out
+of search.
+
+An `image` is the article's cover: it sits at the top of the piece, shows on
+hover in the index, and is the link preview on X and elsewhere in place of the
+usual title card. Make it 1200×630 (2400×1260 for sharp screens), the share
+card's shape, so nothing is cropped.
