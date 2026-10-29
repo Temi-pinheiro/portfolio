@@ -7,11 +7,12 @@ import Link from 'next/link';
 import { type MouseEvent, useEffect, useRef } from 'react';
 import { track } from '~~/lib/analytics';
 import { isPaymentId, QUIET_EDGE } from '~~/lib/quietEdge';
-import { ArrowRight } from '../icons';
+import { ArrowRight, Plus } from '../icons';
 import { ModalContent, ModalHeader } from '../Mariposa/Modal';
 import { FadeUp, Stagger, StaggerItem, WordReveal } from '../motion/Reveal';
 import { ListForm } from './ListForm';
 import { PurchaseBody, STORED_PAYMENT, usePurchase } from './Purchase';
+import { QUESTIONS } from './questions';
 
 // The page for The Quiet Edge. One ask, buying the guide, which opens Whop's
 // checkout in a modal; the free first chapter is the second door, for anyone
@@ -262,6 +263,57 @@ export const QuietEdge = () => {
             </StaggerItem>
           ))}
         </Stagger>
+
+        {/* The questions people search for, answered from the guide. Native
+            <details>, so every answer is in the HTML and opens without
+            script. */}
+        <section
+          className='pt-24 md:pt-[clamp(96px,10vw,160px)]'
+          aria-labelledby='questions'
+        >
+          <div className='flex flex-wrap items-end justify-between gap-6'>
+            <WordReveal
+              id='questions'
+              text='Questions people ask about AI at work'
+              className={`max-w-[900px] ${sectionTitle}`}
+            />
+            <FadeUp delay={0.2}>
+              <p className='max-w-[520px] text-[18px] leading-[1.6] text-muted'>
+                Straight answers from the guide, each with the chapter that goes
+                deeper.
+              </p>
+            </FadeUp>
+          </div>
+          <Stagger as='div' className='mt-12 border-b border-line md:mt-16'>
+            {QUESTIONS.map((item) => (
+              <StaggerItem as='div' key={item.question}>
+                <details className='group border-t border-line'>
+                  <summary className='flex cursor-pointer list-none items-center justify-between gap-6 py-7 md:py-9 [&::-webkit-details-marker]:hidden'>
+                    <h3 className='font-display text-[clamp(22px,2vw,30px)] leading-[1.25]'>
+                      {item.question}
+                    </h3>
+                    <Plus
+                      size={22}
+                      className='shrink-0 text-muted transition-transform duration-300 ease-soft group-open:rotate-45'
+                    />
+                  </summary>
+                  <div className='pb-9 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] md:gap-[clamp(24px,3vw,56px)]'>
+                    <p className='font-mono text-[13px] leading-[1.8] tracking-[0.08em] text-muted uppercase md:pt-1.5'>
+                      {item.chapters.map((n) => (
+                        <span key={n} className='block'>
+                          Chapter {n} · {CHAPTERS[n - 1].title}
+                        </span>
+                      ))}
+                    </p>
+                    <p className='mt-4 max-w-[620px] text-[18px] leading-[1.6] md:mt-0'>
+                      {item.answer}
+                    </p>
+                  </div>
+                </details>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </section>
 
         {/* The second door: the free chapter, and the list. */}
         <section

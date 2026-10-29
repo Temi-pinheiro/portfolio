@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { PageTransition } from '~~/components/PageTransition';
 import { QuietEdge } from '~~/components/QuietEdge';
+import { QUESTIONS } from '~~/components/QuietEdge/questions';
 import { SiteHeader } from '~~/components/SiteHeader';
 import { QUIET_EDGE } from '~~/lib/quietEdge';
 import { SITE_URL } from '~~/lib/site';
@@ -42,6 +43,19 @@ const productJsonLd = {
   },
 };
 
+// The page's questions, as FAQ data. Google shows FAQ results only for
+// government and health sites now, so this is for search and AI answers
+// reading the page, not for a rich result.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: QUESTIONS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+
 export default function QuietEdgePage() {
   return (
     <>
@@ -57,6 +71,10 @@ export default function QuietEdgePage() {
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
     </>
   );
