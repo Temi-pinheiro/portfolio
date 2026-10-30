@@ -15,10 +15,11 @@ import { EASE_OUT_EXPO } from '../motion/Reveal';
 // which asks Whop whether it's paid, emails the buyer their link, and answers
 // with it, so the download starts right there.
 //
-// Whop sends the tab to `returnUrl` once the checkout is done, and after an
-// off-site step (3DS, a bank's page) with `payment` and `status` added. So the
-// ID also goes into sessionStorage, and the page picks the purchase up again
-// from either one when it loads.
+// Whop takes the tab away once a payment goes through: to the checkout
+// configuration's redirect_url (this page, lib/quietEdge), and after an
+// off-site step (3DS, a bank's page) to `returnUrl`, with `payment` and
+// `status` added. So the ID also goes into sessionStorage, and the page picks
+// the purchase up again from either one when it loads.
 
 export type Purchase =
   | { step: 'checkout'; retry?: boolean }
@@ -47,6 +48,8 @@ export const usePurchase = () => {
       const res = await fetch('/api/quiet-edge/claim', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        // Finishes when Whop takes the tab away, so the email still goes.
+        keepalive: true,
         body: JSON.stringify({ payment }),
       }).catch(() => null);
       const data = await res?.json().catch(() => null);
@@ -120,7 +123,7 @@ export const PurchaseBody = ({
         )}
         <WhopElements elements={whop} appearance={theme}>
           <Checkout
-            plan={QUIET_EDGE.plan}
+            checkoutConfiguration={QUIET_EDGE.checkout}
             returnUrl={`${location.origin}/quiet-edge`}
             onComplete={(done) => {
               if (done.result !== 'payment') return;

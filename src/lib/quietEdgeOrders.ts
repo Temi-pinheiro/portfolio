@@ -60,7 +60,7 @@ export const getOrder = async (payment: string): Promise<Order> => {
   }
 
   const found: Payment = await res.json();
-  if ((found.plan_id ?? found.plan?.id) !== QUIET_EDGE.plan) return { state: 'none' };
+  if (!QUIET_EDGE.plans.includes(found.plan_id ?? found.plan?.id ?? '')) return { state: 'none' };
   if (found.refunded_at || REVOKED.has(found.substatus ?? '')) return { state: 'none' };
   if (found.status === 'paid') {
     return { state: 'paid', email: found.customer_email ?? found.user?.email ?? null };
@@ -76,7 +76,8 @@ export const sendDownloadEmail = async (payment: string, to: string) => {
     console.error('Quiet Edge email not sent: SENDBYTE_API_KEY is not set');
     return false;
   }
-  const link = `${SITE_URL}${downloadPath(payment)}`;
+  // From a Deploy Preview, the link goes back to that preview (next.config.js).
+  const link = `${process.env.DEPLOY_PREVIEW_URL || SITE_URL}${downloadPath(payment)}`;
   const paragraphs = [
     'Thanks for buying The Quiet Edge.',
     `Here’s your copy: ${link}`,

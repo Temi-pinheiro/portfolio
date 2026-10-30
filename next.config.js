@@ -5,6 +5,13 @@ const nextConfig = {
   experimental: {
     viewTransition: true,
   },
+  // A Deploy Preview's own address, empty everywhere else. The guide's
+  // download email uses it, so a test purchase on a preview links back to
+  // that preview rather than to production.
+  env: {
+    DEPLOY_PREVIEW_URL:
+      process.env.CONTEXT === 'deploy-preview' ? process.env.DEPLOY_PRIME_URL || '' : '',
+  },
   // The article Open Graph image route reads src/content and the fonts in
   // src/assets at request time for slugs that were not prerendered, so both
   // folders must ship with its function.
