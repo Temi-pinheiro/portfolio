@@ -4,14 +4,20 @@
 // The full PDF is never in this repo, which is public: buyers get it through
 // the download route, from GUIDE_PDF below.
 const LIVE_PLAN = 'plan_Lyr47WRojsUCi';
+// The page sells the plan through a Whop checkout configuration, whose
+// redirect_url (https://temipinheiro.com/quiet-edge) is where Whop sends the
+// tab once a payment goes through. Without one, Whop sent buyers to its own
+// product page, and the page never got to start their download.
+const LIVE_CHECKOUT = 'ch_bjtgbW9x3jVIWm3';
 // A Deploy Preview can sell a test plan instead (a $1 product), so a real
 // purchase tests the checkout, the email and the download before a change
-// ships. NEXT_PUBLIC_QUIET_EDGE_TEST_PLAN is set on Netlify for the
-// deploy-preview context only.
+// ships. The plan and its checkout configuration (redirecting to the preview)
+// are set on Netlify for the deploy-preview context only.
 const TEST_PLAN = process.env.NEXT_PUBLIC_QUIET_EDGE_TEST_PLAN || null;
+const TEST_CHECKOUT = process.env.NEXT_PUBLIC_QUIET_EDGE_TEST_CHECKOUT || null;
 
 export const QUIET_EDGE = {
-  plan: TEST_PLAN ?? LIVE_PLAN,
+  checkout: TEST_CHECKOUT ?? LIVE_CHECKOUT,
   // Payments on these plans unlock the guide. A preview still accepts the live
   // plan, so a real buyer's link can be checked there.
   plans: (TEST_PLAN ? [LIVE_PLAN, TEST_PLAN] : [LIVE_PLAN]) as readonly string[],

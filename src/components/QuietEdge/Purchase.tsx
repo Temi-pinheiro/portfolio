@@ -15,19 +15,11 @@ import { EASE_OUT_EXPO } from '../motion/Reveal';
 // which asks Whop whether it's paid, emails the buyer their link, and answers
 // with it, so the download starts right there.
 //
-// Whop sends the tab to `returnUrl` once the checkout is done, and after an
-// off-site step (3DS, a bank's page) with `payment` and `status` added. So the
-// ID also goes into sessionStorage, and the page picks the purchase up again
-// from either one when it loads.
-//
-// After a card payment, Whop's checkout can also take the whole tab to
-// whop.com (to sign the buyer in, or to the product), sometimes before
-// onComplete fires. A $1 test on 2026-10-30 ended there, with no claim and no
-// email. `allowCompletionNavigation: false` keeps the buyer here: Whop's
-// controller then announces the completion instead of navigating. It's read by
-// the checkout code Whop serves, but it isn't in the 1.8.0 types, hence the
-// spread below.
-const STAY_ON_PAGE = { allowCompletionNavigation: false };
+// Whop takes the tab away once a payment goes through: to the checkout
+// configuration's redirect_url (this page, lib/quietEdge), and after an
+// off-site step (3DS, a bank's page) to `returnUrl`, with `payment` and
+// `status` added. So the ID also goes into sessionStorage, and the page picks
+// the purchase up again from either one when it loads.
 
 export type Purchase =
   | { step: 'checkout'; retry?: boolean }
@@ -56,7 +48,7 @@ export const usePurchase = () => {
       const res = await fetch('/api/quiet-edge/claim', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // Finishes even if the tab is taken elsewhere, so the email still goes.
+        // Finishes when Whop takes the tab away, so the email still goes.
         keepalive: true,
         body: JSON.stringify({ payment }),
       }).catch(() => null);
@@ -131,9 +123,8 @@ export const PurchaseBody = ({
         )}
         <WhopElements elements={whop} appearance={theme}>
           <Checkout
-            plan={QUIET_EDGE.plan}
+            checkoutConfiguration={QUIET_EDGE.checkout}
             returnUrl={`${location.origin}/quiet-edge`}
-            {...STAY_ON_PAGE}
             onComplete={(done) => {
               if (done.result !== 'payment') return;
               try {
