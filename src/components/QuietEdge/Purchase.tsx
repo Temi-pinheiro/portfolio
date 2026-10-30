@@ -19,6 +19,15 @@ import { EASE_OUT_EXPO } from '../motion/Reveal';
 // off-site step (3DS, a bank's page) with `payment` and `status` added. So the
 // ID also goes into sessionStorage, and the page picks the purchase up again
 // from either one when it loads.
+//
+// After a card payment, Whop's checkout can also take the whole tab to
+// whop.com (to sign the buyer in, or to the product), sometimes before
+// onComplete fires. A $1 test on 2026-10-30 ended there, with no claim and no
+// email. `allowCompletionNavigation: false` keeps the buyer here: Whop's
+// controller then announces the completion instead of navigating. It's read by
+// the checkout code Whop serves, but it isn't in the 1.8.0 types, hence the
+// spread below.
+const STAY_ON_PAGE = { allowCompletionNavigation: false };
 
 export type Purchase =
   | { step: 'checkout'; retry?: boolean }
@@ -47,6 +56,8 @@ export const usePurchase = () => {
       const res = await fetch('/api/quiet-edge/claim', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        // Finishes even if the tab is taken elsewhere, so the email still goes.
+        keepalive: true,
         body: JSON.stringify({ payment }),
       }).catch(() => null);
       const data = await res?.json().catch(() => null);
@@ -122,6 +133,7 @@ export const PurchaseBody = ({
           <Checkout
             plan={QUIET_EDGE.plan}
             returnUrl={`${location.origin}/quiet-edge`}
+            {...STAY_ON_PAGE}
             onComplete={(done) => {
               if (done.result !== 'payment') return;
               try {
