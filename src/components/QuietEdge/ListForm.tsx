@@ -1,6 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
 import { type FormEvent, useState } from 'react';
 import { track } from '~~/lib/analytics';
 import { Check } from '../icons';
@@ -119,7 +120,14 @@ export const ListForm = ({ buttonClassName }: { buttonClassName: string }) => {
           </AnimatePresence>
           <p className='mt-4 text-[15px] leading-[1.55] text-muted'>
             I write when there’s a new edition, and every email has an
-            unsubscribe link.
+            unsubscribe link. More in the{' '}
+            <Link
+              href='/privacy'
+              className='underline decoration-line underline-offset-4 transition-colors hover:text-ink'
+            >
+              privacy notice
+            </Link>
+            .
           </p>
         </motion.form>
       )}
