@@ -2,6 +2,7 @@
 
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import posthog from 'posthog-js';
+import Link from 'next/link';
 import { useState, useSyncExternalStore } from 'react';
 import { EASE_OUT_EXPO } from '../motion/Reveal';
 
@@ -45,7 +46,13 @@ export const CookieBanner = () => {
             <p className='text-[15px] leading-[1.5] text-muted md:text-[16px] md:leading-[1.55]'>
               <span className='text-ink'>Mind if I use a cookie?</span> PostHog
               shows me how people use this site, with recordings that hide what
-              you type. Say no and visits are still counted, just without one.
+              you type. Say no and visits are still counted, just without one.{' '}
+              <Link
+                href='/privacy'
+                className='underline decoration-line underline-offset-4 transition-colors hover:text-ink'
+              >
+                Privacy notice
+              </Link>
             </p>
             <div className='mt-3 flex flex-wrap gap-2 md:mt-4'>
               <button
