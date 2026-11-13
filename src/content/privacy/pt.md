@@ -27,7 +27,7 @@ A Whop cuida do checkout e do pagamento, sob a política de privacidade dela. El
 
 ### Quando você preenche um formulário, marca uma conversa ou me escreve
 
-- O formulário de análise gratuita (teardown) pede seu nome, e-mail, empresa, site e o que você quer melhorar. Ele envia tudo para a minha caixa de entrada, e eu uso essas informações para fazer a análise e responder.
+- O questionário da página Mariposa pede seu nome, sua empresa e o site dela, e como a empresa funciona: as ferramentas, os problemas e o que você gostaria de delegar. O Claude, da Anthropic, lê suas respostas para escrever o diagnóstico que você vê, e as respostas e o diagnóstico vão para a minha caixa de entrada pela Sendbyte. Se você deixar seu e-mail depois, ele também vai para a minha caixa de entrada, e eu o uso para responder. Guardo uma contagem de diagnósticos por visitante por dia, ligada a uma forma embaralhada do seu endereço IP, para evitar abusos.
 - As conversas são marcadas pelo Calendly, que me repassa seu nome, e-mail e o que você escrever no agendamento.
 - Se você me mandar um e-mail, a conversa fica no meu Gmail.
 
@@ -51,6 +51,8 @@ A base legal é o meu legítimo interesse (art. 7º, IX) em oferecer um trabalho
 
 Uso assistentes de IA, hoje o Claude, da Anthropic, para ajudar a pesquisar, escrever e enviar parte desse trabalho, inclusive encontrar contatos comerciais e redigir e-mails. Eles tratam os dados acima para fazer esse trabalho por mim.
 
+O diagnóstico do questionário é escrito pelo Claude, pela API da Anthropic. A Anthropic apaga as respostas e o diagnóstico em até 30 dias, a menos que seus sistemas de segurança os sinalizem, e não treina seus modelos com eles.
+
 ### O que eu não faço
 
 Não vendo dados pessoais, não faço anúncios e não compartilho seus dados com ninguém além dos serviços citados neste aviso.
@@ -62,11 +64,11 @@ Não vendo dados pessoais, não faço anúncios e não compartilho seus dados co
 | Netlify | Hospedagem deste site |
 | PostHog | Estatísticas do site |
 | Whop | Checkout, pagamentos e acesso ao que você comprou |
-| Sendbyte | A lista de e-mails, os e-mails de entrega e o formulário de análise |
+| Sendbyte | A lista de e-mails, os e-mails de entrega e o questionário |
 | Google (Gmail) | Minha caixa de entrada |
 | Calendly | Agendamento de conversas |
 | Apollo, Firecrawl | Encontrar contatos comerciais públicos |
-| Anthropic | Assistente de IA |
+| Anthropic | Assistente de IA, e o diagnóstico do questionário |
 
 ## Transferência internacional
 

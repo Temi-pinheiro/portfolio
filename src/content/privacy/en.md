@@ -27,7 +27,7 @@ Whop runs the checkout and takes the payment, under its own privacy policy. It s
 
 ### When you fill in a form, book a call or email me
 
-- The free teardown form asks for your name, email, business, website and what you want to fix. It sends them to my inbox, and I use them to do the teardown and reply.
+- The intake on the Mariposa page asks for your name, your business and its website, and how the business works: its tools, its problems, and what you’d like handled. Anthropic’s Claude reads your answers to write the prognosis you see, and your answers and the prognosis go to my inbox through Sendbyte. If you leave your email afterwards, it goes to my inbox too, and I use it to reply. I keep a count of prognoses per visitor per day, against a scrambled form of your IP address, to stop abuse.
 - Calls are booked through Calendly, which passes me your name, email and whatever you write in the booking.
 - If you email me, the conversation stays in my Gmail.
 
@@ -51,6 +51,8 @@ The basis is my legitimate interest in offering relevant work to businesses, wei
 
 I use AI assistants, currently Anthropic’s Claude, to help research, write and send some of this work, including finding business contacts and drafting emails. They process the data above to do that work for me.
 
+The intake’s prognosis is written by Claude through Anthropic’s API. Anthropic deletes the answers and the prognosis within 30 days, unless its safety systems flag them, and doesn’t train its models on them.
+
 ### What I don’t do
 
 I don’t sell personal data, I don’t run ads, and I don’t share your data with anyone other than the services named in this notice.
@@ -62,11 +64,11 @@ I don’t sell personal data, I don’t run ads, and I don’t share your data w
 | Netlify | Hosting this site |
 | PostHog | Site analytics |
 | Whop | Checkout, payments and access to what you bought |
-| Sendbyte | The email list, delivery emails and the teardown form |
+| Sendbyte | The email list, delivery emails and the intake |
 | Google (Gmail) | My inbox |
 | Calendly | Booking calls |
 | Apollo, Firecrawl | Finding public business contact details |
-| Anthropic | AI assistant |
+| Anthropic | AI assistant, and writing the intake’s prognosis |
 
 ## Data leaving your country
 

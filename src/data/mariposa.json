@@ -1,225 +1,145 @@
 {
-  "parts": [
+  "offer": [
     {
-      "number": "00",
-      "name": "The Teardown",
-      "when": "Before you buy",
-      "in": [],
-      "pain": "You don’t know yet if an audit is worth paying for.",
-      "promise": "Three fixes, free, on one screenshot.",
-      "steps": [
-        "The three things I’d fix first, marked on a screenshot of your site or app",
-        "For each one: what’s wrong, why it costs you, and the fix",
-        "No call needed. If it’s useful, you’ll know what the audit is like"
-      ]
+      "name": "An AI operating system",
+      "body": "One layer that knows your business: its documents, processes, clients and prices. It’s connected to the tools your team already uses, so anyone can ask it something or hand it work, and it acts inside those tools."
     },
     {
-      "number": "01",
-      "name": "The Audit",
-      "when": "Day 1",
-      "in": [],
-      "pain": "You can tell something’s off. You can’t tell what.",
-      "promise": "What’s costing you users, first visit to checkout.",
-      "steps": [
-        "I walk your key flows as a first-time visitor: first visit, sign-up, the core action, upgrade and checkout",
-        "Desktop and mobile",
-        "Every issue ranked by how much it affects whether people trust you, start and pay",
-        "Quick wins you can ship the same day",
-        "A part map: which of parts 02 to 07 you need",
-        "Visitor tracking set up with you on day 1, in an account you own, so a baseline builds before anything changes",
-        "Delivered within 24 hours of getting your app details. At least 10 fixes you think are worth making, or your money back"
-      ]
+      "name": "Agents",
+      "body": "An agent owns one job from start to finish: answering inquiries, following up leads, chasing invoices, preparing the weekly report. It works in your tools and hands anything unusual to a person."
     },
     {
-      "number": "02",
-      "name": "The First Screen",
-      "when": "Build week",
-      "in": [
-        "Website Augment"
-      ],
-      "pain": "Visitors leave before they know what you do.",
-      "promise": "They get it at first glance.",
-      "steps": [
-        "A headline that says what you sell, with everything under it in order of importance",
-        "One primary button, where people look for it",
-        "A navbar laid out the way visitors expect: logo left, links center, account actions right",
-        "A demo that shows one thing in full, so people want to try their own"
-      ]
-    },
-    {
-      "number": "03",
-      "name": "The Way In",
-      "when": "Build week",
-      "in": [
-        "App Augment"
-      ],
-      "pain": "People sign up, then stall.",
-      "promise": "No one feels lost.",
-      "steps": [
-        "A short welcome flow, so people know what’s coming",
-        "A first-login walkthrough that says what each part of the app is for",
-        "Step counts and transitions in every multi-step flow",
-        "Loading and empty states, so no screen is ever blank"
-      ]
-    },
-    {
-      "number": "04",
-      "name": "The Core Action",
-      "when": "Build week",
-      "in": [
-        "App Augment"
-      ],
-      "pain": "The main thing works, but it doesn’t feel trustworthy.",
-      "promise": "The thing they came for feels good to use.",
-      "steps": [
-        "Features that don’t work yet, hidden until they do",
-        "Buttons that look like buttons and links that look like links. Nothing looks clickable unless it is",
-        "Screens grouped around the job people came to do, not around features",
-        "Each person sees only the screens their role needs"
-      ]
-    },
-    {
-      "number": "05",
-      "name": "The Money Page",
-      "when": "Build week",
-      "in": [
-        "Website Augment",
-        "App Augment"
-      ],
-      "pain": "People reach pricing and leave.",
-      "promise": "Paying is the easy part.",
-      "steps": [
-        "The plan you want people to buy, shown first",
-        "Every discount shown against the price it comes off",
-        "Fine print and cancel buttons moved off the sales page",
-        "One clear line on what happens to their data",
-        "An upgrade button in the app that’s always in reach"
-      ]
-    },
-    {
-      "number": "06",
-      "name": "The System",
-      "when": "Build week",
-      "in": [
-        "Website Augment",
-        "App Augment"
-      ],
-      "pain": "Every screen looks like it came from a different app, because each prompt made it from scratch.",
-      "promise": "It looks like one product.",
-      "steps": [
-        "One type scale, one spacing scale, and colors with a job: brand color on the main action, neutral on the rest",
-        "Consistent components: buttons, inputs, cards, and tags as pills",
-        "Contrast checked on every surface",
-        "A design-rules file for Lovable, Cursor or Claude, so the next screens they make match"
-      ]
-    },
-    {
-      "number": "07",
-      "name": "The Edges",
-      "when": "Build week",
-      "in": [
-        "Website Augment",
-        "App Augment"
-      ],
-      "pain": "It works, but it feels unfinished.",
-      "promise": "It feels premium.",
-      "steps": [
-        "Mobile layouts that fit the screen, with no sideways scrolling",
-        "Motion between steps and screens",
-        "Designed error, loading and empty states instead of the defaults",
-        "The small things fixed: footers that stop short, borders that flash, missing focus states"
-      ]
-    },
-    {
-      "number": "08",
-      "name": "The Re-Audit",
-      "when": "After the build",
-      "in": [
-        "Website Augment",
-        "App Augment"
-      ],
-      "pain": "You paid for fixes. How do you know they all shipped?",
-      "promise": "Proof it’s fixed.",
-      "steps": [
-        "I run the day-1 audit again on what shipped",
-        "Every finding marked fixed, with a before and after",
-        "A first scorecard from your visitor data: how many people make it through each key flow, before and after",
-        "Anything still open, I fix for free",
-        "A handover: what changed, and how to keep it that way"
-      ]
-    },
-    {
-      "number": "09",
-      "name": "The Keep",
-      "when": "Every month",
-      "in": [],
-      "pain": "You ship a new feature and it breaks the look.",
-      "promise": "It stays good as you ship.",
-      "steps": [
-        "New screens reviewed before they go live",
-        "UI fixes shipped as they come up",
-        "A short audit and a visitor scorecard every month",
-        "Your design-rules file kept up to date"
-      ]
+      "name": "Agent swarms",
+      "body": "Several agents passing work between them, for jobs with stages. One takes the request, one researches, one drafts, one checks, and a person approves where it matters."
     }
   ],
   "path": [
     {
-      "parts": "00",
-      "name": "The Teardown",
-      "when": "Free · within 24 hours",
-      "promise": "Three fixes, free, on one screenshot.",
-      "points": [
-        "The three things I’d fix first, marked on your site or app",
-        "What each one costs you, and how to fix it",
-        "No call needed. The fixes are yours to ship, whatever you decide next"
-      ]
-    },
-    {
       "parts": "01",
-      "name": "The Audit",
-      "when": "Within 24 hours",
-      "promise": "What’s costing you users, first visit to checkout.",
+      "name": "The Intake",
+      "when": "Today · about 3 minutes",
+      "promise": "Nine questions, and my first read while you wait.",
       "points": [
-        "The teardown sees one screen. The audit signs up and walks every key flow, on desktop and mobile",
-        "Every issue ranked by what it costs you, with a fix you or your AI builder can make",
-        "Visitor tracking set up on day 1, so you can see where people drop off",
-        "Which build parts you need, if any",
-        "At least 10 fixes you think are worth making, or your money back"
+        "What the business does, the tools you use, and what eats your week",
+        "A prognosis on the spot: what I’d build, where I’d start, and what I’d ask you",
+        "A call booked from the same page, or the conversation carried on by email"
       ]
     },
     {
-      "parts": "02–07",
+      "parts": "02",
+      "name": "The Map",
+      "when": "Before anything is built",
+      "promise": "How the work actually moves today.",
+      "points": [
+        "I talk to you and the people who do the work",
+        "Every step, tool and handoff in the jobs worth handing over, written down",
+        "A plan for what to build first, and what to leave with people"
+      ]
+    },
+    {
+      "parts": "03",
       "name": "The Build",
-      "when": "One week",
-      "promise": "The parts the audit points at, rebuilt.",
+      "when": "Built to order",
+      "promise": "Systems made for your business, in your tools.",
       "points": [
-        "In one week: the set for your site or your app, or any one part on its own. Book a full set within 7 days of your audit and the audit’s cost comes off."
-      ],
-      "build": true
-    },
-    {
-      "parts": "08",
-      "name": "The Re-Audit",
-      "when": "After the build",
-      "promise": "Proof it’s fixed.",
-      "points": [
-        "The audit again, on what shipped",
-        "Every finding marked fixed, with a before and after",
-        "How many visitors make it through each key flow, before and after",
-        "Anything still open, I fix for free"
+        "The operating system, the agents, or both, built from the map",
+        "Connected to the tools you already use, with your documents and processes behind them",
+        "A person approves anything that matters, until you decide otherwise"
       ]
     },
     {
-      "parts": "09",
+      "parts": "04",
+      "name": "The Rollout",
+      "when": "Alongside your team",
+      "promise": "Your team using it, not working around it.",
+      "points": [
+        "Launched one job at a time, so nothing changes all at once",
+        "Your team shown how to work with it",
+        "Adjusted on what real use shows"
+      ]
+    },
+    {
+      "parts": "05",
       "name": "The Keep",
       "when": "Every month, if you want it",
-      "promise": "It stays good as you ship.",
+      "promise": "It keeps up as the business changes.",
       "points": [
-        "New screens reviewed before they go live",
-        "UI fixes as they come up",
-        "A short audit and a visitor scorecard every month"
+        "New jobs added as you find them",
+        "Checks on what the agents did, and fixes when something drifts",
+        "A monthly look at what it handled and where it got stuck"
       ]
+    }
+  ],
+  "roll": [
+    {
+      "number": "01",
+      "name": "An AI operating system"
+    },
+    {
+      "number": "02",
+      "name": "Inquiries, answered"
+    },
+    {
+      "number": "03",
+      "name": "Leads, followed up"
+    },
+    {
+      "number": "04",
+      "name": "Invoices, chased"
+    },
+    {
+      "number": "05",
+      "name": "Reports, written"
+    },
+    {
+      "number": "06",
+      "name": "Clients, onboarded"
+    },
+    {
+      "number": "07",
+      "name": "Support, handled"
+    },
+    {
+      "number": "08",
+      "name": "Bookings, scheduled"
+    },
+    {
+      "number": "09",
+      "name": "Research, done"
+    },
+    {
+      "number": "10",
+      "name": "Agents that work together"
+    }
+  ],
+  "proof": [
+    {
+      "quote": "70,000 hours is not an abstraction. That’s real people, real shifts, and real time that was going to paperwork and is now going back to our teammates.",
+      "by": "George Johnson",
+      "role": "Workforce Operations COO, Advantage Solutions",
+      "source": "Anthropic customer story",
+      "url": "https://claude.com/customers/advantage-solutions"
+    },
+    {
+      "quote": "Before this transformational tech, teams of people spent over half the day chasing missed pickups – manually checking carrier websites, making calls, recording updates and notifying customers.",
+      "by": "Greg West",
+      "role": "VP for LTL, C.H. Robinson",
+      "source": "C.H. Robinson press release",
+      "url": "https://www.chrobinson.com/en-us/about-us/newsroom/press-releases/2026/chrobinson-lean-ai-agents-for-ltl-pickup-efficiency/"
+    },
+    {
+      "quote": "ChatGPT Work runs this report for me every morning. It finds all the inconsistencies all the way across the internet, so I can ensure all of this information is correct.",
+      "by": "Larissa Guetter",
+      "role": "Co-founder, ATV Big Air Tour",
+      "source": "OpenAI customer story",
+      "url": "https://openai.com/index/atv-big-air-tour/"
+    },
+    {
+      "quote": "It knows who we are. It knows where we came from. It knows where we want to go.",
+      "by": "Michael Stephens",
+      "role": "CEO, Bama Sea Products",
+      "source": "Anthropic customer story",
+      "url": "https://claude.com/customers/bama"
     }
   ],
   "cases": [

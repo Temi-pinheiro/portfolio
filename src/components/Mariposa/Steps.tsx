@@ -6,7 +6,7 @@ import { LIFE_NAMES } from '~~/lib/metamorphosis';
 import { ArrowRight } from '../icons';
 import { FadeUp } from '../motion/Reveal';
 import { StepFigure } from './StepFigure';
-import { REQUEST_HREF } from './TeardownForm';
+import { INTAKE_HREF } from './Intake/useIntake';
 
 export type Step = {
   parts: string;
@@ -14,10 +14,7 @@ export type Step = {
   when: string;
   promise: string;
   points: string[];
-  build?: boolean;
 };
-
-type Part = { number: string; name: string; promise: string };
 
 // The five steps scroll past on the right, on the page's own background, while
 // the ASCII figure holds still on the left and goes through the butterfly's
@@ -50,11 +47,9 @@ const useWide = () =>
 
 export const Steps = ({
   steps,
-  build,
   onRequest,
 }: {
   steps: Step[];
-  build: Part[];
   onRequest: (from: HTMLElement) => void;
 }) => {
   const list = useRef<HTMLOListElement>(null);
@@ -140,47 +135,24 @@ export const Steps = ({
                 <p className='mt-4 font-display text-[clamp(24px,2.3vw,34px)] leading-[1.25] text-muted italic'>
                   {step.promise}
                 </p>
-                {step.build ? (
-                  <>
-                    <ul className='mt-9 grid grid-cols-2 gap-x-6 gap-y-6'>
-                      {build.map((part) => (
-                        <li key={part.number}>
-                          <span className='font-mono text-[12px] font-semibold text-accent-text'>
-                            {part.number}
-                          </span>
-                          <p className='mt-1 font-display text-[21px] leading-[1.2]'>
-                            {part.name.replace(/^The /, '')}
-                          </p>
-                          <p className='mt-1 text-[16px] leading-[1.45] text-muted'>
-                            {part.promise}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className='mt-8 max-w-[560px] text-[16px] leading-[1.55] text-muted'>
-                      {step.points[0]}
-                    </p>
-                  </>
-                ) : (
-                  <ul className='mt-9 flex flex-col gap-4'>
-                    {step.points.map((point) => (
-                      <li key={point} className='relative pl-[22px] text-[18px] leading-[1.5]'>
-                        <span
-                          aria-hidden
-                          className='absolute top-[0.75em] left-0 h-px w-2.5 bg-accent'
-                        />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <ul className='mt-9 flex flex-col gap-4'>
+                  {step.points.map((point) => (
+                    <li key={point} className='relative pl-[22px] text-[18px] leading-[1.5]'>
+                      <span
+                        aria-hidden
+                        className='absolute top-[0.75em] left-0 h-px w-2.5 bg-accent'
+                      />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
                 {next ? (
                   <p className='mt-10 font-mono text-[13px] tracking-[0.03em] text-muted'>
                     Next: {next.name}
                   </p>
                 ) : (
                   <a
-                    href={REQUEST_HREF}
+                    href={INTAKE_HREF}
                     aria-haspopup='dialog'
                     onClick={(event) => {
                       event.preventDefault();
@@ -188,7 +160,7 @@ export const Steps = ({
                     }}
                     className='group mt-10 inline-flex items-center gap-2 font-mono text-[14px] tracking-[0.03em] text-accent-text'
                   >
-                    It starts with a free teardown
+                    It starts with the intake
                     <ArrowRight
                       size={18}
                       className='transition-transform duration-300 ease-soft group-hover:translate-x-1'
