@@ -27,7 +27,7 @@ Whop gestiona el pago, bajo su propio aviso de privacidad. Me comparte tu nombre
 
 ### Cuando llenas un formulario, agendas una llamada o me escribes
 
-- El formulario de análisis gratuito (teardown) pide tu nombre, correo, empresa, sitio web y lo que quieres mejorar. Lo envía a mi bandeja de entrada, y lo uso para hacer el análisis y responderte.
+- El cuestionario de la página Mariposa pide tu nombre, tu empresa y su sitio web, y cómo funciona la empresa: sus herramientas, sus problemas y lo que te gustaría delegar. Claude, de Anthropic, lee tus respuestas para escribir el diagnóstico que ves, y las respuestas y el diagnóstico llegan a mi bandeja de entrada a través de Sendbyte. Si dejas tu correo después, también llega a mi bandeja de entrada, y lo uso para responderte. Guardo un recuento de diagnósticos por visitante y por día, vinculado a una forma codificada de tu dirección IP, para evitar abusos.
 - Las llamadas se agendan con Calendly, que me comparte tu nombre, tu correo y lo que escribas al agendar.
 - Si me escribes un correo, la conversación queda en mi Gmail.
 
@@ -51,6 +51,8 @@ La base es mi interés legítimo en ofrecer un trabajo relevante a empresas, sop
 
 Uso asistentes de IA, hoy Claude, de Anthropic, para ayudarme a investigar, escribir y enviar parte de este trabajo, incluido encontrar contactos comerciales y redactar correos. Tratan los datos anteriores para hacer ese trabajo por mí.
 
+El diagnóstico del cuestionario lo escribe Claude, a través de la API de Anthropic. Anthropic borra las respuestas y el diagnóstico en un plazo de 30 días, salvo que sus sistemas de seguridad los marquen, y no entrena sus modelos con ellos.
+
 ### Lo que no hago
 
 No vendo datos personales, no hago publicidad y no comparto tus datos con nadie más que los servicios nombrados en este aviso.
@@ -62,11 +64,11 @@ No vendo datos personales, no hago publicidad y no comparto tus datos con nadie 
 | Netlify | Alojar este sitio |
 | PostHog | Estadísticas del sitio |
 | Whop | Pagos y acceso a lo que compraste |
-| Sendbyte | La lista de correo, los correos de entrega y el formulario de análisis |
+| Sendbyte | La lista de correo, los correos de entrega y el cuestionario |
 | Google (Gmail) | Mi bandeja de entrada |
 | Calendly | Agendar llamadas |
 | Apollo, Firecrawl | Encontrar contactos comerciales públicos |
-| Anthropic | Asistente de IA |
+| Anthropic | Asistente de IA, y el diagnóstico del cuestionario |
 
 Estos servicios tratan tus datos por encargo mío, solo para lo que dice la tabla. No hago otras transferencias que requieran tu consentimiento.
 

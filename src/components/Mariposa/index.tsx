@@ -1,10 +1,10 @@
 'use client';
 
-import * as Dialog from '@radix-ui/react-dialog';
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import { type MouseEvent, useEffect, useRef, useState } from 'react';
 import data from '~~/data/mariposa.json';
 import { track } from '~~/lib/analytics';
+import { ArrowUpRight } from '../icons';
 import {
   EASE_OUT_EXPO,
   FadeUp,
@@ -13,86 +13,69 @@ import {
   WordReveal,
 } from '../motion/Reveal';
 import { CallEmbed } from './CallEmbed';
-import { CaseCard, type Case } from './CaseStudies';
-import { ModalContent, ModalHeader } from './Modal';
+import { Intake, useIntake } from './Intake';
+import { INTAKE_HREF } from './Intake/useIntake';
 import { Steps, type Step } from './Steps';
 import { primaryButton } from './styles';
-import { REQUEST_HREF, TeardownForm, useTeardown } from './TeardownForm';
 
-// The page asks for one thing, the teardown, and every step after it leads to
-// exactly one next step. So the program is five steps in order, not a menu:
-// which parts someone needs is the audit's call, and the price comes with my
-// reply. Everything shows without a click; a case study opens in a modal that
-// ends on the same ask. Wherever the ask is made, the form opens in a modal,
-// so no one has to scroll for it, and the button that follows you down the
-// page stays to the end. The end is for anyone who'd rather talk: a call,
-// booked through Calendly.
-
+// The Mariposa Program, since 2026-11-13: AI operating systems, agents and
+// agent swarms, built to order. The page asks for one thing, the intake, and
+// every section leads back to it. The intake opens full screen, and ends in a
+// prognosis written while the visitor waits, then the call. No prices: they
+// come after the call. The end of the page is the call itself, for anyone who
+// would rather talk first.
 
 const sectionTitle =
   'font-display text-[clamp(34px,3.6vw,56px)] leading-[1.08] tracking-[-0.02em]';
 
-const guarantees = [
-  {
-    title: 'Front end only',
-    body: 'Design and front-end code: what people see and touch. No backend, infrastructure or security work.',
-  },
-  {
-    title: 'Any stack',
-    body: 'Lovable, Base44, Bolt, Replit, v0, Cursor, Next.js, React, Webflow, Framer, WordPress. If it’s live, I can work on it.',
-  },
-  {
-    title: 'Two guarantees',
-    body: 'At least 10 fixes you think are worth making in your audit, or a full refund. After a build, anything the re-audit finds still open, I fix for free.',
-  },
-];
+// Public words from people about AI in their own work, sourced and linked.
+// Never presented as my clients'. Each one is approved before it goes here.
+type Proof = { quote: string; by: string; role: string; source: string; url: string };
 
 export const Mariposa = () => {
   const steps: Step[] = data.path;
-  // Parts 02–07: what the Build step is made of.
-  const build = data.parts.slice(2, 8);
-  const cases: Case[] = data.cases;
+  const proof: Proof[] = data.proof;
 
-  const teardown = useTeardown();
-  const [requesting, setRequesting] = useState(false);
-  // The button that opened the form's modal, for focus to go back to.
+  const intake = useIntake();
+  const [open, setOpen] = useState(false);
+  // The button that opened the intake, for focus to go back to.
   const opener = useRef<HTMLElement | null>(null);
-  const request = (from: HTMLElement | null) => {
+  const start = (from: HTMLElement | null) => {
     opener.current = from;
-    track('teardown_form_opened');
-    setRequesting(true);
+    track('intake_opened');
+    setOpen(true);
   };
-  const requestLink = {
-    href: REQUEST_HREF,
+  const startLink = {
+    href: INTAKE_HREF,
     'aria-haspopup': 'dialog' as const,
     onClick: (event: MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
-      request(event.currentTarget);
+      start(event.currentTarget);
     },
   };
+  const done = intake.phase === 'result' || intake.phase === 'failed';
+  const label = done ? 'See your prognosis' : 'Get your prognosis';
 
-  // A case page's "Request a free teardown" comes back here as ?teardown: open
-  // the form, and take the flag out of the address so a reload doesn't reopen
-  // it. A frame later, so the modal opens over a painted page.
+  // Old links ask for ?teardown, newer ones may ask for ?intake: either opens
+  // the intake, and the flag leaves the address so a reload doesn't reopen
+  // it. A frame later, so it opens over a painted page.
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       const url = new URL(window.location.href);
-      if (!url.searchParams.has('teardown')) return;
+      if (!url.searchParams.has('intake') && !url.searchParams.has('teardown')) return;
+      url.searchParams.delete('intake');
       url.searchParams.delete('teardown');
       window.history.replaceState(window.history.state, '', url);
-      track('teardown_form_opened');
-      setRequesting(true);
+      track('intake_opened');
+      setOpen(true);
     });
     return () => cancelAnimationFrame(frame);
   }, []);
 
-  // The one button follows you down the page: it shows once the hero's button
-  // has scrolled away, and stays until a request is sent.
+  // The one button follows you down the page once the hero's has scrolled
+  // away.
   const heroButton = useRef<HTMLAnchorElement>(null);
   const [pastHero, setPastHero] = useState(false);
-  const sent = teardown.status === 'sent';
-  const showBar = pastHero && !sent;
-
   useEffect(() => {
     const hero = heroButton.current;
     if (!hero) return;
@@ -107,42 +90,70 @@ export const Mariposa = () => {
     <MotionConfig reducedMotion='user'>
       <main className='mx-auto max-w-[1440px] px-5 pb-28 md:px-10'>
         <section className='pt-16 md:pt-[clamp(64px,9vw,140px)]'>
-          {/* The label says what this is in the words founders search for,
-              and it's part of the heading, so search engines read it too. */}
+          {/* The label says what this is in the words people search for, and
+              it's part of the heading, so search engines read it too. */}
           <h1>
             <FadeUp
               as='span'
               className='block font-mono text-[13px] tracking-[0.1em] text-muted uppercase'
             >
-              The Mariposa Program · UI/UX audits for apps built with AI
+              The Mariposa Program · AI systems and agents for businesses
             </FadeUp>
             <span className='sr-only'>. </span>
             <WordReveal
               as='span'
-              text='You built it fast. Now make it feel finished.'
+              text='An AI team, built around how your business works.'
               className='mt-5 block max-w-[1040px] font-display text-[clamp(44px,6.4vw,100px)] leading-[1.03] tracking-[-0.025em]'
             />
           </h1>
           <FadeUp delay={0.35}>
-            <p className='mt-9 max-w-[640px] text-[clamp(18px,1.5vw,21px)] leading-[1.6] text-muted'>
-              For founders who built their app with Lovable, Base44, Bolt or
-              Replit and can tell it feels off. I go through it as a new visitor
-              would, find what makes people hesitate or leave, and fix it. It
-              starts free: send me your link, and within 24 hours I’ll send back
-              the three things I’d fix first.
+            <p className='mt-9 max-w-[660px] text-[clamp(18px,1.5vw,21px)] leading-[1.6] text-muted'>
+              I design and build AI systems for businesses: an operating system
+              that knows your business, and agents that each take a job off
+              your team’s hands. Each one works inside
+              the tools you already use. It starts with nine questions, and
+              you get my first read on where AI fits before you leave the page.
             </p>
           </FadeUp>
           <FadeUp delay={0.5} className='mt-10'>
-            <a ref={heroButton} {...requestLink} className={primaryButton}>
-              Request a free teardown
+            <a ref={heroButton} {...startLink} className={primaryButton}>
+              {label}
             </a>
-            {/* Who's asking for the link. No link of its own: the page has one
-                ask. Inside what happened (the bio-copy-accuracy rule). */}
-            <p className='mt-6 max-w-[520px] text-[16px] leading-[1.55] text-muted'>
-              I’m Temitope. I’ve built product front ends since 2021, including
-              features at Lendsqr used by a million people.
+            {/* Who's asking. Inside what happened (the bio-copy-accuracy
+                rule). */}
+            <p className='mt-6 max-w-[540px] text-[16px] leading-[1.55] text-muted'>
+              I’m Temitope. I’ve built product software since 2021, and right
+              now I’m building an AI operating system for Sorbit Studios.
             </p>
           </FadeUp>
+        </section>
+
+        <section className='pt-28 md:pt-[clamp(120px,12vw,200px)]' id='build'>
+          <div className='flex flex-wrap items-end justify-between gap-6'>
+            <WordReveal text='What I build' className={sectionTitle} />
+            <FadeUp delay={0.2}>
+              <p className='max-w-[520px] text-[18px] leading-[1.6] text-muted'>
+                Any sector, any size. A one-person studio might need one agent;
+                a team of two hundred, the whole system. The intake shows which.
+              </p>
+            </FadeUp>
+          </div>
+          <Stagger as='ul' className='mt-12 grid gap-4 md:grid-cols-3'>
+            {data.offer.map((item, i) => (
+              <StaggerItem
+                key={item.name}
+                className='flex flex-col rounded-[22px] border border-line p-6 md:p-8'
+              >
+                <span className='font-mono text-[13px] text-accent-text'>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className='mt-6 font-display text-[clamp(28px,2.4vw,36px)] leading-[1.1]'>
+                  {item.name}
+                </h3>
+                <p className='mt-4 text-[17px] leading-[1.6] text-muted'>{item.body}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
         </section>
 
         <section className='pt-28 md:pt-[clamp(120px,12vw,200px)]' id='how'>
@@ -150,52 +161,54 @@ export const Mariposa = () => {
             <WordReveal text='How it works' className={sectionTitle} />
             <FadeUp delay={0.2}>
               <p className='max-w-[520px] text-[18px] leading-[1.6] text-muted'>
-                Five steps. Each one tells you whether you need the next.
+                Five steps, from what eats your week to a system that keeps up
+                with the business.
               </p>
             </FadeUp>
           </div>
-          <Steps steps={steps} build={build} onRequest={request} />
+          <Steps steps={steps} onRequest={start} />
         </section>
 
-        {cases.length > 0 && (
-          <section className='pt-24 md:pt-[clamp(96px,10vw,160px)]' id='cases'>
+        {proof.length > 0 && (
+          <section className='pt-24 md:pt-[clamp(96px,10vw,160px)]' id='proof'>
             <div className='flex flex-wrap items-end justify-between gap-6'>
-              <WordReveal text='Case studies' className={sectionTitle} />
+              <WordReveal text='In their words' className={sectionTitle} />
               <FadeUp delay={0.2}>
                 <p className='max-w-[520px] text-[18px] leading-[1.6] text-muted'>
-                  {cases.length === 1
-                    ? 'A real teardown, shared with the founder’s permission.'
-                    : 'Real teardowns, shared with the founders’ permission.'}
+                  What people have said, in public, about handing work to AI in
+                  their own businesses. They aren’t my clients; each one links
+                  to where they said it.
                 </p>
               </FadeUp>
             </div>
-            <Stagger as='ul' className='mt-12 grid gap-4'>
-              {cases.map((study) => (
-                <StaggerItem key={study.name}>
-                  <CaseCard
-                    study={study}
-                    buttonClassName={primaryButton}
-                    onRequest={request}
-                  />
+            <Stagger as='ul' className='mt-12 grid gap-4 md:grid-cols-2'>
+              {proof.map((item) => (
+                <StaggerItem
+                  key={item.url}
+                  className='flex flex-col justify-between gap-8 rounded-[22px] bg-tile p-6 md:p-8'
+                >
+                  <blockquote className='font-display text-[clamp(22px,1.9vw,28px)] leading-[1.35]'>
+                    “{item.quote}”
+                  </blockquote>
+                  <p className='flex flex-wrap items-end justify-between gap-4 font-mono text-[13px] tracking-[0.03em] text-muted'>
+                    <span>
+                      <span className='text-ink'>{item.by}</span> · {item.role}
+                    </span>
+                    <a
+                      href={item.url}
+                      target='_blank'
+                      rel='noreferrer'
+                      className='inline-flex items-center gap-1.5 underline decoration-transparent underline-offset-4 transition-[text-decoration-color] duration-300 hover:decoration-current'
+                    >
+                      {item.source}
+                      <ArrowUpRight size={14} />
+                    </a>
+                  </p>
                 </StaggerItem>
               ))}
             </Stagger>
           </section>
         )}
-
-        <Stagger
-          as='div'
-          className='mt-24 grid gap-10 border-t border-line pt-10 md:mt-[clamp(96px,10vw,160px)] md:grid-cols-3'
-        >
-          {guarantees.map((item) => (
-            <StaggerItem as='div' key={item.title}>
-              <h3 className='font-display text-[26px]'>{item.title}</h3>
-              <p className='mt-3 text-[17px] leading-[1.6] text-muted'>
-                {item.body}
-              </p>
-            </StaggerItem>
-          ))}
-        </Stagger>
 
         <section
           className='grid scroll-mt-8 gap-12 pt-24 md:pt-[clamp(96px,10vw,160px)] lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-[clamp(40px,5vw,96px)]'
@@ -208,21 +221,21 @@ export const Mariposa = () => {
               </p>
             </FadeUp>
             <WordReveal
-              text='Rather talk it through?'
+              text='Rather talk first?'
               className='mt-5 font-display text-[clamp(40px,4.6vw,72px)] leading-[1.08] tracking-[-0.02em]'
             />
             <FadeUp delay={0.25}>
               <p className='mt-6 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
-                Book 30 minutes. We’ll open your app together and go through
-                what’s working, what isn’t, and what I’d fix first.
+                Book 30 minutes. Tell me how the business runs and where the
+                week goes, and I’ll tell you where I’d start.
               </p>
               <p className='mt-4 max-w-[520px] text-[19px] leading-[1.6] text-muted'>
-                Prefer it in writing?{' '}
+                Rather write it down?{' '}
                 <a
-                  {...requestLink}
+                  {...startLink}
                   className='text-ink underline decoration-accent underline-offset-4'
                 >
-                  Request a free teardown
+                  {done ? 'See your prognosis' : 'Start the intake'}
                 </a>{' '}
                 instead.
               </p>
@@ -233,60 +246,18 @@ export const Mariposa = () => {
           </FadeUp>
         </section>
 
-        <Dialog.Root open={requesting} onOpenChange={setRequesting}>
-          <ModalContent
-            open={requesting}
-            className='max-w-[760px]'
-            // With the intro gone, there's nothing to describe the dialog.
-            {...(sent && { 'aria-describedby': undefined })}
-            onOpenAutoFocus={(event) => {
-              // Straight to the first field, unless it would bring up a
-              // phone's keyboard over the form.
-              const panel = event.currentTarget as HTMLElement;
-              const field = panel.querySelector('input');
-              if (!field || !matchMedia('(pointer: fine)').matches) return;
-              event.preventDefault();
-              field.focus();
-            }}
-            onCloseAutoFocus={(event) => {
-              event.preventDefault();
-              if (opener.current?.isConnected) opener.current.focus();
-            }}
-          >
-            <ModalHeader
-              eyebrow='Part 00 · Free'
-              title='Start with a free teardown.'
-            />
-            <div className='px-6 pb-8 md:px-12 md:pb-12'>
-              {/* Once sent, the intro folds away and the confirmation is
-                  all that's left. */}
-              <AnimatePresence initial={false}>
-                {!sent && (
-                  <motion.div
-                    key='intro'
-                    className='overflow-hidden'
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
-                  >
-                    <Dialog.Description className='max-w-[560px] pb-8 text-[18px] leading-[1.6] text-muted'>
-                      Send me your link. Within 24 hours I’ll send back the
-                      three things I’d fix first, marked on a screenshot, with
-                      what each one costs you and how to fix it. No call
-                      needed. If you want the rest of your app looked at, I’ll
-                      tell you what the audit covers and costs.
-                    </Dialog.Description>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <TeardownForm teardown={teardown} buttonClassName={primaryButton} />
-            </div>
-          </ModalContent>
-        </Dialog.Root>
+        <Intake
+          intake={intake}
+          open={open}
+          onOpenChange={setOpen}
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+            if (opener.current?.isConnected) opener.current.focus();
+          }}
+        />
 
         <AnimatePresence>
-          {showBar && (
+          {pastHero && !open && (
             <motion.div
               className='pointer-events-none fixed inset-x-0 bottom-5 z-30 flex justify-center px-5 md:bottom-7 lg:justify-end lg:px-10'
               initial={{ opacity: 0, y: 24 }}
@@ -295,10 +266,10 @@ export const Mariposa = () => {
               transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
             >
               <a
-                {...requestLink}
+                {...startLink}
                 className={`pointer-events-auto shadow-[0_12px_32px_-12px_rgb(0_0_0/0.45)] ${primaryButton}`}
               >
-                Request a free teardown
+                {label}
               </a>
             </motion.div>
           )}

@@ -39,3 +39,7 @@ next-env.d.ts
 
 # netlify cli (linking and local builds write here)
 .netlify
+
+# The prognosis prompt (netlify/functions/prognosis.mts reads it from Netlify Blobs,
+# never from the repo, which is public). The only copy lives here; npm run prompt:push uploads it.
+/private/

@@ -16,12 +16,22 @@ type ContentProps = Pick<
 // default spring, and on close the panel fades first and the backdrop 120ms
 // after. Radix supplies the dialog behaviour: focus trap, Escape and scroll
 // lock.
+//
+// `fullscreen` is the intake's variant: it covers the screen edge to edge and
+// rises in rather than opening out, since a panel that fills the screen has
+// no width to open from.
 export const ModalContent = ({
   open,
+  fullscreen = false,
   className,
   children,
   ...props
-}: ContentProps & { open: boolean; className?: string; children: ReactNode }) => (
+}: ContentProps & {
+  open: boolean;
+  fullscreen?: boolean;
+  className?: string;
+  children: ReactNode;
+}) => (
   <AnimatePresence>
     {open && (
       <Dialog.Portal forceMount>
@@ -33,13 +43,24 @@ export const ModalContent = ({
             exit={{ opacity: 0, transition: { delay: 0.12 } }}
           />
         </Dialog.Overlay>
-        <div className='pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-3 md:p-8'>
+        <div
+          className={`pointer-events-none fixed inset-0 z-50 flex items-center justify-center ${
+            fullscreen ? '' : 'p-3 md:p-8'
+          }`}
+        >
           <Dialog.Content asChild forceMount {...props}>
             <motion.div
-              className={`pointer-events-auto relative max-h-full w-full overflow-y-auto overscroll-contain rounded-[20px] bg-paper shadow-[0_40px_120px_-40px_rgb(0_0_0/0.5)] outline-none ${className ?? ''}`}
-              initial={{ scaleX: 0.5, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              exit={{ opacity: 0 }}
+              className={`pointer-events-auto relative w-full overflow-y-auto overscroll-contain bg-paper outline-none ${
+                fullscreen
+                  ? 'h-dvh'
+                  : 'max-h-full rounded-[20px] shadow-[0_40px_120px_-40px_rgb(0_0_0/0.5)]'
+              } ${className ?? ''}`}
+              initial={fullscreen ? { y: 24, opacity: 0 } : { scaleX: 0.5, opacity: 0 }}
+              animate={fullscreen ? { y: 0, opacity: 1 } : { scaleX: 1, opacity: 1 }}
+              exit={fullscreen ? { y: 16, opacity: 0 } : { opacity: 0 }}
+              transition={
+                fullscreen ? { duration: 0.5, ease: [0.16, 1, 0.3, 1] } : undefined
+              }
             >
               {children}
             </motion.div>

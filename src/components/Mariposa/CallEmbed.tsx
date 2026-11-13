@@ -27,7 +27,9 @@ const COLORS = {
 
 const frame = 'overflow-hidden rounded-[22px] border border-line bg-paper';
 
-export const CallEmbed = () => {
+// `prefill` fills in Calendly's name and email fields, for someone who has
+// just told us who they are.
+export const CallEmbed = ({ prefill }: { prefill?: { name?: string; email?: string } }) => {
   // Null on the server: the frame's URL depends on the theme, so it's only
   // built in the browser, and the calendar never loads twice.
   const scheme = useSyncExternalStore<'light' | 'dark' | null>(
@@ -61,7 +63,7 @@ export const CallEmbed = () => {
           Email me and we’ll find a time.
         </p>
         <a
-          href={`mailto:${EMAIL}?subject=${encodeURIComponent('A call about my app')}`}
+          href={`mailto:${EMAIL}?subject=${encodeURIComponent('A call about my business')}`}
           className='font-mono text-[15px] tracking-[0.02em] text-accent-text underline decoration-accent underline-offset-4'
         >
           {EMAIL}
@@ -79,6 +81,8 @@ export const CallEmbed = () => {
     for (const [key, value] of Object.entries(COLORS[scheme])) {
       url.searchParams.set(key, value);
     }
+    if (prefill?.name) url.searchParams.set('name', prefill.name);
+    if (prefill?.email) url.searchParams.set('email', prefill.email);
     src = url.toString();
   }
 

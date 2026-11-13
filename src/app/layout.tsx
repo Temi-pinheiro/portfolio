@@ -32,7 +32,7 @@ const siteUrl = 'https://temipinheiro.com';
 // Inner pages end in "| Temi Pinheiro", the name Whop and the emails use.
 const title = 'Temitope (Temi) Pinheiro, developer from Lagos, Nigeria';
 const description =
-  'Temitope (Temi) Pinheiro, a developer from Lagos, Nigeria: co-founder and CTO at Kommunne, co-founder at Klaw, and UI/UX audits for founders who built their app with AI.';
+  'Temitope (Temi) Pinheiro, a developer from Lagos, Nigeria: co-founder and CTO at Kommunne, co-founder at Klaw, and AI systems and agents built for businesses.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -48,8 +48,9 @@ export const metadata: Metadata = {
   keywords: [
     'Temitope Pinheiro',
     'Temi Pinheiro',
-    'UI/UX Audit',
     'Mariposa Program',
+    'AI operating system',
+    'AI agents for business',
     'Kommunne',
     'Klaw',
     'Next.js',
@@ -123,7 +124,7 @@ const siteJsonLd = {
       image: `${siteUrl}/about/temitope.jpg`,
       jobTitle: 'Developer',
       description:
-        'A developer from Lagos, Nigeria. Co-founder and CTO at Kommunne, co-founder at Klaw, and UI/UX audits for apps built with AI.',
+        'A developer from Lagos, Nigeria. Co-founder and CTO at Kommunne, co-founder at Klaw, and AI systems and agents built for businesses.',
       worksFor: [
         { '@type': 'Organization', name: 'Kommunne', url: 'https://kommunne.com' },
         { '@type': 'Organization', name: 'Klaw', url: 'https://klaw.build' },

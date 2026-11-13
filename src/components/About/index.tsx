@@ -250,8 +250,8 @@ export const About = () => (
           <p className='max-w-[680px] text-[19px] leading-[1.65]'>
             Building products, and making them feel finished, is what I’ve
             spent my career on, in design and in code. It’s what ties all of
-            this together, and it’s what I do now: I help founders finish the
-            apps they built fast.
+            this together, and it’s what I do now: I build AI systems that
+            take the busywork off businesses.
           </p>
         </FadeUp>
       </section>
@@ -267,8 +267,8 @@ export const About = () => (
               The Mariposa Program
             </span>
             <span className='mt-4 block max-w-[640px] text-[18px] leading-[1.55] opacity-85'>
-              A UI/UX process for founders who built with Lovable, Bolt,
-              Replit, v0 or Cursor. It starts with a free teardown.
+              AI operating systems, agents and agent swarms, built for how
+              your business works. It starts with nine questions.
             </span>
           </span>
           <span className='flex items-center gap-3 font-display text-[clamp(30px,3vw,44px)] leading-none'>

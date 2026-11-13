@@ -46,16 +46,17 @@ const CHAPTERS: Chapter[] = [
   },
   {
     year: 'Now',
-    line: 'I help founders finish the apps they built fast.',
+    line: 'I build AI systems that take the busywork off businesses.',
     detail:
-      'The Mariposa Program · ten parts, from a free teardown to monthly care',
+      'The Mariposa Program · AI operating systems, agents and agent swarms',
     href: '/mariposa',
   },
 ];
 
-// The part names roll past on the Work with me tile; the first repeats at the
-// end so the loop closes without a jump (see @keyframes roll).
-const ROLL = [...mariposa.parts, mariposa.parts[0]];
+// What the program builds rolls past on the Work with me tile, ten lines; the
+// first repeats at the end so the loop closes without a jump (see @keyframes
+// roll, which is timed for ten).
+const ROLL = [...mariposa.roll, mariposa.roll[0]];
 
 // Negative delays start every cover mid-cycle, so one is always showing.
 const COVERS = [

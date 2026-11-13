@@ -3,12 +3,11 @@ import { Mariposa } from '~~/components/Mariposa';
 import { PageTransition } from '~~/components/PageTransition';
 import { SiteHeader } from '~~/components/SiteHeader';
 
-// What founders search for, not the program's name: "Mariposa Program" brings
-// up county services, and "lovable app" is searched about 7 times as often as
-// "ux audit" (the 2026-10-23 search audit).
-const title = 'UI/UX audit for Lovable, Bolt and Replit apps';
+// What business owners search for, not the program's name: "Mariposa
+// Program" brings up county services.
+const title = 'AI systems and agents for businesses, built to order';
 const description =
-  'UI/UX audits for apps built with Lovable, Base44, Bolt or Replit, delivered within 24 hours. It starts with a free teardown: the three things I’d fix first.';
+  'An AI operating system that knows how your business works, and agents that each take a job off your team, built inside the tools you already use. Start with nine questions and get a free prognosis.';
 
 export const metadata: Metadata = {
   title,

@@ -1,12 +1,8 @@
 'use client';
 
-import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRef, useState } from 'react';
-import { caseSlug } from '~~/lib/cases';
-import { ArrowRight, ArrowUpRight } from '../icons';
-import { ModalContent, ModalHeader, modalEyebrow as eyebrow } from './Modal';
+import { ArrowUpRight } from '../icons';
+import { modalEyebrow as eyebrow } from './Modal';
 
 type Shot = { src: string; alt: string; caption: string };
 
@@ -44,37 +40,18 @@ const linkClassName =
   'inline-flex items-center gap-2 font-mono text-[13px] tracking-[0.04em] text-muted underline decoration-transparent underline-offset-4 transition-[text-decoration-color] duration-300 hover:decoration-current';
 const summaryClassName = 'mt-4 max-w-[640px] text-[18px] leading-[1.6] text-muted';
 
-// The case itself: the same body in the modal on /mariposa and on its own page
-// (/mariposa/<slug>), which exists so the case can be found and linked to. It
-// ends on the one next step, `cta`. In the modal the summary describes the
-// dialog, and a link leads to the page.
-export const CaseBody = ({
-  study,
-  cta,
-  inDialog = false,
-}: {
-  study: Case;
-  cta: React.ReactNode;
-  inDialog?: boolean;
-}) => (
+// The case on its own page (/mariposa/<slug>). The UI/UX cases left the
+// /mariposa page when it became the AI-systems offer (2026-11-13); the pages
+// stay, because published articles link to them. It ends on `cta`.
+export const CaseBody = ({ study, cta }: { study: Case; cta: React.ReactNode }) => (
   <>
     <div className='flex flex-wrap gap-x-6 gap-y-2'>
       <a href={study.url} target='_blank' rel='noreferrer' className={linkClassName}>
         {study.url.replace('https://', '')}
         <ArrowUpRight size={15} />
       </a>
-      {inDialog && (
-        <Link href={`/mariposa/${caseSlug(study.name)}`} className={linkClassName}>
-          Link to this case
-          <ArrowRight size={15} />
-        </Link>
-      )}
     </div>
-    {inDialog ? (
-      <Dialog.Description className={summaryClassName}>{study.summary}</Dialog.Description>
-    ) : (
-      <p className={summaryClassName}>{study.summary}</p>
-    )}
+    <p className={summaryClassName}>{study.summary}</p>
     <div className='mt-8'>
       <Facts facts={study.facts} />
     </div>
@@ -146,113 +123,3 @@ export const CaseBody = ({
     </div>
   </>
 );
-
-// In the modal, the "Request a free teardown" button swaps this modal for the
-// form's.
-const CaseModal = ({
-  study,
-  buttonClassName,
-  onRequest,
-}: {
-  study: Case;
-  buttonClassName: string;
-  onRequest: () => void;
-}) => (
-  <>
-    <ModalHeader eyebrow='Case study' title={study.name} />
-    <div className='px-6 pb-8 md:px-12 md:pb-12'>
-      <CaseBody
-        study={study}
-        inDialog
-        cta={
-          <button type='button' onClick={onRequest} className={buttonClassName}>
-            Request a free teardown
-          </button>
-        }
-      />
-    </div>
-  </>
-);
-
-// A case is a card on the page; the case itself opens in a modal, and focus
-// goes back to the card when it closes. `onRequest` opens the teardown form's
-// modal, with the card to return focus to.
-export const CaseCard = ({
-  study,
-  buttonClassName,
-  onRequest,
-}: {
-  study: Case;
-  buttonClassName: string;
-  onRequest: (from: HTMLElement | null) => void;
-}) => {
-  const [open, setOpen] = useState(false);
-  const card = useRef<HTMLButtonElement>(null);
-  // Set when they close the case by asking for a teardown: the form's modal
-  // opens as this one fades, and keeps the focus.
-  const toForm = useRef(false);
-
-  const request = () => {
-    toForm.current = true;
-    setOpen(false);
-    onRequest(card.current);
-  };
-
-  return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger
-        ref={card}
-        className='group grid w-full gap-6 rounded-[28px] border border-line bg-tile p-3 text-left transition-[scale,border-color] duration-300 ease-soft hover:border-muted active:scale-[0.99] md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-10 md:p-4'
-      >
-        <span className='relative block aspect-[16/10] overflow-hidden rounded-[20px] border border-line'>
-          {/* The before, with the teardown's numbered marks: the card shows
-              what a teardown looks like. */}
-          <Image
-            src={study.before.src}
-            alt=''
-            fill
-            sizes='(min-width: 768px) 55vw, 100vw'
-            className='object-cover object-top transition-transform duration-700 ease-soft group-hover:scale-[1.03]'
-          />
-        </span>
-        <span className='flex flex-col px-3 pb-4 md:px-0 md:py-6 md:pr-8'>
-          <span className={eyebrow}>Case study</span>
-          <span className='mt-4 font-display text-[clamp(34px,3.2vw,48px)] leading-[1.05] tracking-[-0.015em]'>
-            {study.name}
-          </span>
-          <span className='mt-4 text-[18px] leading-[1.55] text-muted'>
-            {study.summary}
-          </span>
-          <span className='mt-6 font-mono text-[13px] tracking-[0.03em]'>
-            {study.facts
-              .slice(0, 3)
-              .map((fact) => `${fact.label}: ${fact.value.toLowerCase()}`)
-              .join(' · ')}
-          </span>
-          <span className='mt-8 inline-flex items-center gap-2 font-mono text-[14px] text-accent-text md:mt-auto'>
-            Read the case
-            <ArrowRight
-              size={18}
-              className='transition-transform duration-300 ease-soft group-hover:translate-x-1'
-            />
-          </span>
-        </span>
-      </Dialog.Trigger>
-      <ModalContent
-        open={open}
-        className='max-w-[1120px]'
-        onCloseAutoFocus={(event) => {
-          if (!toForm.current) return;
-          toForm.current = false;
-          event.preventDefault();
-        }}
-      >
-        <CaseModal
-          study={study}
-          buttonClassName={buttonClassName}
-          onRequest={request}
-        />
-      </ModalContent>
-    </Dialog.Root>
-  );
-};

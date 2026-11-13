@@ -99,4 +99,4 @@ The whole story, fix by fix, is in [the WellNest case study](/mariposa/wellnest)
 
 These are 24 apps, not a study. Each got three findings, the three I’d fix first, so a problem that didn’t make an app’s top three isn’t counted. They’re apps founders shared in builder communities on Reddit, so they lean toward early products, and two-thirds were built in Base44. All six problems turned up in the six Lovable apps too.
 
-If you’d rather have a second pair of eyes on yours, [send me your link](/mariposa?teardown). I’ll send back the three things I’d fix first, free, within 24 hours.
+If you’d rather have a second pair of eyes on yours, [send me your link](https://whop.com/temipinheiro/free-teardown/). I’ll send back the three things I’d fix first, free, within 24 hours.

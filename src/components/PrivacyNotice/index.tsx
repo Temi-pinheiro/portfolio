@@ -11,7 +11,7 @@ import { SiteHeader } from '~~/components/SiteHeader';
 // The text lives in src/content/privacy/<code>.md; the cold-email footers
 // link to these paths, so keep them stable. When the text changes, change
 // UPDATED (and the dates below) with it.
-const UPDATED = '2026-11-03';
+const UPDATED = '2026-11-13';
 
 export const NOTICES = {
   en: {
@@ -21,7 +21,7 @@ export const NOTICES = {
     title: 'Privacy notice',
     description:
       'What personal data Temitope Pinheiro collects on this site, through Whop, on the email list and in outreach, why, and how to see or delete it.',
-    updated: 'Last updated 3 November 2026',
+    updated: 'Last updated 13 November 2026',
   },
   pt: {
     lang: 'pt-BR',
@@ -30,7 +30,7 @@ export const NOTICES = {
     title: 'Aviso de privacidade',
     description:
       'Quais dados pessoais Temitope Pinheiro coleta no site, pela Whop, na lista de e-mails e na prospecção, para quê, e como vê-los ou apagá-los.',
-    updated: 'Atualizado em 3 de novembro de 2026',
+    updated: 'Atualizado em 13 de novembro de 2026',
   },
   es: {
     lang: 'es',
@@ -39,7 +39,7 @@ export const NOTICES = {
     title: 'Aviso de privacidad',
     description:
       'Qué datos personales recaba Temitope Pinheiro en el sitio, en Whop, en la lista de correo y en la prospección, para qué, y cómo verlos o borrarlos.',
-    updated: 'Actualizado el 3 de noviembre de 2026',
+    updated: 'Actualizado el 13 de noviembre de 2026',
   },
 } as const;
 

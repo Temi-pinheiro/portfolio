@@ -15,6 +15,10 @@ export const SOCIALS = [
 
 export const EMAIL = 'temitopepinheiro@gmail.com';
 
+// The free UI/UX teardown, still sold on Whop. The case pages and the first
+// article ask for it; /mariposa doesn't any more.
+export const FREE_TEARDOWN_URL = 'https://whop.com/temipinheiro/free-teardown/';
+
 // The Calendly event the Mariposa page embeds, e.g.
 // 'https://calendly.com/temipinheiro/intro'. While it's empty, the page offers
 // an email instead of a calendar.
