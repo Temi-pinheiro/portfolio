@@ -37,11 +37,12 @@ The basis is your request, and my legitimate interest in answering it.
 
 Sometimes I write to people who haven’t contacted me, about something tied to their work:
 
+- people who own or run a small business, such as a clinic, a firm or an agency, about the AI systems and agents I build;
 - people who lead HR, training or a team, about a team pack of my guide The Quiet Edge;
 - founders whose website or app I think I can improve, about a UI/UX audit;
 - writers and creators, about recommending my guide as an affiliate.
 
-For this I use your name, job title, company, work email and, sometimes, a public post or page of yours that made the message relevant. I find them in public sources: company websites, professional profiles, public posts (on Reddit or X, for example) and business contact databases such as Apollo. My first message says where I found your contact.
+For this I use your name, job title, company, work email and, sometimes, a public post, page or job ad of yours that made the message relevant. I find them in public sources: company websites, job boards (Indeed, for example), review sites such as Trustpilot, the UK’s Companies House register, professional profiles, public posts (on Reddit or X, for example) and business contact databases such as Apollo. My first message says where I found your contact.
 
 I send a first message and at most two short follow-ups, then stop. Reply “stop”, or anything like it, and I won’t write again. I then keep only your email address on a do-not-contact list, so I never write to you by mistake.
 
@@ -67,7 +68,7 @@ I don’t sell personal data, I don’t run ads, and I don’t share your data w
 | Sendbyte | The email list, delivery emails and the intake |
 | Google (Gmail) | My inbox |
 | Calendly | Booking calls |
-| Apollo, Firecrawl | Finding public business contact details |
+| Apollo, Firecrawl | Finding public business contact details and job ads |
 | Anthropic | AI assistant, and writing the intake’s prognosis |
 
 ## Data leaving your country

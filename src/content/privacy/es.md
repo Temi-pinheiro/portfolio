@@ -37,11 +37,12 @@ La base es tu solicitud y mi interés legítimo en responderla.
 
 A veces escribo a personas que no me han contactado, sobre algo relacionado con su trabajo:
 
+- a quienes son dueños o dirigen una pequeña empresa, como una clínica, un despacho o una agencia, sobre los sistemas y agentes de IA que construyo;
 - a quienes dirigen Recursos Humanos, capacitación o un equipo, sobre un paquete de mi guía The Quiet Edge para equipos;
 - a fundadores cuyo sitio o app creo que puedo mejorar, sobre una auditoría de UI/UX;
 - a autores y creadores de contenido, sobre recomendar mi guía como afiliados.
 
-Para eso uso tu nombre, cargo, empresa, correo de trabajo y, a veces, una publicación o página pública tuya que hizo relevante el mensaje. Los encuentro en fuentes públicas: sitios de empresas, perfiles profesionales, publicaciones públicas (en Reddit o X, por ejemplo) y bases de contactos comerciales como Apollo. Mi primer mensaje dice dónde encontré tu contacto.
+Para eso uso tu nombre, cargo, empresa, correo de trabajo y, a veces, una publicación, una página pública o una oferta de empleo tuya que hizo relevante el mensaje. Los encuentro en fuentes públicas: sitios de empresas, portales de empleo (Indeed, por ejemplo), sitios de reseñas como Trustpilot, el registro mercantil del Reino Unido (Companies House), perfiles profesionales, publicaciones públicas (en Reddit o X, por ejemplo) y bases de contactos comerciales como Apollo. Mi primer mensaje dice dónde encontré tu contacto.
 
 Envío un primer mensaje y como máximo dos recordatorios cortos, y paro. Responde “baja”, o algo parecido, y no te vuelvo a escribir. Desde ese momento guardo solo tu correo en una lista de “no contactar”, para no escribirte nunca por error.
 
@@ -67,7 +68,7 @@ No vendo datos personales, no hago publicidad y no comparto tus datos con nadie 
 | Sendbyte | La lista de correo, los correos de entrega y el cuestionario |
 | Google (Gmail) | Mi bandeja de entrada |
 | Calendly | Agendar llamadas |
-| Apollo, Firecrawl | Encontrar contactos comerciales públicos |
+| Apollo, Firecrawl | Encontrar contactos comerciales públicos y ofertas de empleo |
 | Anthropic | Asistente de IA, y el diagnóstico del cuestionario |
 
 Estos servicios tratan tus datos por encargo mío, solo para lo que dice la tabla. No hago otras transferencias que requieran tu consentimiento.

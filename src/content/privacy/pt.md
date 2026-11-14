@@ -37,11 +37,12 @@ A base legal é o seu pedido e o meu legítimo interesse em respondê-lo.
 
 Às vezes escrevo para pessoas que não entraram em contato comigo, sobre algo ligado ao trabalho delas:
 
+- quem é dono ou dirige uma pequena empresa, como uma clínica, um escritório ou uma agência, sobre os sistemas e agentes de IA que eu construo;
 - quem lidera RH, treinamento ou um time, sobre um pacote do meu guia The Quiet Edge para equipes;
 - fundadores cujo site ou app eu acho que posso melhorar, sobre uma auditoria de UI/UX;
 - autores e criadores de conteúdo, sobre recomendar meu guia como afiliados.
 
-Para isso uso seu nome, cargo, empresa, e-mail profissional e, às vezes, um post ou uma página pública sua que tornou a mensagem relevante. Encontro essas informações em fontes públicas: sites de empresas, perfis profissionais, posts públicos (no Reddit ou no X, por exemplo) e bases de contatos comerciais como a Apollo. A primeira mensagem diz onde encontrei seu contato.
+Para isso uso seu nome, cargo, empresa, e-mail profissional e, às vezes, um post, uma página pública ou um anúncio de vaga seu que tornou a mensagem relevante. Encontro essas informações em fontes públicas: sites de empresas, sites de vagas (o Indeed, por exemplo), sites de avaliações como o Trustpilot, o registro de empresas do Reino Unido (Companies House), perfis profissionais, posts públicos (no Reddit ou no X, por exemplo) e bases de contatos comerciais como a Apollo. A primeira mensagem diz onde encontrei seu contato.
 
 Envio uma primeira mensagem e no máximo dois lembretes curtos, e paro. Responda “parar”, ou qualquer coisa parecida, e eu não escrevo de novo. A partir daí guardo só o seu e-mail numa lista de “não contatar”, para nunca escrever por engano.
 
@@ -67,7 +68,7 @@ Não vendo dados pessoais, não faço anúncios e não compartilho seus dados co
 | Sendbyte | A lista de e-mails, os e-mails de entrega e o questionário |
 | Google (Gmail) | Minha caixa de entrada |
 | Calendly | Agendamento de conversas |
-| Apollo, Firecrawl | Encontrar contatos comerciais públicos |
+| Apollo, Firecrawl | Encontrar contatos comerciais públicos e anúncios de vagas |
 | Anthropic | Assistente de IA, e o diagnóstico do questionário |
 
 ## Transferência internacional
