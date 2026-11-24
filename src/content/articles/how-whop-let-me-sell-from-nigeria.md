@@ -1,6 +1,6 @@
 ---
 title: "How Whop let me sell to the world from Nigeria"
-description: "Temi on selling to the world from Nigeria: why Stripe was a dead end, why Paystack wasn't enough, what setting up Whop took, what a $27 sale and a $1 sale actually leave, and who should skip it."
+description: "My story on selling to the world from Nigeria: why Stripe was a dead end, why Paystack wasn't enough, what setting up Whop took, what a $27 sale and a $1 sale actually leave, and who should skip it."
 date: 2026-11-24
 format: interview
 tags: [whop, payments, nigeria, holod, money]
