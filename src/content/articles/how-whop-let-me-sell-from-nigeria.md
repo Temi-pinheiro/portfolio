@@ -11,6 +11,10 @@ links:
     url: https://whop.com/biz_71ryNxzPwKZ7zI/
   - label: The Quiet Edge
     url: https://temipinheiro.com/quiet-edge
+  - label: The agent builds
+    url: https://temipinheiro.com/mariposa
+  - label: My Whop store
+    url: https://whop.com/temipinheiro/
   - label: Whop's regional fees
     url: https://docs.whop.com/payments-and-billing/fees/regional-fees
 ---
@@ -33,7 +37,7 @@ With **Lemon Squeezy,** honestly, to this day I don't know if it's possible to r
 
 ## What about Paystack or Flutterwave?
 
-I would have considered them, but they didn't offer the reach I needed. These would have been easy to integrate if all the customers I wanted were Nigerian. But whether it was the audit service I sold at the time, the agent builds I sell now, the guide I created, or Holo'd, the game I made with a payment layer, I needed anybody from anywhere who came across it to be able to pay without having to reach out to me personally.
+I would have considered them, but they didn't offer the reach I needed. These would have been easy to integrate if all the customers I wanted were Nigerian. But whether it was [the audit service](https://whop.com/temipinheiro/) I sold at the time, [the agent builds](/mariposa) I sell now, [the guide](/quiet-edge) I created, or [Holo'd](https://holod-drab.vercel.app/), the game I made with a payment layer, I needed anybody from anywhere who came across it to be able to pay without having to reach out to me personally.
 
 I wanted everything to be as streamlined as possible, and the only thing that offered me the whole package was Whop.
 
@@ -55,7 +59,7 @@ At the time I didn't have a registered company I wanted to use for these project
 
 Whop has, as far as I can tell, a world-class MCP. Once I connected it to Claude Code and created the right API keys, everything moved quickly. It's one of my favourite things about Whop, and probably one of the best MCPs I've used. Once the account was verified, the rest was pretty much all done through the MCP, and it was seamless.
 
-I also like how many ways Whop gives you to do things. On [Holo'd](https://holod-drab.vercel.app/), checkout isn't on the page itself. You buy a pack and it takes you to a checkout page, a custom one with the details you give it. When you've paid, it brings you right back, shows you what you bought, and you're good. On the Quiet Edge page, checkout is built into my website, so you never leave. You pay on my site and you get your guide.
+I also like how many ways Whop gives you to do things. On Holo'd, checkout isn't on the page itself. You buy a pack and it takes you to a checkout page, a custom one with the details you give it. When you've paid, it brings you right back, shows you what you bought, and you're good. On [the Quiet Edge page](/quiet-edge), checkout is built into my website, so you never leave. You pay on my site and you get your guide.
 
 That might not seem like much, but having those two options changes how it's presented, and that matters a lot to me as a front-end-leaning developer. It means I decide the experience my user has. That freedom is really important to me.
 
